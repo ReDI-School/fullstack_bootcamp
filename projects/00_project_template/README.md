@@ -9,7 +9,7 @@
 6. How to get started?
    I. Create a copy of the template 
    II. Fill out every section of the template for the project you are setting up.
-   III. Add boilerplate code to the project folder so that it is easier for the students to get started ([look at this project for boilerplate code]([url](https://github.com/Laboratoria/curriculum/blob/v8.6.0/projects/00-trivia/README.md))).
+   III. Add boilerplate code to the project folder so that it is easier for the students to get started ([look at this project for boilerplate code]([https://github.com/Laboratoria/curriculum/blob/v8.6.0/projects/00-trivia/README.md])).
    IV. Test the project with community members for understanding and clarity. 
 
 Further resources:
