@@ -1,0 +1,129 @@
+/* GENERAL */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+a,
+a:active,
+a:visited {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+img {
+  height: auto;
+  width: 100%;
+}
+
+ul {
+  list-style-type: none;
+}
+
+/* HEADER */
+
+.site--bar {
+  background-color: rgba(255, 255, 255, 0.5);
+  display: flex;
+  justify-content: space-between;
+  padding: 22px 32px;
+  position: absolute;
+  width: 100vw;
+}
+
+/* NAVIGATION */
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.navigation--link {
+  width: 150px;
+}
+
+/* MAIN */
+
+.site--hero {
+  background-image: url(../images/shopping.jpg);
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  font-size: 90px;
+  padding: 240px;
+  text-align: center;
+}
+
+/* PRODUCT */
+
+.product {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 6px;
+  text-align: center;
+  max-width: 200px;
+}
+
+.product--description {
+  display: none;
+  margin-top: 26px;
+}
+
+.product--name {
+  font-size: 18px;
+  margin-top: 18px;
+}
+
+.product--price {
+  margin-top: 18px;
+}
+
+/* PRODUCTS LIST */
+
+.products {
+  padding: 50px 100px;
+}
+
+.products--title {
+  margin-bottom: 60px;
+  text-align: center;
+}
+
+.products--list {
+  display: grid;
+  grid-template-columns: repeat(3, 500px);
+  column-gap: 10px;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+  row-gap: 100px;
+  margin-top: 130px;
+}
+
+/* FOOTER */
+
+.more {
+  background: #dd4c93;
+  padding: 50px 100px;
+}
+
+.more--credits {
+  display: flex;
+  justify-content: space-between;
+}
