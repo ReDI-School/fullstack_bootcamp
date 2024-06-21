@@ -116,6 +116,12 @@ By the end of this module, you should have a familiarity with and basic understa
 **Link to Project: [04_career](https://github.com/ReDI-School/fullstack_bootcamp/tree/main/projects/04_career)**
 
 
+## Graduation! What's next?
+The final stage is graduation! You receive your certificate if you fulfill all requirements (you find the here: TBD). Now it is time to apply for internships, further improve your skill set and prepare for the job market. ReDI will assist you in this phase as well, but the responsibility is still on you. Check out our Talent Success Offers (LINK) for further support. 
+
+**Keep on Learning and Preparing:** Your journey towards a junior position is most likely not over yet. We encourage you to further sharpen our skills for the job profile you aim for. We will share further projects and resources you can use to continue preparing for your career while you apply. 
+
+
 ## Resources
 [ReDI School Website](https://www.redi-school.org/) - [Gitbook](https://redi-school-1.gitbook.io/fullstack) 
 
