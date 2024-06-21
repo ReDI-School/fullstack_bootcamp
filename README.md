@@ -16,9 +16,20 @@ At the end of your project, you present your work to the coaches and will receiv
 
 
 ## Contributors
-A big thank you to everyone who is contributing to this repository. 
+A big thank you to everyone who is contributing to this repository. _We gradually add the contributors._
 
-_We will gradually add your preferred profile (LinkedIn, Github, ...) and your form of contribution to this section._
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/angelogulina"><img src="https://avatars.githubusercontent.com/u/4223655?v=4" width="100px;" alt=""/><br /><sub><b>Angelo Gulina</b></sub></a><br /><a href="#question-angeloguilina" title="Answering Questions">💬</a></td>
+  </tr>
+</table>
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
 
 
 ## Licencia & Copyright
