@@ -1,5 +1,7 @@
 # Welcome to ReDI's Full Stack Bootcamp 🚀
 
+![Full Stack Bootcamp Banners](https://github.com/ReDI-School/fullstack_bootcamp/assets/51905839/36b1fd93-be54-4718-bde0-898c71d4c82c)
+
 ReDI's Full Stack Bootcamp is a part-time (20 hours per week) bootcamp lasting for 18 months. It has a strong focus on front end and gives an introduction to back end elements. The goal is to support participants prepare for an internship in the industry. 
 
 Our learning approach builds on learning by doing. Students work on three hands-on projects throughout the bootcamp. Each project lasts 4 weeks and contains 3 Milestones plus a Bonus Milestone. We aim to be as close as possible to a real work environment where juniors receive deliverables, work on them, run into issues, seek support and present their solutions to seniors. Students work in peer to peer sessions, in small groups with coaches and in input sessions with experts. However, the majority of the workload is the actual project work where students individually progress their project by working on the weekly milestone. 
