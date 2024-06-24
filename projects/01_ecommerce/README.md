@@ -54,7 +54,7 @@ Details page.
 - **Deliverables:**
    - Updated CSS file with Flexbox properties.
    - Enhanced e-commerce page with a flexible and adaptive product layout.
-- **Link to Milestone: [Introduction to Flexbox](https://github.com/ReDI-School/fullstack_bootcamp/tree/main/projects/01_ecommerce/02_milestone)**
+- **Link to Milestone: [Introduction to Flexbox](https://github.com/ReDI-School/fullstack_bootcamp/tree/main/projects/01_ecommerce/03_milestone)**
 
 
 #### Bonus Milestone: Making the E-Commerce Website Responsive
@@ -64,13 +64,14 @@ Details page.
 - **Deliverables:**
    - Final `CSS` file with media queries and `responsive design` adjustments.
    - Fully responsive e-commerce website that looks and functions well on all devices.   
+- **Link to Milestone: [Make Website Responsive](https://github.com/ReDI-School/fullstack_bootcamp/tree/main/projects/01_ecommerce/04_milestone)**
 
 
 
 ## 4. Technical Explanation
 
 1. VS Code: read the
-   [How to](https://app.gitbook.com/o/-MX7viJUQOkaASHKwdfd/s/osyVGCvfzcpRIHGTcugx/how-to/how-to-use-visual-studio-code)
+   [How to](https://redi-school-1.gitbook.io/fullstack/get-started/visual-studio-code)
    guide
 
 ## 5. Learning Objective
