@@ -31,7 +31,7 @@ Details page.
 
 - **What you do:** Design a simple e-commerce product page using HTML and basic CSS. This page should display a product with details like an image, name, price, description, and an "Add to Cart" button.
 - **What you learn:** `HTML`, `CSS`, `HTML tags`
-- ****Deliverables:**
+- **Deliverables:**
    - Complete the HTML and CSS code as described.
    - Test the page in a web browser to ensure it looks good on different screen sizes.
    - Submit the final HTML file (e.g., index.html) for review.
