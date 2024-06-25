@@ -36,10 +36,9 @@ Friday is just for Students. No need for you to support.
 | Role              | Topic                                 | Time estimation per week |
 | ------            | --------------------------------------| --------------- |
 | [Coach](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/volunteers/coach.md)  | As a coach, you support the Monday sessions| 5 hours per week |
+| [Session Owner](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/volunteers/session_owner.md)  | As a session owner, you run the Input session| 5 hours per week |
 
 
-# Communication
-Most of our communication is done via Slack. This is the place where we ask you if you can help out with content or a session, and where you can keep in touch with both students and volunteers. Next to that, we have channels for each semester and the main goal here is to support students with questions or their milestone during the week. If you are not in Slack yet, let REDI know 💁
 
 
 # How to review and change material
