@@ -20,8 +20,7 @@
 1. Join the Zoom Call 5 minutes before the Session starts. 
 2. Claim Host (Check out the pinned Guide in Slack on how to do so).
 3. Wait until 19:05 to give everyone a chance to arrive and kick-off.
-4. Answer Questions:
-  - Mention a question posted in Slack. Provide an answer or walk the students through the solution. You can ask if the student joined to check if the answer clarified their question.
+4. Answer Questions - Mention a question posted in Slack. Provide an answer or walk the students through the solution. You can ask if the student joined to check if the answer clarified their question.
 5. After the session, post your answers in Slack. The students also get access to the recording.
 
 
@@ -34,10 +33,5 @@
 - _Until when do students need to hand in their questions?_ Until 12:00 on Thursday. 
 - _What if I cannot solve a question?_ This is absolutely normal. You can ask the other teachers on Slack to give an answer in the thread. 
 - _What if the students have a technical problem? How can they share such an issue?_
-
-
-## ReDI Questions:
-- 
-- 
 
 ❤️ Thank you for helping the students where they are stuck. ❤️
