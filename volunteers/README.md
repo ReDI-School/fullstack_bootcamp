@@ -2,7 +2,7 @@
 Welcome to ReDI School! We really appreciate that you are part of our community. In this repo, you'll find an overview of the different volunteering positions. By volunteering, you contribute to our main goal: help our students gain the necessary skills to find a job in tech. ReDI School has now helped over 450 students find work. This is only possible with the support of our volunteers <3
 
 # Curriculum
-The curriculum is meant to prepare the students for a front end internship and help them further grow into a junior full stack or front end position. 
+The curriculum is meant to prepare the students for a front end internship and help them grow into junior full stack or front end positions. 
 
 <img width="969" alt="image" src="https://github.com/ReDI-School/fullstack_bootcamp/assets/51905839/21865da5-1bf0-4bfa-909d-99ae1672c00d">
 
@@ -13,10 +13,10 @@ The bootcamp fully focuses on hands-on work through projects. Students work on t
 
 | Session           | Day                                     | Purpose   | Roles          |
 | ---------| --------------------------------------|-----------|---------------|
-| [Support Session](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/volunteers/coach.md)  | Monday |  Students present milestone, get support and feedback | [Coach](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/volunteers/coach.md)|
-| [Input Session](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/volunteers/session_owner.md)  | Tuesday | The class is taught in pair, with one person assigned as a session owner (the lecturer) and one as a teaching assistant.  The class introduces the students to the new topic of the week through theory and practice. At the end of class, the project milestone for the week is assigned. | [Session Owner](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/volunteers/session_owner.md), [Teaching Assistant](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/volunteers/session_owner.md) |
-| [Q&A Support](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/volunteers/session_owner.md)  | Thursday |  In this session, the Q&A guide answers questions from the students regarding the milestone and topic of the week. One teacher collects all questions before the session and answers them in a live session. | [Q&A Guide](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/volunteers/qa_guide.md) |
-| [Peer to Peer](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/volunteers/session_owner.md)  | Friday |  Students drive projects together through pair programming. They meet in one Zoom call, move into breakout rooms in groups of 3-4, and rotate in pair programming. | _no support needed_ | 
+| [Support Session](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/volunteers/support_session.md)  | Monday |  Students present milestone, get support and feedback | Coach |
+| [Input Session](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/volunteers/input_session.md)  | Tuesday | The class is taught in pair, with one person assigned as a session owner (the lecturer) and one as a teaching assistant.  The class introduces the students to the new topic of the week through theory and practice. At the end of class, the project milestone for the week is assigned. | Session Owner, Session Assistant |
+| [Q&A Support](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/volunteers/qa_session.md)  | Thursday |  In this session, the Q&A guide answers questions from the students regarding the milestone and topic of the week. One teacher collects all questions before the session and answers them in a live session. | Q&A Guide |
+| [Peer to Peer](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/volunteers/peer_to_peer.md)  | Friday |  Students drive projects together through pair programming. They meet in one Zoom call, move into breakout rooms in groups of 3-4, and rotate in pair programming. | _no support needed_ | 
 
 
 # Roles
