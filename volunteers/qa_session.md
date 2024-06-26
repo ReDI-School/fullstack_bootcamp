@@ -1,12 +1,15 @@
 # Q&A Session 
 
-**Intention:** Students get support in second half of the week and can ask questions.
-**Desired Outcome:** Students progressed in the project, solved their issues. 
-**Agenda:** 1) Students hand in questions on Slack 2) Teacher streams answering them.
-Roles and rules: Every student needs to put in at least two questions. One teacher is responsible for answering.
-**Timeline:** 60 min session on Thursday. 
+## Overview
+- **Intention:** Students get support in second half of the week and can ask questions.
+- **Desired Outcome:** Students progressed in the project, solved their issues. 
+- **Agenda:** 1) Students hand in questions on Slack 2) Teacher streams answering them.
+- **Roles and rules:** Every student needs to put in at least two questions. One teacher is responsible for answering.
+- **Timeline:** 60 min session on Thursday. 
 
-Questions:
+
+
+## Questions:
 - How can students take the most out of the support with the limitation on teacher capacity we have? 
 - What if the teacher cannot solve the question?
 - Until when do students need to hand in their questions?
