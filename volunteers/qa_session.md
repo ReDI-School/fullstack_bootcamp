@@ -1,23 +1,43 @@
 # Q&A Session 
 
 ## Overview
-- **Intention:** Students get support in second half of the week and can ask questions.
-- **Desired Outcome:** Students progressed in the project, solved their issues. 
-- **Agenda:** 1) Students hand in questions on Slack 2) Teacher streams answering them.
-- **Roles and rules:** Every student needs to put in at least two questions. One teacher is responsible for answering.
-- **Timeline:** 60 min session on Thursday. 
+**💡 Intention:** Students have the chance to ask questions and to move forward with their project.\
+**⭐ Desired Outcome:** Students progressed in the project, and their issues are solved.\
+**📝 Agenda:** 1. Students hand in questions on Slack before the session. 2. Live Q&A Session on Zoom where Q&A Guide answers the questions. \
+**👤 Roles and rules:** Students share their questions, Q&A Guide prepares answers and explains them in the Zoom session. The session is OPTIONAL for the students. They don't need to attend the live session. However, we encourage them to post questions. \
+**📅 Timeline:** Thursday, 19:00 - 20:00 \
+**🖥️ Tools:** Online Session via Zoom. You can find the Zoom link in your [Google Calendar](https://calendar.google.com/calendar/u/0/r).
+
+## How to run the Q&A Session
+
+**Before the Session:**
+1. In Slack, a Q&A Thread is posted automatically on Wednesday evening (done by ReDI).
+2. Check out the questions in the Q&A thread. Think about a potential solution or explanation for them.
+3. Ask students for further clarification if posted questions are unclear.
+4. Ask other teachers for support if you don't know how to solve it. 
+
+**In the Session:**
+1. Join the Zoom Call 5 minutes before the Session starts. 
+2. Claim Host (Check out the pinned Guide in Slack on how to do so).
+3. Wait until 19:05 to give everyone a chance to arrive and kick-off.
+4. Answer Questions:
+  - Mention a question posted in Slack. Provide an answer or walk the students through the solution. You can ask if the student joined to check if the answer clarified their question.
+5. After the session, post your answers in Slack. The students also get access to the recording.
 
 
+## FAQ
+- _What should I do if there are NO questions asked on Slack?_ Try to encourage the students to post questions on Slack or provide some in the session directly.
+- _What if I finish early?_ You can go deeper into a particular issue or recap on a topic more extensively. However, it is fine to finish early.
+- _What shall I do if there are too many questions?_ Let's start with the questions that you think could be the biggest roadblockers.
+- _What if there is a student with a question that is very specific to their machine?_ Let's answer these questions last. Alternatively, ask if other teachers can support the student bilaterally on Slack. 
+- _How do I handle very easy questions?_ You can provide a resource or short answer to the question and move on. 
+- _Until when do students need to hand in their questions?_ Until 12:00 on Thursday. 
+- _What if I cannot solve a question?_ This is absolutely normal. You can ask the other teachers on Slack to give an answer in the thread. 
+- _What if the students have a technical problem? How can they share such an issue?_
 
-## Questions:
-- How can students take the most out of the support with the limitation on teacher capacity we have? 
-- What if the teacher cannot solve the question?
-- Until when do students need to hand in their questions?
-- What to do if there are NO questions? Or too many?
-- What if the question is a technical one? Like setting something on their laptop? WE ASK THEM TO SHARE A SCREEN RECORDING.
-- Do we want to ask the students to hand in at least 2 questions?
-- Voting system?
-- Tool: Zoom. The session is being recorded so that students can check out the answers afterward.
 
+## ReDI Questions:
+- 
+- 
 
-HAVE an MVP for Teacher Onboarding. 
+❤️ Thank you for helping the students where they are stuck. ❤️
