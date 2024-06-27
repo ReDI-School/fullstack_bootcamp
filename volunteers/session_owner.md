@@ -25,3 +25,7 @@ The Session Owner prepares and runs the [Input Session](https://github.com/ReDI-
 1. Review weekly milestones, the content in the gitbook, and the slides (you can find the slides in Google Drive, with a link pinned in Slack).
 2. Adapt the slides to your wishes.
 3. Try out the coding exercises beforehand to make sure they run. 
+
+## FAQ
+- _What if it is too much content to cover?_ We fully understand this concern! Usually, the input sessions cover quite a huge range of topics, as there is only one input session per week. The idea for the input session is to give an idea of the concepts and an introduction to how to get started with the concept. The students dive deeper into the concepts by working with them during the weekly milestones. If a concept is unclear, the students have various chances to get support (Q&A session, peer-to-peer session, Support session).
+- _What if I didn't manage to cover all the content?_ This happens! You can share the respective resources in Gitbook with the students to help them review the concepts that weren't covered. Furthermore, the recap week offers space to review concepts that need more clarification.
