@@ -1,7 +1,7 @@
 # Teaching Assistant
 
 ## Introduction 
-The Teaching Assistant supports the [Input Session](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/volunteers/input_session.md) on Tuesdays. The assistant covers the operational part (join the Zoom call as host, track attendance) and supports the [Session Owner](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/volunteers/session_owner.md) in moderation and breakout rooms. 
+As a teaching assistant, you support the session owner in the [Input Session](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/volunteers/input_session.md). You open the Zoom call, track attendance, help answer questions, and provide support in break-out rooms.
 
 ## How to run the Input session as the Teaching Assistant
 
@@ -15,4 +15,9 @@ The Teaching Assistant supports the [Input Session](https://github.com/ReDI-Scho
 4. Tracks Attendance (> Camera on policy!)
 
 **After the Session:**   
-1. Complete class feedback form at the end of each session (the sheet is pinned in your Slack channel)
+1. Complete the class feedback form at the end of each session (the sheet is pinned in your Slack channel)
+
+
+## FAQ
+- _I can't find the attendance tracker_ The link to the attendance tracker is pinned in Slack
+- _I cant't find the Zoom link_ The Zoom Link is in your [Google Calendar](https://calendar.google.com/calendar/u/0/r)
