@@ -1,7 +1,7 @@
 # Session Owner
 
 ## Introduction 
-The Session Owner prepares and runs the [Input Session](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/volunteers/input_session.md) on Tuesdays. 
+As a session owner, you lead the [Input Session](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/volunteers/input_session.md). You introduce the milestone of the week and the relevant concepts to work on it. You prepare the session and coordinate with the teaching assistant.
 
 ## How to run the Input session as Session Owner
 
