@@ -1,7 +1,7 @@
 # Coach
-As a coach, you join the [Monday Support session](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/volunteers/support_session.md). The coaching takes place in small groups. One coach looks after 4-5 students. During the 2-hour session, the group of students showcases the solution of the weekly milestone and receives feedback and support from the coach. 
+As a coach, you join the [Monday Coaching Session](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/volunteers/support_session.md). The coaching takes place in small groups. One coach looks after 4-5 students. During the 2-hour session, the group of students showcases the solution of the weekly milestone and receives feedback and support from the coach. 
 
-## How to run the Support Session
+## How to run the Coaching Session
 
 **Before the Session:**
 1. Review the milestone of the week to understand what students were working on. 
@@ -35,4 +35,4 @@ Good feedback contains suggestions for improvement. This way, the students will 
 Too few comments, and a student doesn’t have enough feedback to learn from; too much feedback, and the student is overwhelmed by all the information. As a rule of thumb, we say that a normal review is somewhere between 5 and 10 comments. When you feel that a student needs more guidance, feel free to contact them on Slack. If a student does everything well, tease them with more advanced topics!
 
 **5. Hands-on Support**
-In the [Support Session](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/volunteers/support_session.md), you have the chance to give hands-on help with the code. During the session, you can revise one or two comments with the students directly using pair programming. We have 10 minutes per student for comments and support. 
+In the [Coaching Session](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/volunteers/support_session.md), you have the chance to give hands-on help with the code. During the session, you can revise one or two comments with the students directly using pair programming. We have 10 minutes per student for comments and support. 
