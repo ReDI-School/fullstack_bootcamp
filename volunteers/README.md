@@ -22,11 +22,11 @@ The bootcamp fully focuses on hands-on work through projects. Students work on t
 # Roles
 | Role                          | Topic                                 | Time estimation per week |
 | ------------------------------| --------------------------------------| --------- |
-| [Coach](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/volunteers/coach.md)  | As a coach, you support the students in a Monday session by giving feedback on their milestones and helping them advance with it.| 5 hours per week |
-| [Session Owner](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/volunteers/session_owner.md)  | As a session owner, you lead the Input session. You introduce the milestone of the week and the relevant concepts to work on it. You prepare the session and coordinate with the teaching assistant.| 5 hours per week |
-| [Teaching Assistant](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/volunteers/teaching_assistant.md) | As a teaching assistant, you support the session owner in the input session. You open the Zoom call, track attendance, help answer questions, and provide support in break-out rooms. | 5 hours per week |
+| [Coach](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/volunteers/coach.md)  | As a coach, you support the students in a Monday session by giving feedback on their milestones and helping them advance with it.| 4 hours per week |
+| [Session Owner](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/volunteers/session_owner.md)  | As a session owner, you lead the Input session. You introduce the milestone of the week and the relevant concepts to work on it. You prepare the session and coordinate with the teaching assistant.| 4 hours per week |
+| [Teaching Assistant](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/volunteers/teaching_assistant.md) | As a teaching assistant, you support the session owner in the input session. You open the Zoom call, track attendance, help answer questions, and provide support in break-out rooms. | 3 hours per week |
 | [Backup teacher](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/volunteers/backup_teacher.md)  |  As a backup teacher, you are available and ready to jump in the case one of the teachers assigned for the day should have issues, or get sick. As a backup teacher, you don’t need to attend the session unless an emergency arises. | 2 hours per week |
-| [Q&A Guide](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/volunteers/qa_guide.md)  | As Q&A Guide you run the Q&A support. You collect questions before the session and answer them live in a 60-minute Zoom call on Thursday. | 5 hours per week |
+| [Q&A Guide](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/volunteers/qa_guide.md)  | As Q&A Guide you run the Q&A support. You collect questions before the session and answer them live in a 60-minute Zoom call on Thursday. | 3 hours per week |
 
 # Team Tasks 
 - Create a learning atmosphere where students feel safe to learn and are not afraid of making mistakes or asking questions
