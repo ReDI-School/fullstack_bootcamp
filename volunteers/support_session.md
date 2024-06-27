@@ -1,4 +1,4 @@
-# Support Session
+# Coaching Session
 
 ## Overview
 **💡 Intention:** Learners present their solutions to the weekly milestones in small groups. Coaches give feedback and help the students advance.\
@@ -23,12 +23,12 @@
 
 
 
-## How to run a Support Session
-The Coach is running the Support Session. Read the instructions for the [Coach](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/volunteers/coach.md). 
+## How to run a Coaching Session
+The Coach is running the Coaching Session. Read the instructions for the [Coach](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/volunteers/coach.md). 
 
 
-## Last Support Session of the Project
-In the last support session of the project, the students present their full project. The students have 5 minutes to present their full project. Afterward, the coach and other students can give feedback and ask questions about the solution. 
+## Last Coaching Session of the Project
+In the last Coaching Session of the project, the students present their full project. The students have 5 minutes to present their full project. Afterward, the coach and other students can give feedback and ask questions about the solution. 
 
 
 ## FAQ
