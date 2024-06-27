@@ -128,7 +128,7 @@ The final stage is graduation! You receive your certificate if you fulfill all r
 [ReDI School Website](https://www.redi-school.org/) - [Gitbook](https://redi-school-1.gitbook.io/fullstack) 
 
 ## Evaluation
-During the course of each project, coaches will individually monitor your work. Each week students finish one milestone. They receive feedback and support by Coaches in the Monday Support Session. However, the milestones are not evaluated. 
+During the course of each project, coaches will individually monitor your work. Each week students finish one milestone. They receive feedback and support by Coaches in the Monday Coaching Session. However, the milestones are not evaluated. 
 
 Students hand in their project at the end of each project cycle. Relevant for the evaluation are the deliverables per milestone. Remember that the learning objectives are more important than the completeness of your project. 
 
