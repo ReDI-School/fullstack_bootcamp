@@ -8,6 +8,19 @@
 **📅 Timeline:** Thursday, 19:00 - 20:00 \
 **🖥️ Tools:** Online Session via Zoom. You can find the Zoom link in your [Google Calendar](https://calendar.google.com/calendar/u/0/r).
 
+## Timeline
+We suggest the following timeline: 
+| Time           | Content                                     |
+| ---------| --------------------------------------|
+|19:00 - 19:05| Arriving to Call & Move to Breakout rooms |
+|19:05 - 19:20| First student presents milestone. Coach and other students give feedback and support |
+|19:20 - 19:35| Second student presents and receives feedback and support |
+|19:35 - 19:50| Third student presents and receives feedback and support|
+|19:50 - 20:00| Break|
+|20:00 - 20:15| Fourth student presents and receives feedback and support|
+|20:15 - 20:30| Fifth student presents and receives feedback and support|
+|20:30 - 21:00| Time to review a trickier topic or to go into the details of a specific issue |
+
 ## How to run the Q&A Session
 
 **Before the Session:**
