@@ -30,6 +30,3 @@ The focus of the Input Session is to introduce the students to the milestone of 
 1. Role of [Session Owner](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/volunteers/session_owner.md)
 2. Role of [Teaching Assistant](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/volunteers/teaching_assistant.md)
 
-
-## FAQ
-- 
