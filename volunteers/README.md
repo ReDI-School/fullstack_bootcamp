@@ -13,7 +13,7 @@ The bootcamp fully focuses on hands-on work through projects. Students work on t
 
 | Session           | Day                                     | Purpose   | Roles          |
 | ---------| --------------------------------------|-----------|---------------|
-| [Support Session](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/volunteers/support_session.md)  | Monday |  Students present milestone, get support and feedback | Coach |
+| [Coaching Session](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/volunteers/support_session.md)  | Monday |  Students present milestone, get support and feedback | Coach |
 | [Input Session](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/volunteers/input_session.md)  | Tuesday | The class is taught in pair, with one person assigned as a session owner (the lecturer) and one as a teaching assistant.  The class introduces the students to the new topic of the week through theory and practice. At the end of class, the project milestone for the week is assigned. | Session Owner, Session Assistant |
 | [Q&A Support](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/volunteers/qa_session.md)  | Thursday |  In this session, the Q&A guide answers questions from the students regarding the milestone and topic of the week. One teacher collects all questions before the session and answers them in a live session. | Q&A Guide |
 | [Peer to Peer](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/volunteers/peer_to_peer.md)  | Friday |  Students drive projects together through pair programming. They meet in one Zoom call, move into breakout rooms in groups of 3-4, and rotate in pair programming. | _no support needed_ | 
