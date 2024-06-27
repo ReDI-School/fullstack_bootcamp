@@ -13,7 +13,7 @@ We suggest the following timeline:
 | Time           | Content                                     |
 | ---------| --------------------------------------|
 |19:00 - 19:05| Arriving to Call & Move to Breakout rooms |
-|19:05 - 19:20| 1st student presents milestone. Coach and other students give feedback and support |
+|19:05 - 19:20| 1st student presents and receives feedback and support |
 |19:20 - 19:35| 2nd student presents and receives feedback and support |
 |19:35 - 19:50| 3rd student presents and receives feedback and support|
 |19:50 - 20:00| Break|
