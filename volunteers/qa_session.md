@@ -10,6 +10,6 @@
 
 
 ## How to run a Q&A Session
-[Role of Q&A Guide](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/volunteers/qa_guide.md)
+Role of [Q&A Guide](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/volunteers/qa_guide.md)
 
 ❤️ Thank you for helping the students progress ❤️
