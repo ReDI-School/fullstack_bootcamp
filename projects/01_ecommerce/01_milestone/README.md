@@ -8,8 +8,19 @@ and an "Add to Cart" button.
 
 ### Requirements:
 
-1. HTML Structure:
+1. Clone this project and create your PR
+<!-- Note 1 - I believe it would be good if here it is clearly informed that they should create a branch to this project in gitHub with their names, and make their exercise there -->
+  - Clone this project in your computer ( git clone projectlink )
+  - Create your branch with your name ( got checkout -b yourname )
+  - Make a first change in the project and save it, to be able to create your Pull Request (PR):
+    - Make a change
+    - Add your change ( git add . )
+    - Commit your change ( git commit -m "explain your change" )
+    - Push your first change ( git push -u origin yourBranchName_thatIsYourName )
+    - Go to the Repo in gitHub link xxx and create your PR
+    - From then on when you decide to push your changes you can only type git push.
 
+2. HTML Structure:
    - Create a new HTML file (e.g., `index.html`).
    - The page should have a <header> with the company logo and a navigation bar
      with links to "Home", "Shop", "Contact".
@@ -17,7 +28,7 @@ and an "Add to Cart" button.
    - Add a footer with basic information like contact details and social media
      links.
 
-2. Products List Section:
+3. Products List Section:
 
    - Inside the <main> section, create a container for the products list.
    - Include an image of the product.
