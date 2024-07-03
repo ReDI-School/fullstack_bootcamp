@@ -31,7 +31,7 @@
         <h3 class="products--title">All the products</h3>
         <ul class="products--list">
           <li>
-            <div class="product">
+            <div class="product card">
               <img
                 alt="This is an image"
                 src="https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg"
@@ -48,10 +48,11 @@
                 user's hardware configuration and operating system
               </p>
               <p class="product--price">$ 64</p>
+              <button class="product--details">View Details</button>
             </div>
           </li>
           <li>
-            <div class="product">
+            <div class="product card">
               <img
                 alt="This is an image"
                 src="https://fakestoreapi.com/img/61U7T1koQqL._AC_SX679_.jpg"
@@ -74,7 +75,7 @@
             </div>
           </li>
           <li>
-            <div class="product">
+            <div class="product card">
               <img
                 alt="This is an image"
                 src="https://fakestoreapi.com/img/71kWymZ+c+L._AC_SX679_.jpg"
@@ -98,7 +99,7 @@
             </div>
           </li>
           <li>
-            <div class="product">
+            <div class="product card">
               <img
                 alt="This is an image"
                 src="https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg"
@@ -119,7 +120,7 @@
             </div>
           </li>
           <li>
-            <div class="product">
+            <div class="product card">
               <img
                 alt="This is an image"
                 src="https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg"
@@ -137,7 +138,7 @@
             </div>
           </li>
           <li>
-            <div class="product">
+            <div class="product card">
               <img
                 alt="This is an image"
                 src="https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg"
@@ -154,7 +155,7 @@
             </div>
           </li>
           <li>
-            <div class="product">
+            <div class="product card">
               <img
                 alt="This is an image"
                 src="https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg"
@@ -182,7 +183,7 @@
             </div>
           </li>
           <li>
-            <div class="product">
+            <div class="product card">
               <img
                 alt="This is an image"
                 src="https://fakestoreapi.com/img/81XH0e8fefL._AC_UY879_.jpg"
@@ -203,7 +204,7 @@
             </div>
           </li>
           <li>
-            <div class="product">
+            <div class="product card">
               <img
                 alt="This is an image"
                 src="https://fakestoreapi.com/img/71HblAHs5xL._AC_UY879_-2.jpg"
@@ -227,6 +228,16 @@
         </ul>
       </section>
     </main>
+    <!-- Modal -->
+    <div id="productModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h1>Product Details</h1>
+        <img src="" alt="Product Image" id="modalProductImage" />
+        <p id="modalProductDescription"></p>
+        <p id="modalProductPrice"></p>
+      </div>
+    </div>
     <footer class="more">
       <section>
         <div class="more--credits">
@@ -235,5 +246,42 @@
         </div>
       </section>
     </footer>
+    <script>
+      // Get the modal
+      var modal = document.getElementById("productModal");
+
+      // Get the button that opens the modal
+      var btns = document.querySelectorAll(".product--details");
+
+      // Get the <span> element that closes the modal
+      var span = document.getElementsByClassName("close")[0];
+
+      // When the user clicks the button, open the modal
+      btns.forEach((btn) => {
+        btn.onclick = function () {
+          modal.style.display = "flex";
+          // Populate modal content based on the product details
+          var product = btn.closest(".product");
+          document.getElementById("modalProductImage").src =
+            product.querySelector(".product--image").src;
+          document.getElementById("modalProductDescription").innerText =
+            product.querySelector(".product--description").innerText;
+          document.getElementById("modalProductPrice").innerText =
+            product.querySelector(".product--price").innerText;
+        };
+      });
+
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function () {
+        modal.style.display = "none";
+      };
+
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+    </script>
   </body>
 </html>
