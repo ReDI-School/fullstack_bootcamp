@@ -1,16 +1,24 @@
 # Volunteer Guide
 Welcome to ReDI School! We really appreciate that you are part of our community. In this repo, you'll find an overview of the different volunteering positions. By volunteering, you contribute to our main goal: help our students gain the necessary skills to find a job in tech. ReDI School has now helped over 450 students find work. This is only possible with the support of our volunteers <3
 
-# Curriculum
+# Bootcamp Summary
 The curriculum is meant to prepare the students for a front end internship and help them grow into junior full stack or front end positions. 
 
+- **Details:** 18 weeks, 20 hours a week, 3 technical projects, 1 career project 
+- **Projects:** Each project lasts 4 weeks. Each week students finish one milestone. 
+- **Hands-on Learning:** Students receive little input, but focus on project work. Coaching instead of teaching. Students work independently on projects and ask for support.
+- **Weekly Sessions:** 2 Support Sessions, 1 P2P, 1 Input Session 
+- **Goal:** Prepare students for an internship. 
+- **Soft skills:** Independent work fosters problem-solving, how to pair programs with peers, how to communicate where you are stuck, and how to ask for support. 
+
+# Structure 
 <img width="969" alt="image" src="https://github.com/ReDI-School/fullstack_bootcamp/assets/51905839/21865da5-1bf0-4bfa-909d-99ae1672c00d">
 
-The bootcamp fully focuses on hands-on work through projects. Students work on three technical projects and one career project in the bootcamp. Each project lasts for four weeks. The first three weeks are "Regular Weeks", where students learn about a new topic and have a weekly milestone to complete. The last week serves as a recap week. Students finish their projects, the covered content is recapped in the input session, and more advanced students can work on the bonus milestone.
+To facilitate the learning process, volunteers--together with ReDI staff--have developed a curriculum that is divided into four different projects, each building on the one before. The 18-week program focuses on the front end and contains a soft introduction to full stack at the end. To access the full curriculum, visit the [Gitbook](https://redi-school-1.gitbook.io/fullstack).
 
+The bootcamp fully focuses on hands-on work through projects. Students work on three technical projects and one career project in the bootcamp. Each project lasts for four weeks. The first three weeks are "Regular Weeks", where students learn about a new topic and have a weekly milestone to complete. The last week serves as a recap week. Students finish their projects, the covered content is recapped in the input session, and more advanced students can work on the bonus milestone. You can find the projects in the [project section](https://github.com/ReDI-School/fullstack_bootcamp/tree/main/projects) in this repo. 
 
 # Sessions
-
 | Session           | Day                                     | Purpose   | Roles          |
 | ---------| --------------------------------------|-----------|---------------|
 | [Coaching Session](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/volunteers/support_session.md)  | Monday |  Students present milestone, get support and feedback | Coach |
