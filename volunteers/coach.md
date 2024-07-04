@@ -10,9 +10,9 @@ As a coach, you join the [Coaching Session](https://github.com/ReDI-School/fulls
 **In the Session:**
 1. Join the Zoom Call 5 minutes before the Session starts. 
 2. Claim Host (Check out the pinned Guide in Slack on how to do so).
-3. Wait until 19:05 to give everyone a chance to arrive and kick-off.
+3. Wait until 19:05 to give everyone a chance to arrive and kick-off. You can use [Coaching Slides](https://docs.google.com/presentation/d/1dmqKmogq0h0jlT72YHExxUzFRTWN4UrTPIISnyQnUXg/edit#slide=id.g2ea1f48da22_0_0) to introduce the coaching session.
 4. Open 5 breakout rooms. Every student group joins their respective breakout room, and the coaches distribute themselves to the breakout rooms.
-5. In the breakout room, every student has 5 minutes to present. Afterward, the coach and other students have 10 minutes for Q&A and help the student further progress or finish with their solution. Then, the next student presents.
+5. In the breakout room, every student has 5 minutes to present. Afterward, the coach and other students have 10 minutes for Q&A and help the student further progress or finish with their solution. Then, the next student presents. 
 
 **After the Session:**
 1. Track the progress of the students in your breakout room in the progress sheet (link in Slack).
