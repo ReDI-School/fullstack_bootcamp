@@ -1,6 +1,5 @@
 # JS - E-commerce Project with JavaScript Integration
-
-### E-commerce Project with JavaScript Integration
+![Ecommerce_project_graphic](https://github.com/ReDI-School/fullstack_bootcamp/assets/51905839/a39d7248-3b79-47a6-ab1a-3dc1ff37d242)
 
 ### Index
 
