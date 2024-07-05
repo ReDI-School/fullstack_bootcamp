@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Option Template</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <header class="site--bar">
+      <nav class="navbar">
+        <div class="navbar--logo">
+          <a href="./index.html">R-Commerce</a>
+        </div>
+        <ul class="navbar--menu">
+          <li class="navbar--search-cart">
+            <input type="text" placeholder="Search..." class="navbar--search" />
+          </li>
+          <li id="cartLink"><a href="#shop">Cart</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="root">
+      <section class="site--hero">
+        <div class="hero--content">
+          <h1>Ready to Shop</h1>
+          <p>Discover the latest trends and find your perfect look.</p>
+          <a href="#products">
+            <button class="hero--button">Start Shopping</button>
+          </a>
+        </div>
+      </section>
+      <section class="products">
+        <h3 class="products--title" id="products">All the products</h3>
+        <div class="products--sorting">
+          <label for="sort">Sort by price:</label>
+          <select id="sort" class="sort--dropdown">
+            <option value="asc">Ascending</option>
+            <option value="desc">Descending</option>
+          </select>
+        </div>
+        <ul class="products--list">
+          <li>
+            <div class="product card">
+              <img
+                alt="This is an image"
+                src="https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg"
+                class="product--image"
+              />
+              <div class="product--text">
+                <h1 class="product--name">
+                  WD 2TB Elements Portable External Hard Drive - USB 3.0
+                </h1>
+                <p class="product--description">
+                  USB 3.0 and USB 2.0 Compatibility Fast data transfers Improve
+                  PC Performance High Capacity; Compatibility Formatted NTFS for
+                  Windows 10, Windows 8.1, Windows 7; Reformatting may be
+                  required for other operating systems; Compatibility may vary
+                  depending on user's hardware configuration and operating
+                  system
+                </p>
+                <button class="product--buy">Buy Now</button>
+                <p class="product--price">$ 64</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="product card">
+              <img
+                alt="This is an image"
+                src="https://fakestoreapi.com/img/61U7T1koQqL._AC_SX679_.jpg"
+                class="product--image"
+              />
+              <div class="product--text">
+                <h1 class="product--name">
+                  SanDisk SSD PLUS 1TB Internal SSD - SATA III 6 Gb/s
+                </h1>
+                <p class="product--description">
+                  Easy upgrade for faster boot up, shutdown, application load
+                  and response (As compared to 5400 RPM SATA 2.5” hard drive;
+                  Based on published specifications and internal benchmarking
+                  tests using PCMark vantage scores) Boosts burst write
+                  performance, making it ideal for typical PC workloads The
+                  perfect balance of performance and reliability Read/write
+                  speeds of up to 535MB/s/450MB/s (Based on internal testing;
+                  Performance may vary depending upon drive capacity, host
+                  device, OS and application.)
+                </p>
+                <button class="product--buy">Buy Now</button>
+                <p class="product--price">$ 109</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="product card">
+              <img
+                alt="This is an image"
+                src="https://fakestoreapi.com/img/71kWymZ+c+L._AC_SX679_.jpg"
+                class="product--image"
+              />
+              <div class="product--text">
+                <h1 class="product--name">
+                  Silicon Power 256GB SSD 3D NAND A55 SLC Cache Performance
+                  Boost SATA III 2.5
+                </h1>
+                <p class="product--description">
+                  3D NAND flash are applied to deliver high transfer speeds
+                  Remarkable transfer speeds that enable faster bootup and
+                  improved overall system performance. The advanced SLC Cache
+                  Technology allows performance boost and longer lifespan 7mm
+                  slim design suitable for Ultrabooks and Ultra-slim notebooks.
+                  Supports TRIM command, Garbage Collection technology, RAID,
+                  and ECC (Error Checking &amp; Correction) to provide the
+                  optimized performance and enhanced reliability.
+                </p>
+                <button class="product--buy">Buy Now</button>
+                <p class="product--price">$ 109</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="product card">
+              <img
+                alt="This is an image"
+                src="https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg"
+                class="product--image"
+              />
+              <div class="product--text">
+                <h1 class="product--name">
+                  Mens Casual Premium Slim Fit T-Shirts
+                </h1>
+                <p class="product--description">
+                  Slim-fitting style, contrast raglan long sleeve, three-button
+                  henley placket, light weight &amp; soft fabric for breathable
+                  and comfortable wearing. And Solid stitched shirts with round
+                  neck made for durability and a great fit for casual fashion
+                  wear and diehard baseball fans. The Henley style round
+                  neckline includes a three-button placket.
+                </p>
+                <button class="product--buy">Buy Now</button>
+                <p class="product--price">$ 22.3</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="product card">
+              <img
+                alt="This is an image"
+                src="https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg"
+                class="product--image"
+              />
+              <div class="product--text">
+                <h1 class="product--name">Mens Cotton Jacket</h1>
+                <p class="product--description">
+                  great outerwear jackets for Spring/Autumn/Winter, suitable for
+                  many occasions, such as working, hiking, camping,
+                  mountain/rock climbing, cycling, traveling or other outdoors.
+                  Good gift choice for you or your family member. A warm hearted
+                  love to Father, husband or son in this thanksgiving or
+                  Christmas Day.
+                </p>
+                <button class="product--buy">Buy Now</button>
+                <p class="product--price">$ 55.99</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="product card">
+              <img
+                alt="This is an image"
+                src="https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg"
+                class="product--image"
+              />
+              <div class="product--text">
+                <h1 class="product--name">Mens Casual Slim Fit</h1>
+                <p class="product--description">
+                  The color could be slightly different between on the screen
+                  and in practice. / Please note that body builds vary by
+                  person, therefore, detailed size information should be
+                  reviewed below on the product description.
+                </p>
+                <button class="product--buy">Buy Now</button>
+                <p class="product--price">$ 15.99</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="product card">
+              <img
+                alt="This is an image"
+                src="https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg"
+                class="product--image"
+              />
+              <div class="product--text">
+                <h1 class="product--name">
+                  BIYLACLESEN Women's 3-in-1 Snowboard Jacket Winter Coats
+                </h1>
+                <p class="product--description">
+                  Note:The Jackets is US standard size, Please choose size as
+                  your usual wear Material: 100% Polyester; Detachable Liner
+                  Fabric: Warm Fleece. Detachable Functional Liner: Skin
+                  Friendly, Lightweigt and Warm.Stand Collar Liner jacket, keep
+                  you warm in cold weather. Zippered Pockets: 2 Zippered Hand
+                  Pockets, 2 Zippered Pockets on Chest (enough to keep cards or
+                  keys)and 1 Hidden Pocket Inside.Zippered Hand Pockets and
+                  Hidden Pocket keep your things secure. Humanized Design:
+                  Adjustable and Detachable Hood and Adjustable cuff to prevent
+                  the wind and water,for a comfortable fit. 3 in 1 Detachable
+                  Design provide more convenience, you can separate the coat and
+                  inner as needed, or wear it together. It is suitable for
+                  different season and help you adapt to different climates
+                </p>
+                <button class="product--buy">Buy Now</button>
+                <p class="product--price">$ 56.99</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="product card">
+              <img
+                alt="This is an image"
+                src="https://fakestoreapi.com/img/81XH0e8fefL._AC_UY879_.jpg"
+                class="product--image"
+              />
+              <div class="product--text">
+                <h1 class="product--name">
+                  Lock and Love Women's Removable Hooded Faux Leather Moto Biker
+                  Jacket
+                </h1>
+                <p class="product--description">
+                  100% POLYURETHANE(shell) 100% POLYESTER(lining) 75% POLYESTER
+                  25% COTTON (SWEATER), Faux leather material for style and
+                  comfort / 2 pockets of front, 2-For-One Hooded denim style
+                  faux leather jacket, Button detail on waist / Detail stitching
+                  at sides, HAND WASH ONLY / DO NOT BLEACH / LINE DRY / DO NOT
+                  IRON
+                </p>
+                <button class="product--buy">Buy Now</button>
+                <p class="product--price">$ 29.95</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="product card">
+              <img
+                alt="This is an image"
+                src="https://fakestoreapi.com/img/71HblAHs5xL._AC_UY879_-2.jpg"
+                class="product--image"
+              />
+              <div class="product--text">
+                <h1 class="product--name">
+                  Rain Jacket Women Windbreaker Striped Climbing Raincoats
+                </h1>
+                <p class="product--description">
+                  Lightweight perfet for trip or casual wear---Long sleeve with
+                  hooded, adjustable drawstring waist design. Button and zipper
+                  front closure raincoat, fully stripes Lined and The Raincoat
+                  has 2 side pockets are a good size to hold all kinds of
+                  things, it covers the hips, and the hood is generous but
+                  doesn't overdo it.Attached Cotton Lined Hood with Adjustable
+                  Drawstrings give it a real styled look.
+                </p>
+                <button class="product--buy">Buy Now</button>
+                <p class="product--price">$ 39.99</p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <div id="modalCart" class="modal-cart">
+      <div class="modal-cart-content">
+        <span class="modal-cart-close">&times;</span>
+        <h1>Cart</h1>
+        <p>...</p>
+      </div>
+    </div>
+
+    <footer class="more">
+      <section>
+        <div class="more--credits">
+          <a href="./index.html" target="_blank">R-Commerce</a>
+          <p class="more--rights">(c) 2024</p>
+        </div>
+      </section>
+    </footer>
+
+    <!-- Example JS code (open cart modal) -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const modal = document.getElementById("modalCart");
+        const cartLink = document.getElementById("cartLink");
+        const closeBtn = document.getElementsByClassName("modal-cart-close")[0];
+
+        cartLink.onclick = function () {
+          modal.style.display = "block";
+          setTimeout(() => {
+            modal.classList.add("show");
+          }, 10);
+        };
+
+        closeBtn.onclick = function () {
+          modal.classList.remove("show");
+          setTimeout(() => {
+            modal.style.display = "none";
+          }, 300);
+        };
+
+        window.onclick = function (event) {
+          if (event.target == modal) {
+            modal.classList.remove("show");
+            setTimeout(() => {
+              modal.style.display = "none";
+            }, 300);
+          }
+        };
+      });
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const modal = document.getElementById("modalCart");
+        const cartLink = document.getElementById("cartLink");
+        const closeBtn = document.getElementsByClassName("modal-cart-close")[0];
+        const searchInput = document.querySelector(".navbar--search");
+        const productList = document.querySelector(".products--list");
+        const products = Array.from(productList.children);
+
+        cartLink.onclick = function () {
+          modal.style.display = "block";
+          setTimeout(() => {
+            modal.classList.add("show");
+          }, 10);
+        };
+
+        closeBtn.onclick = function () {
+          modal.classList.remove("show");
+          setTimeout(() => {
+            modal.style.display = "none";
+          }, 300);
+        };
+
+        window.onclick = function (event) {
+          if (event.target == modal) {
+            modal.classList.remove("show");
+            setTimeout(() => {
+              modal.style.display = "none";
+            }, 300);
+          }
+        };
+
+        const addToCartButtons = document.querySelectorAll(".product--buy");
+        addToCartButtons.forEach((button) => {
+          button.addEventListener("click", (event) => {
+            const product = event.target.closest(".product.card");
+            const productName =
+              product.querySelector(".product--name").textContent;
+            const productPrice =
+              product.querySelector(".product--price").textContent;
+
+            cartItems.push({
+              name: productName,
+              price: productPrice,
+            });
+
+            displayConfirmation(productName);
+            updateCartDisplay();
+            openCartModal();
+          });
+        });
+
+        function openCartModal() {
+          modal.style.display = "block";
+          setTimeout(() => {
+            modal.classList.add("show");
+          }, 10);
+          updateCartDisplay();
+        }
+
+        function closeCartModal() {
+          modal.classList.remove("show");
+          setTimeout(() => {
+            modal.style.display = "none";
+          }, 300);
+        }
+
+        function updateCartDisplay() {
+          if (cartItems.length === 0) {
+            cartDisplay.textContent = "Your cart is empty.";
+          } else {
+            cartDisplay.innerHTML =
+              "<ul>" +
+              cartItems
+                .map((item) => `<li>${item.name} - ${item.price}</li>`)
+                .join("") +
+              "</ul>";
+          }
+        }
+
+        function displayConfirmation(productName) {
+          const confirmation = document.createElement("div");
+          confirmation.className = "confirmation-message";
+          confirmation.textContent = `${productName} has been added to the cart.`;
+          document.body.appendChild(confirmation);
+
+          setTimeout(() => {
+            confirmation.remove();
+          }, 3000);
+        }
+
+        searchInput.addEventListener("input", () => {
+          const query = searchInput.value.toLowerCase();
+          products.forEach((product) => {
+            const productName = product
+              .querySelector(".product--name")
+              .textContent.toLowerCase();
+            if (productName.includes(query)) {
+              product.style.display = "";
+            } else {
+              product.style.display = "none";
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

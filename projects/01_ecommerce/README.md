@@ -32,9 +32,9 @@ Details page.
 - **What you do:** Design a simple e-commerce product page using HTML and basic CSS. This page should display a product with details like an image, name, price, description, and an "Add to Cart" button.
 - **What you learn:** `HTML`, `CSS`, `HTML tags`
 - **Deliverables:**
-   - Complete the HTML and CSS code as described.
-   - Test the page in a web browser to ensure it looks good on different screen sizes.
-   - Submit the final HTML file (e.g., index.html) for review.
+  - Complete the HTML and CSS code as described.
+  - Test the page in a web browser to ensure it looks good on different screen sizes.
+  - Submit the final HTML file (e.g., index.html) for review.
 - **Link to Milestone: [Create a Basic HTML Page](https://github.com/ReDI-School/fullstack_bootcamp/tree/main/projects/01_ecommerce/01_milestone)**
 
 #### 2. Milestone: Style for the HTML E-commerce Page
@@ -42,31 +42,28 @@ Details page.
 - **What you do:** You style the e-commerce page including setting colors, fonts, and layout. Use CSS to enhance the look of the header, product listings, and footer.
 - **What you learn:** You will learn how to use `CSS` to style their e-commerce page, making it visually appealing.
 - **Deliverables:**
-   - A linked CSS file containing the styles for the e-commerce page.
-   - An updated HTML file reflecting the applied styles.
+  - A linked CSS file containing the styles for the e-commerce page.
+  - An updated HTML file reflecting the applied styles.
 - **Link to Milestone: [Style for the HTML E-commerce Page](https://github.com/ReDI-School/fullstack_bootcamp/tree/main/projects/01_ecommerce/02_milestone)**
 
+#### 3. Milestone: Introduction to Flexbox and Reponsiveness
 
-#### 3. Milestone: Introduction to Flexbox 
-
-- **What you do:** You will learn to use Flexbox to create flexible and efficient layouts.
-- **What you learn:** `Flexbox`, `Layout`
+- **What you do:** You will learn to use Flexbox and media queries to create flexible, efficient and responsive layouts.
+- **What you learn:** `Flexbox`, `Layout`, `Media Queries`
 - **Deliverables:**
-   - Updated CSS file with Flexbox properties.
-   - Enhanced e-commerce page with a flexible and adaptive product layout.
+  - Updated CSS file with Flexbox properties.
+  - Enhanced e-commerce page with a flexible and adaptive product layout.
+  - Reponsive design layout.
 - **Link to Milestone: [Introduction to Flexbox](https://github.com/ReDI-School/fullstack_bootcamp/tree/main/projects/01_ecommerce/03_milestone)**
-
 
 #### Bonus Milestone: Making the E-Commerce Website Responsive
 
-- **What you do:** You will learn techniques to make their e-commerce website fully responsive.
-- **What you learn:**
+- **What you do:** You will learn techniques to enhance your e-commerce website with advanced template components such as cards, modals, a hero section, and sliders.
+- **What you learn:** How to add and style advanced template components to improve the user interface and experience of your e-commerce site.
 - **Deliverables:**
-   - Final `CSS` file with media queries and `responsive design` adjustments.
-   - Fully responsive e-commerce website that looks and functions well on all devices.   
-- **Link to Milestone: [Make Website Responsive](https://github.com/ReDI-School/fullstack_bootcamp/tree/main/projects/01_ecommerce/04_milestone)**
-
-
+  - Final HTML and CSS files incorporating cards, modals, hero section, and sliders.
+  - Fully functional e-commerce website with advanced components that enhance user interaction and engagement.
+- **Link to Milestone: [Enhance Website with Advanced Components](https://github.com/ReDI-School/fullstack_bootcamp/tree/main/projects/01_ecommerce/04_milestone)**
 
 ## 4. Technical Explanation
 
@@ -89,6 +86,6 @@ At the end of the Project, you should:
 
 ## 7. Hand-in requirements
 
-At the end of the project, you will submit your completed e-commerce store, including all HTML and CSS files. The final product should demonstrate a clear understanding of HTML, CSS, Flexbox, and responsive design principles. 
+At the end of the project, you will submit your completed e-commerce store, including all HTML and CSS files. The final product should demonstrate a clear understanding of HTML, CSS, Flexbox, and responsive design principles.
 
-To hand in your project, it is required to complete the Deliverables of milestone 1 to 3. The BONUS Milestone is optional. 
+To hand in your project, it is required to complete the Deliverables of milestone 1 to 3. The BONUS Milestone is optional.
