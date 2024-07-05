@@ -202,7 +202,7 @@ Add advanced template components to the e-commerce product page, such as cards, 
      </html>
      ```
 
-     > _Don't be afraid! You will learn how to read this JavaScript code in the next section of the course. For now, feel free to just copy the code inside a <script> tag in your index.html._
+     > _Don't be afraid! You will learn how to read this JavaScript code in the next section of the course. For now, feel free to just copy the code inside a `<script>` tag in your index.html._
 
 3. **Hero Section:**
    - Ensure the hero section is styled properly.
