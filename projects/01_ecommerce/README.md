@@ -56,7 +56,7 @@ Details page.
   - Reponsive design layout.
 - **Link to Milestone: [Introduction to Flexbox](https://github.com/ReDI-School/fullstack_bootcamp/tree/main/projects/01_ecommerce/03_milestone)**
 
-#### Bonus Milestone: Making the E-Commerce Website Responsive
+#### Bonus Milestone: Enhance E-commerce Page with Advanced Template Components
 
 - **What you do:** You will learn techniques to enhance your e-commerce website with advanced template components such as cards, modals, a hero section, and sliders.
 - **What you learn:** How to add and style advanced template components to improve the user interface and experience of your e-commerce site.
