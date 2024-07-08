@@ -24,6 +24,9 @@ This project will guide you through some basic and intermediate JavaScript featu
 
 The main objective is to create a sample e-commerce Product List and Product Details page, integrating interactive functionalities using JavaScript.
 
+<img width="1470" alt="ecommerce+javascript" src="https://github.com/ReDI-School/fullstack_bootcamp/assets/51905839/74fdcb91-4dc7-495b-a757-2b7d47ee7345">
+
+
 ### 3. Milestones & Acceptance Criteria
 
 **1. Milestone: Generating DOM Elements**
