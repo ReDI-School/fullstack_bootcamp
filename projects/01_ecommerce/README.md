@@ -13,17 +13,20 @@
 
 ---
 
+<img width="984" alt="E-Commerce Banner" src="https://github.com/ReDI-School/fullstack_bootcamp/assets/51905839/d0f8470b-9cc8-416a-87e3-08aa2409f8fb">
+
+
 ## 1. Introduction
 
-This project will guide you through some basics and intermediate HTML/CSS
-features. You will write your first HTML page, and style is with CSS by using in
-your IDE (see later). In particular, you will build an e-commerce with three
-pages: home, electronics, and clothing categories.
+This project will guide you through some basic and intermediate HTML/CSS features. You will write your first HTML page and style it with CSS by using your IDE (see later). In particular, you will build an e-commerce with three pages: home, electronics, and clothing categories.
 
 ## 2. Project Summary
 
-The main objective is to create a sample e-commerce Products List and Product
+The main objective is to create a sample e-commerce Product List and Product
 Details page.
+
+![e-commerce banner](https://github.com/ReDI-School/fullstack_bootcamp/assets/51905839/f7af042f-c1a6-45e9-80c0-a5134b254334)
+
 
 ## 3. Milestones & Acceptance Criteria
 
@@ -88,4 +91,4 @@ At the end of the Project, you should:
 
 At the end of the project, you will submit your completed e-commerce store, including all HTML and CSS files. The final product should demonstrate a clear understanding of HTML, CSS, Flexbox, and responsive design principles.
 
-To hand in your project, it is required to complete the Deliverables of milestone 1 to 3. The BONUS Milestone is optional.
+To hand in your project, it is required to complete the Deliverables of milestones 1 to 3. The BONUS Milestone is optional.
