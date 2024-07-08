@@ -78,8 +78,8 @@ The main objective is to create a sample e-commerce Product List and Product Det
 
 - An updated JavaScript file with the search functionality.
 - An updated HTML file with a search input element.
-- Test the search functionality in the browser.**Link to Milestone**: Implementing a Search Functionality
-- Remove the static product object and fetch them directly from the remote server using the fetch API and asynchronous JavaScript programming. [Server link](https://fakestoreapi.com/docs).
+- Test the search functionality in the browser.
+- Remove the static product objects and fetch them directly from the remote server using the fetch API and asynchronous JavaScript programming. [Server link](https://fakestoreapi.com/docs).
 - **Link to Milestone: [Implementing a Search Functionality and fetch remote data](https://github.com/ReDI-School/fullstack_bootcamp/tree/main/projects/02_javascript/04_milestone)**
 
 ### 4. Technical Explanation
