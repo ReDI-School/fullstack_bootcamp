@@ -149,6 +149,7 @@ A big thank you to everyone who is contributing to this repository. _We graduall
   <tr>
     <td align="center"><a href="https://github.com/angelogulina"><img src="https://avatars.githubusercontent.com/u/4223655?v=4" width="100px;" alt=""/><br /><sub><b>Angelo Gulina</b></sub></a><br /><a href="#question-angeloguilina" title="Answering Questions">💬</a></td>
     <td align="center"><a href="https://github.com/casiimir"><img src="https://avatars.githubusercontent.com/u/73138891?v=4" width="100px;" alt=""/><br /><sub><b>Cas</b></sub></a><br /><a href="#code-cas" title="Code">💻</a> <a href="#book-cas" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/moharem96"><img src="https://avatars.githubusercontent.com/u/121802599?v=4" width="100px;" alt=""/><br /><sub><b>Omar Moharem</b></sub></a><br /><a href="#code-omar" title="Code">💻</a> <a href="#book-omar" title="Documentation">📖</a></td>
 
   </tr>
 </table>
