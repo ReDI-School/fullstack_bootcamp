@@ -22,7 +22,6 @@
 This project will guide you through some basic and intermediate React features. You will develop a clone of Twitter (or X) using React, JSX, NPM, and Vite. Specifically, you will build a responsive web application that includes basic tweet functionalities, user interactions, and real-time updates.
 
 > You can start this project by setting up a new React application with Vite and follow the milestones to implement various features step-by-step.
-> 
 
 ### 2. Project Summary
 
@@ -42,7 +41,7 @@ The main objective is to create a functional clone of Twitter (X) using React. Y
 - Basic components for the tweet input form and tweet list.
 - Implementation of `useState` to manage tweet input and display.
 
-**Link to Milestone**: `Application Composition and Initial Scaffolding`
+**Link to Milestone**: [1. Milestone: Application Setup and Basic Component Creation](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/projects/03_react/01_milestone/README.md)
 
 **2. Milestone: Implementing Hooks and Completing Components**
 
@@ -56,7 +55,7 @@ The main objective is to create a functional clone of Twitter (X) using React. Y
 - Fully functional tweet input, tweet list, and interaction components.
 - Test the components' interactions in the browser.
 
-**Link to Milestone**: `Implementing Hooks and Completing Components`
+**Link to Milestone**: [2. Milestone - Implementing Hooks and Completing Components](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/projects/03_react/02_milestone/README.md)
 
 **3. Milestone: Making the Application Responsive**
 
@@ -70,7 +69,7 @@ The main objective is to create a functional clone of Twitter (X) using React. Y
 - Testing and validation of responsiveness on different devices.
 - Ensure smooth and consistent user experience across all screen sizes.
 
-**Link to Milestone**: `Making the Application Responsive`
+**Link to Milestone**: [3. Milestone - Achieving Full Device Compatibility](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/projects/03_react/03_milestone/README.md)
 
 **Bonus Milestone: Rebuilding the Application with Next.js**
 
@@ -84,7 +83,7 @@ The main objective is to create a functional clone of Twitter (X) using React. Y
 - Reimplementation of all components and features.
 - Comparison and testing of performance and functionality between the Vite and Next.js versions.
 
-**Link to Milestone**: `Rebuilding the Application with Next.js`
+**Link to Milestone**: [Bonus Milestone: Rebuilding the Application with Next.js](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/projects/03_react/04_milestone/README.md)
 
 ### 4. Technical Explanation
 
@@ -110,12 +109,4 @@ At the end of the project, you should:
 
 At the end of the project, you will submit your completed Twitter clone, including all source code and project files. The final product should demonstrate a clear understanding of React principles, responsive design, and state management.
 
-To hand in your project, it is required to complete the deliverables of milestones 1 to 3. The BONUS Milestone is optional but recommended for advanced learning.
-
-[1. Milestone: Application Setup and Basic Component Creation]"(projects/03_react/01_milestone/README.md)
-
-[2. Milestone - Implementing Hooks and Completing Components]()
-
-[3. Milestone - Achieving Full Device Compatibility]()
-
-[Bonus Milestone: Rebuilding the Application with Next.js]()
+To turn in your project, you must complete the deliverables of milestones 1 to 3. The BONUS Milestone is optional but recommended for advanced learning.
