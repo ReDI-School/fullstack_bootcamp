@@ -2,7 +2,7 @@
 
 ### Objective:
 
-Add interactive functionalities to allow users to add products to the cart. Implement a function that adds selected products to the cart and displays a confirmation message.
+Add interactive functionalities to allow users to add products to the cart. Implement a function that adds selected products to the cart and displays a confirmation message. Each product should include an "Add to Cart" button.
 
 ### Requirements:
 
@@ -10,8 +10,9 @@ Add interactive functionalities to allow users to add products to the cart. Impl
    - Update your JavaScript file (e.g., `app.js`) to include functionalities for adding products to the cart.
 2. **Cart Data Structure:**
    - Define a data structure (e.g., an array) to keep track of the products added to the cart.
-3. **Buy Now Button:**
-   - Implement an event listener for the "But Now" button for each product.
+3. **Add to Card Button:**
+   - Implement an event listener for the "Add to card" button for each product.
+   - Each product should include an "Add to Cart" button.
    - When the button is clicked, the corresponding product should be added to the cart.
 4. **Display Cart Items Modal:**
    - Add a section in your HTML to display the items in the cart.
