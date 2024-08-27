@@ -9,9 +9,10 @@ Implement a search functionality that allows users to search for products by nam
 1. **JavaScript Enhancements:**
    - Update your JavaScript file (e.g., `app.js`) to include functionalities for searching products and fetching data from a remote server.
 2. **Fetch Product Data:**
+   - Use the API "https://fakestoreapi.com/docs" to retrieve product data.
    - Use the Fetch API to retrieve product data from a remote web server.
 3. **Search Input Element:**
-   - Add a search input field to your HTML for users to enter their search queries.
+   - Add a search input field to your HTML so users can enter their search queries.
 4. **Filter Products:**
    - Implement a function to filter and display products that match the search query.
 5. **Display Filtered Products:**
