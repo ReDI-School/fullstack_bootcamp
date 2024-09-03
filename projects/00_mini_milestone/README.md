@@ -27,7 +27,7 @@ The landing page should be designed to appeal to these groups by highlighting th
 **What you do**: You will create a landing page for the marketing agency. The landing page consists of a simple HTML structure and CSS styling. 
 
 **Steps:**
-1. Create a public repository on GitHub ([further resources]((https://redi-school-1.gitbook.io/full-stack-bootcamp/0.-project-mini-milestone/how-to-initiate-a-project)))
+1. Create a public repository on GitHub ([further resources](https://redi-school-1.gitbook.io/full-stack-bootcamp/0.-project-mini-milestone/how-to-initiate-a-project))
 2. Clone the repository locally on your computer
 3. Start the project in VS Code
 4. Create the HTML structure
