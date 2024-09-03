@@ -31,6 +31,7 @@ The landing page should be designed to appeal to these groups by highlighting th
 **What you do**: You will create a landing page for the marketing agency. The landing page consists of a simple HTML structure and CSS styling. 
 
 **Steps:**
+
 1. Create a public repository on GitHub ([further resources](https://redi-school-1.gitbook.io/full-stack-bootcamp/0.-project-mini-milestone/how-to-initiate-a-project))
 2. Clone the repository locally on your computer
 3. Start the project in VS Code
@@ -38,6 +39,7 @@ The landing page should be designed to appeal to these groups by highlighting th
 5. Add styling with CSS (Have a look at the [style guide](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/projects/00_mini_milestone/style_guide.md) for color and font suggestions.)
 
 **The page should include the following sections:**
+
 1. Header with navigation
 2. Hero section with a call-to-action
 3. Services section highlighting the services
@@ -52,6 +54,8 @@ The landing page should be designed to appeal to these groups by highlighting th
 - A fully functional HTML file for the landing page.
 - A CSS file linked to the HTML that includes all the styles.
 
-### 4. Further Resources
+### 4. Further Resources and Tips
 
-Check out the [Gitbook Section for the Mini Milestone](https://redi-school-1.gitbook.io/full-stack-bootcamp/0.-project-mini-milestone/how-to-initiate-a-project).
+- Check out the [Gitbook Section for the Mini Milestone](https://redi-school-1.gitbook.io/full-stack-bootcamp/0.-project-mini-milestone/how-to-initiate-a-project).
+- You can create text for the landing page using a ChatGPT for copywriting (for example, with [Copy Writing GPT](https://chatgpt.com/g/g-rkKtHhIOR-the-secret-copywriter)).
+- You can use the logo from BrightSpark, which is in this GitHub folder ([link](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/projects/00_mini_milestone/logo.png))
