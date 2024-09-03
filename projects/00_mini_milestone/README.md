@@ -9,9 +9,13 @@
 
 ---
 
+<p align="center">
+  <img width="400" alt="logo" src="https://github.com/user-attachments/assets/1acbf850-045b-49e3-ab7d-556838a40d17">
+</p>
+
 ### 1. Introduction
 
-Create a simple, responsive landing page for a marketing agency using HTML and CSS. The goal is to design a visually appealing page that clearly communicates the agency's services and encourages visitors to get in touch.
+Create a simple landing page for the marketing agency "BrightSpark" using HTML and CSS. The goal is to design a visually appealing page that clearly communicates the agency's services and encourages visitors to get in touch.
 
 
 ### 2. Project Summary
