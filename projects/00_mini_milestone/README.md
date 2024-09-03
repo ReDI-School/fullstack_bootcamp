@@ -4,7 +4,7 @@
 
 1. Introduction
 2. Project Summary
-3. Milestones 
+3. Milestone
 4. Further Resources
 
 ---
@@ -22,21 +22,18 @@ You will create a landing page for a fictional marketing agency called "BrightSp
 - Freelancers: Individuals needing help building their brand and reaching a broader audience through targeted marketing.
 The landing page should be designed to appeal to these groups by highlighting the agency's services and providing a clear call to action for consultations.
 
-
-### 3. Milestone
-
-**1. Milestone: Create Landing Page**
+### 3. Milestone: Create a Landing Page
 
 **What you do**: You will create a landing page for the marketing agency. The landing page consists of a simple HTML structure and CSS styling. 
 
-# Steps
-1. Create a public repository on GitHub
-2. Fork the repository locally on your computer
+**Steps:**
+1. Create a public repository on GitHub ([further resources]((https://redi-school-1.gitbook.io/full-stack-bootcamp/0.-project-mini-milestone/how-to-initiate-a-project)))
+2. Clone the repository locally on your computer
 3. Start the project in VS Code
 4. Create the HTML structure
 5. Add styling with CSS (Have a look at the [style guide](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/projects/00_mini_milestone/style_guide.md) for color and font suggestions.)
 
-The page should include the following sections:
+**The page should include the following sections:**
 1. Header with navigation
 2. Hero section with a call-to-action
 3. Services section highlighting the services
