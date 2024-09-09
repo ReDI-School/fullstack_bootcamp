@@ -32,11 +32,10 @@ The landing page should be designed to appeal to these groups by highlighting th
 
 **Steps:**
 
-1. Create a public repository on GitHub ([further resources](https://redi-school-1.gitbook.io/full-stack-bootcamp/0.-project-mini-milestone/how-to-initiate-a-project))
-2. Clone the repository locally on your computer
-3. Start the project in VS Code
-4. Create the HTML structure
-5. Add styling with CSS (Have a look at the [style guide](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/projects/00_mini_milestone/style_guide.md) for color and font suggestions.)
+1. Start the project in VS Code
+2. Create the HTML structure
+3. Add styling with CSS (Have a look at the [style guide](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/projects/00_mini_milestone/style_guide.md) for color and font suggestions.)
+4. OPTIONAL: Push your code to a GitHub Repository ([further resources](https://redi-school-1.gitbook.io/full-stack-bootcamp/0.-project-mini-milestone/how-to-initiate-a-project))
 
 **The page should include the following sections:**
 
@@ -50,10 +49,10 @@ The landing page should be designed to appeal to these groups by highlighting th
 
 **Deliverables**:
 
-- GitHub Repository for the project
 - A fully functional HTML file for the landing page.
 - A CSS file linked to the HTML that includes all the styles.
-
+- OPTIONAL: GitHub Repository for the project
+  
 ### 4. Further Resources and Tips
 
 - Check out the [Gitbook Section for the Mini Milestone](https://redi-school-1.gitbook.io/full-stack-bootcamp/0.-project-mini-milestone/how-to-initiate-a-project).
