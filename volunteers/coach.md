@@ -5,7 +5,7 @@ As a coach, you join the [Coaching Session](https://github.com/ReDI-School/fulls
 
 **Before the Session:**
 1. Review the milestone of the week to understand what students were working on. 
-2. Open the Student Progress sheet (link in Slack). 
+2. Open the Students & Project Milestones (2nd tab in your Core Sheet). The link to your Core Sheet is pinned in Slack. 
 
 **In the Session:**
 1. Join the Zoom Call 5 minutes before the Session starts. 
@@ -15,8 +15,8 @@ As a coach, you join the [Coaching Session](https://github.com/ReDI-School/fulls
 5. In the breakout room, every student has 5 minutes to present. Afterward, the coach and other students have 10 minutes for Q&A and help the student further progress or finish with their solution. Then, the next student presents. 
 
 **After the Session:**
-1. Track the progress of the students in your breakout room in the progress sheet (link in Slack).
-2. Track student attendance 
+1. Track the students' progress in your breakout room in the Students & Project Milestones tab (2nd tab of Core Sheet).
+2. Track student attendance
 
 
 ## Review Guide 
