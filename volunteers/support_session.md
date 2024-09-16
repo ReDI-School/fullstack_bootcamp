@@ -1,6 +1,7 @@
 # Coaching Session
 
 ## Overview
+
 **💡 Intention:** Learners present their solutions to the weekly milestones in small groups. Coaches give feedback and help the students advance.\
 **⭐ Desired Outcome:** Students learn how to present their solutions and receive feedback from a coach. Students finish the milestone and are ready to start the next milestone on Tuesday. \
 **📝 Agenda:** 1. Everyone joins the Zoom Call. 2. Coaches initiate breakout sessions. Every coach joins one student group. \
@@ -21,17 +22,18 @@
 |20:15 - 20:30| 5th student presents and receives feedback and support|
 |20:30 - 21:00| Time to review a trickier topic or to go into the details of a specific issue |
 
-
-
 ## How to run a Coaching Session
-The Coach is running the Coaching Session. Read the instructions for the [Coach](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/volunteers/coach.md). 
+
+The Coach is running the Coaching Session. Read the instructions for the [Coach](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/volunteers/coach.md). Watch [this video](https://www.loom.com/share/99946e05a61f410093be6bc82d35d8f6?sid=718d2299-3557-47a8-bb7d-6c9939d28470) for more explanations.
 
 
 ## Last Coaching Session of the Project
+
 In the last Coaching Session of the project, the students present their full project. The students have 5 minutes to present their full project. Afterward, the coach and other students can give feedback and ask questions about the solution. 
 
 
 ## FAQ
+
 - _How do students present their milestones?_ Ideally, students first show the UI of their solution. Secondly, they walk you through the code.
 - _What if we finish early?_ No problem! If you see that some students still don't feel very comfortable with the milestone or haven't finished it, you can use the rest of the time to help them drive the milestone.
 
