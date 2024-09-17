@@ -2,7 +2,7 @@
 
 ## Introduction
 
-As Q&A Guide, you run the [Q&A Support Session](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/volunteers/qa_session.md). You collect questions before the session and answer them live in a 60-minute Zoom call on Thursday. 
+As Q&A Guide, you run the [Q&A Support Session](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/volunteers/qa_session.md). You collect questions before the session and answer them live in a 60-minute Zoom call on Thursday. Watch [this video](https://www.loom.com/share/0d80ddf1c084495b967b28d9ad965569) for more details. 
 
 ## How to run the Q&A Session
 

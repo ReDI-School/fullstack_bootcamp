@@ -9,15 +9,18 @@ As a session owner, you lead the [Input Session](https://github.com/ReDI-School/
 **Before the Session:**
 
 1. Check the class feedback form from the previous class before the session (Slack)
-2. Coordinate with the teaching assistant to align needs
-3. Upload class slides to Google Classroom as pdf 24h ahead of the session
+2. Review weekly milestones, the content in the gitbook, and the slides (you can find the slides in Google Drive, with a link pinned in Slack). Adapt the slides and exercise to your wishes.
+3. Try out the coding exercises beforehand to make sure they run. 
+4. Coordinate with the teaching assistant to align needs
+5. Upload class slides to Google Classroom as pdf 24h ahead of the session
 
 **In the Session:**
 
 1. Joins class as co-host 5 minutes before the Session starts. 
-2. Short recap of previous content (15min)
-3. Introduction to the weekly milestone (10min)
-4. Introduce relevant concepts with slides and live coding (90min)
+2. Short recap of previous content (~ 10 min)
+3. Introduction to key concepts (~ 45 min)
+4. Practice key concepts (~ 45 min)
+5. Introduction to the weekly milestone (10min)
 
 ## Teaching Method: I Do, We Do, You Do
 
@@ -40,14 +43,6 @@ The "I Do, We Do, You Do" method is a teaching methdo designed to help students 
 - **Engage with Students:** Ask questions to check understanding. Use their names and keep the tone friendly and encouraging.
 - **Be Prepared, but Flexible:** Have a plan but adapt based on student needs.
 - **Feedback is Key:** Provide constructive feedback to help students improve. Celebrate small wins to keep motivation high.
-
-
-## How to prepare
-
-1. Review weekly milestones, the content in the gitbook, and the slides (you can find the slides in Google Drive, with a link pinned in Slack).
-2. Adapt the slides to your wishes.
-3. Try out the coding exercises beforehand to make sure they run. 
-
 
 ## Available Material 
 
