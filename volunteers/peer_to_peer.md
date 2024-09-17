@@ -1,6 +1,7 @@
 # Peer-to-Peer (P2P) Session
 
 ## Overview
+
 **💡 Intention:** Learners support each other in project work. \
 **⭐ Desired Outcome:** Learners progressed on their project through peer support.\
 **📝 Agenda:** 1) Check-in 2) Pair Programming in Rounds \
@@ -10,4 +11,6 @@
 
 
 ## How to run the P2P Session
-No teachers needed to run the peer-to-peer session :) 
+
+There are no teachers required in the peer-to-peer session. However, feel free to check out what we share with the students on how to run the session [P2P session](https://redi-school-1.gitbook.io/full-stack-bootcamp/study-manual/weekly-structure/peer-to-peer-session).
+

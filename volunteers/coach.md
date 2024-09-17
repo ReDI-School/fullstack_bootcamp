@@ -1,5 +1,5 @@
 # Coach
-As a coach, you join the [Coaching Session](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/volunteers/support_session.md) on Monday from 19:00-21:00. The coaching takes place in small groups. One coach looks after 4-5 students. During the 2-hour session, the group of students showcases the solution of the weekly milestone and receives feedback and support from the coach. 
+As a coach, you join the [Coaching Session](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/volunteers/support_session.md) on Monday from 19:00-21:00. The coaching takes place in small groups. One coach looks after 4-5 students. During the 2-hour session, the group of students showcases the solution of the weekly milestone and receives feedback and support from the coach. Watch [this video](https://www.loom.com/share/99946e05a61f410093be6bc82d35d8f6?sid=718d2299-3557-47a8-bb7d-6c9939d28470) for more explanations. 
 
 ## How to run the Coaching Session
 
@@ -18,21 +18,26 @@ As a coach, you join the [Coaching Session](https://github.com/ReDI-School/fulls
 1. Track the students' progress in your breakout room in the Students & Project Milestones tab (2nd tab of Core Sheet).
 2. Track student attendance
 
-
 ## Review Guide 
-There are five points we think are essential to good feedback in ReDI.
+There are three points we think are essential to good feedback in ReDI.
 
 **1. Positivity**
 It can happen easily that feedback only points out the mistakes, but it’s important to give positive feedback as well. Commenting on aspects that you liked about the code is crucial to make the students more confident. We also learn from what we did well.
 
-**2. Specific**
-Try to make your feedback as specific as possible so the students know which part of the code needs improvement.
+**2. Hands-on**
+In the [Coaching Session](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/volunteers/support_session.md), you have the chance to give hands-on help with the code. During the session, you can revise one or two comments with the students directly using pair programming. We have 10 minutes per student for comments and support. 
 
 **3. Suggestions**
 Good feedback contains suggestions for improvement. This way, the students will have ideas on how to improve the code, and you will push them in the right direction. Keep in mind the balance between suggestions and self-study; giving away the solution is not always the best thing to do.
 
-**4. Balance in the amount of feedback**
-Too few comments, and a student doesn’t have enough feedback to learn from; too much feedback, and the student is overwhelmed by all the information. As a rule of thumb, we say that a normal review is somewhere between 5 and 10 comments. When you feel that a student needs more guidance, feel free to contact them on Slack. If a student does everything well, tease them with more advanced topics!
+## FAQ
 
-**5. Hands-on Support**
-In the [Coaching Session](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/volunteers/support_session.md), you have the chance to give hands-on help with the code. During the session, you can revise one or two comments with the students directly using pair programming. We have 10 minutes per student for comments and support. 
+- _How do students present their milestones?_ Ideally, students first show the UI of their solution. Secondly, they walk you through the code.
+- _What if we finish early?_ No problem! If you see that some students still don't feel very comfortable with the milestone or haven't finished it, you can use the rest of the time to help them drive the milestone.
+
+## More Resources
+
+- Watch [this video](https://www.loom.com/share/99946e05a61f410093be6bc82d35d8f6?sid=718d2299-3557-47a8-bb7d-6c9939d28470) for more explanations.
+- You can find the description we share with students in [Gitbook](https://redi-school-1.gitbook.io/full-stack-bootcamp/study-manual/weekly-structure/coaching-session).
+
+❤️ Thank you for supporting the students' progress ❤
