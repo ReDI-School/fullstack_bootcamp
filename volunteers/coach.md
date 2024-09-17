@@ -1,5 +1,5 @@
 # Coach
-As a coach, you join the [Coaching Session](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/volunteers/support_session.md) on Monday from 19:00-21:00. The coaching takes place in small groups. One coach looks after 4-5 students. During the 2-hour session, the group of students showcases the solution of the weekly milestone and receives feedback and support from the coach. Watch [this video](https://www.loom.com/share/99946e05a61f410093be6bc82d35d8f6?sid=718d2299-3557-47a8-bb7d-6c9939d28470) for more explanations.
+As a coach, you join the [Coaching Session](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/volunteers/support_session.md) on Monday from 19:00-21:00. The coaching takes place in small groups. One coach looks after 4-5 students. During the 2-hour session, the group of students showcases the solution of the weekly milestone and receives feedback and support from the coach. Watch [this video](https://www.loom.com/share/99946e05a61f410093be6bc82d35d8f6?sid=718d2299-3557-47a8-bb7d-6c9939d28470) for more explanations. 
 
 ## How to run the Coaching Session
 
@@ -29,3 +29,15 @@ In the [Coaching Session](https://github.com/ReDI-School/fullstack_bootcamp/blob
 
 **3. Suggestions**
 Good feedback contains suggestions for improvement. This way, the students will have ideas on how to improve the code, and you will push them in the right direction. Keep in mind the balance between suggestions and self-study; giving away the solution is not always the best thing to do.
+
+## FAQ
+
+- _How do students present their milestones?_ Ideally, students first show the UI of their solution. Secondly, they walk you through the code.
+- _What if we finish early?_ No problem! If you see that some students still don't feel very comfortable with the milestone or haven't finished it, you can use the rest of the time to help them drive the milestone.
+
+## More Resources
+
+- Watch [this video](https://www.loom.com/share/99946e05a61f410093be6bc82d35d8f6?sid=718d2299-3557-47a8-bb7d-6c9939d28470) for more explanations.
+- You can find the description we share with students in [Gitbook](https://redi-school-1.gitbook.io/full-stack-bootcamp/study-manual/weekly-structure/coaching-session).
+
+❤️ Thank you for supporting the students' progress ❤

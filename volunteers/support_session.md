@@ -7,7 +7,7 @@
 **📝 Agenda:** 1. Everyone joins the Zoom Call. 2. Coaches initiate breakout sessions. Every coach joins one student group. \
 **👤 Roles and rules:** 4 Coaches lead breakout rooms with 4-5 students in each. Every student shares their solution to the milestone. Coaches give feedback and help students finish the milestone. \
 **📅 Timeline:** Mondays, 19:00 - 21:00 \
-**🖥️ Tools:** Online Session via Zoom. You can find the Zoom link in your [Google Calendar](https://calendar.google.com/calendar/u/0/r).
+**🖥️ Tools:** Online Session via Zoom. You can find the Zoom link in Slack. 
 
 ## Timeline
 
@@ -24,18 +24,8 @@
 
 ## How to run a Coaching Session
 
-The Coach is running the Coaching Session. Read the instructions for the [Coach](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/volunteers/coach.md). Watch [this video](https://www.loom.com/share/99946e05a61f410093be6bc82d35d8f6?sid=718d2299-3557-47a8-bb7d-6c9939d28470) for more explanations.
-
+The Coach is running the Coaching Session. Read the instructions for the [Coach](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/volunteers/coach.md). 
 
 ## Last Coaching Session of the Project
 
 In the last Coaching Session of the project, the students present their full project. The students have 5 minutes to present their full project. Afterward, the coach and other students can give feedback and ask questions about the solution. 
-
-
-## FAQ
-
-- _How do students present their milestones?_ Ideally, students first show the UI of their solution. Secondly, they walk you through the code.
-- _What if we finish early?_ No problem! If you see that some students still don't feel very comfortable with the milestone or haven't finished it, you can use the rest of the time to help them drive the milestone.
-
-
-❤️ Thank you for supporting the students' progress ❤
