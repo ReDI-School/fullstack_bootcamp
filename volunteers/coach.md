@@ -16,18 +16,18 @@ As a coach, you join the [Coaching Session](https://github.com/ReDI-School/fulls
 
 **After the Session:**
 1. Track the students' progress in your breakout room in the Students & Project Milestones tab (2nd tab of Core Sheet).
-2. Track student attendance
+2. Track student attendance for your team (link to Attendance Tracker pinned in Slack).
 
 ## Review Guide 
 There are three points we think are essential to good feedback in ReDI.
 
-**1. Positivity**
+1. **Positivity**
 It can happen easily that feedback only points out the mistakes, but it’s important to give positive feedback as well. Commenting on aspects that you liked about the code is crucial to make the students more confident. We also learn from what we did well.
 
-**2. Hands-on**
+2. **Hands-on**
 In the [Coaching Session](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/volunteers/support_session.md), you have the chance to give hands-on help with the code. During the session, you can revise one or two comments with the students directly using pair programming. We have 10 minutes per student for comments and support. 
 
-**3. Suggestions**
+3. **Suggestions**
 Good feedback contains suggestions for improvement. This way, the students will have ideas on how to improve the code, and you will push them in the right direction. Keep in mind the balance between suggestions and self-study; giving away the solution is not always the best thing to do.
 
 ## FAQ
