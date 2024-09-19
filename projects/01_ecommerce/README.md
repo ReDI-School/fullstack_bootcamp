@@ -87,8 +87,7 @@ At the end of the Project, you should:
 
 - [gitbook](https://redi-school-1.gitbook.io/fullstack)
 
-## 7. Hand-in requirements
+## 7. Upload your Full Project on Google Classroom
 
-At the end of the project, you will submit your completed e-commerce store, including all HTML and CSS files. The final product should demonstrate a clear understanding of HTML, CSS, Flexbox, and responsive design principles.
-
+At the end of the project, you will submit your completed e-commerce store, including all HTML and CSS files on Google Classroom. The final product should demonstrate a clear understanding of HTML, CSS, Flexbox, and responsive design principles.
 To hand in your project, it is required to complete the Deliverables of milestones 1 to 3. The BONUS Milestone is optional.
