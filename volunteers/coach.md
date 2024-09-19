@@ -4,7 +4,7 @@ As a coach, you join the [Coaching Session](https://github.com/ReDI-School/fulls
 ## How to run the Coaching Session
 
 **Before the Session:**
-1. Review the milestone of the week to understand what students were working on. 
+1. Review the milestone of the week to understand what students were working on. You can find the milestones in the specific [project](https://github.com/ReDI-School/fullstack_bootcamp/tree/main/projects). Check what deliverables the students have in their weekly milestone. These deliverables are supposed to be completed until the Coaching session. 
 2. Open the Students & Project Milestones (2nd tab in your Core Sheet). The link to your Core Sheet is pinned in Slack. 
 
 **In the Session:**
@@ -16,7 +16,6 @@ As a coach, you join the [Coaching Session](https://github.com/ReDI-School/fulls
 
 **After the Session:**
 1. Track the students' progress in your breakout room in the Students & Project Milestones tab (2nd tab of Core Sheet).
-2. Track student attendance for your team (link to Attendance Tracker pinned in Slack).
 
 ## Review Guide 
 There are three points we think are essential to good feedback in ReDI.
@@ -34,6 +33,7 @@ Good feedback contains suggestions for improvement. This way, the students will 
 
 - _How do students present their milestones?_ Ideally, students first show the UI of their solution. Secondly, they walk you through the code.
 - _What if we finish early?_ No problem! If you see that some students still don't feel very comfortable with the milestone or haven't finished it, you can use the rest of the time to help them drive the milestone.
+- _What if the students didn't finish their weekly milestone?_ This can happen. Try to support the students by showing them how to finish the milestone. The students will start a new milestone on Tuesday. However, they can finish their milestone in the recap week before handing in the project. 
 
 ## More Resources
 
