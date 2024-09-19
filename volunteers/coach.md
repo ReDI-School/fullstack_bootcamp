@@ -33,7 +33,9 @@ Good feedback contains suggestions for improvement. This way, the students will 
 
 - _How do students present their milestones?_ Ideally, students first show the UI of their solution. Secondly, they walk you through the code.
 - _What if we finish early?_ No problem! If you see that some students still don't feel very comfortable with the milestone or haven't finished it, you can use the rest of the time to help them drive the milestone.
-- _What if the students didn't finish their weekly milestone?_ This can happen. Try to support the students by showing them how to finish the milestone. The students will start a new milestone on Tuesday. However, they can finish their milestone in the recap week before handing in the project. 
+- _What if the students didn't finish their weekly milestone?_ This can happen. Try to support the students by showing them how to finish the milestone. The students will start a new milestone on Tuesday. However, they can finish their milestone in the recap week before handing in the project.
+- _Where do students submit their weekly milestone for me to review?_ Students only submit their Project on GoogleClassroom during the recap week. Before that the individual 3 milestones that make up one project are not submitted by students on GoogleClassroom. Individual milestones are only showcased during the coaching session itself.
+- _What should I do if I have the impression a student fully coded their milestone using AI and do not actually understand the reasoning behind the code?_ Students are allowed to use AI to enhance and support their learning journey. However it should not replace it. If you sense that a student sole copied code from a GenAI tool without fully grasping what it was about, do ask them to explain to you the reasoning of why they coded that way. You can also remind them that AI should be used wisely and cannot substitute their learning.Write in the individual feedback of the student that point so the next coach can check if there is an improvement in the next session. 
 
 ## More Resources
 
