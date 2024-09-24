@@ -9,13 +9,17 @@ As a teaching assistant, you support the session owner in the [Input Session](ht
 **Before the Session:**
 
 1. Coordinates with the Session Owner before the session
+2. Review the slides to be aware of the content to be covered
 
 **In the Session:**
 
-1. Open Zoom call as a host (with host key pinned in Slack channel)
-2. Moderation support: Keep an eye on live questions & make sure each student is given time to ask a question 
-3. Breakouts: support group work/exercises
-4. Tracks Attendance (> Camera on policy!)
+1. Join the Zoom class link 
+2. Claim the host(with host key pinned in Slack channel)
+3. Make the Session Owner co-host on Zoom (safety measure)
+4. Start the recording (it is then saved automatically on the Cloud)
+5. Moderation support: Keep an eye on live questions & make sure each student is given time to ask a question 
+6. Breakouts: support group work/exercises
+7. Tracks Attendance (> Camera on policy!)
 
 **After the Session:**   
 
