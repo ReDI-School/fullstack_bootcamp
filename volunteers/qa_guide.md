@@ -16,9 +16,10 @@ As Q&A Guide, you run the [Q&A Support Session](https://github.com/ReDI-School/f
 **In the Session:**
 
 1. Join the Zoom Call 5 minutes before the Session starts. 
-2. Claim Host (Check out the pinned Guide in Slack on how to do so).
-3. Wait 3-4 minutes to give everyone a chance to arrive and kick-off.
-4. Answer Questions - Mention a question posted in Slack. Provide an answer or walk the students through the solution. You can ask if the student joined to check if the answer clarified their question.
+2. Claim Host using the Host Key (Check out the pinned Guide in Slack on how to do so).
+3. Start the recording on Zoom
+4. Wait 3-4 minutes to give everyone a chance to arrive and kick-off.
+5. Answer Questions - Mention a question posted in Slack. Provide an answer or walk the students through the solution. You can ask if the student joined to check if the answer clarified their question.
 
 **After the Session:**
 1. Post a short message in Slack stating what questions you talked about in the Session. If you shared useful links or resources in the session, feel free to add them to the post. The students have acess to the recording and check out how you answered the mentioned questions. 
