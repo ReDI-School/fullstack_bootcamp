@@ -32,6 +32,7 @@ Good feedback contains suggestions for improvement. This way, the students will 
 ## FAQ
 
 - _How do students present their milestones?_ Ideally, students first show the UI of their solution. Secondly, they walk you through the code.
+- _Do students deliver the weekly milestone on their own or as a group?_ Each students has to deliver their own milestone individually. The groupings for coaching and Friday P2P sessions are created only for students to exchange and learn from one another. 
 - _What if we finish early?_ No problem! If you see that some students still don't feel very comfortable with the milestone or haven't finished it, you can use the rest of the time to help them drive the milestone.
 - _What if the students didn't finish their weekly milestone?_ This can happen. Try to support the students by showing them how to finish the milestone. The students will start a new milestone on Tuesday. However, they can finish their milestone in the recap week before handing in the project.
 - _Where do students submit their weekly milestone for me to review?_ Students only submit their Project on GoogleClassroom during the recap week. Before that the individual 3 milestones that make up one project are not submitted by students on GoogleClassroom. Individual milestones are only showcased during the coaching session itself.
