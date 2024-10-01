@@ -2,10 +2,10 @@
 
 ## Overview
 
-**💡 Intention:** Learners present their solutions to the weekly milestones in small groups. Coaches give feedback and help the students advance.\
-**⭐ Desired Outcome:** Students learn how to present their solutions and receive feedback from a coach. Students finish the milestone and are ready to start the next milestone on Tuesday. \
+**💡 Intention:** Learners present their individual solution to the weekly milestones in small groups. Coaches give feedback and help the students advance.\
+**⭐ Desired Outcome:** Students learn how to present their solutions and receive feedback from a coach. Students finish their respective milestone and are ready to start the next milestone on Tuesday. \
 **📝 Agenda:** 1. Everyone joins the Zoom Call. 2. Coaches initiate breakout sessions. Every coach joins one student group. \
-**👤 Roles and rules:** 4 Coaches lead breakout rooms with 4-5 students in each. Every student shares their solution to the milestone. Coaches give feedback and help students finish the milestone. \
+**👤 Roles and rules:** 4 Coaches lead breakout rooms with 4-5 students in each. Every student shares their solution to the milestone. Coaches give feedback and help students finish their respective milestone. \
 **📅 Timeline:** Mondays, 19:00 - 21:00 \
 **🖥️ Tools:** Online Session via Zoom. You can find the Zoom link in Slack. 
 
