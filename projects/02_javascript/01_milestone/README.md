@@ -24,7 +24,7 @@ Use JavaScript to dynamically generate and display product elements on the webpa
    - Use DOM methods like `document.createElement`, `element.appendChild`, and `element.innerHTML` to create and insert the product elements.
 
 ### Additional Guidelines:
-
+- You’ll need NodeJS to run JavaScript on your machine. Please make sure to install [NodeJS](https://nodejs.org/en). Additional information: [getting started with Javascript](https://www.programiz.com/javascript/get-started)
 - Ensure the product elements are created dynamically using JavaScript and not hardcoded in the HTML.
 - Make sure to use semantic HTML tags where appropriate.
 - Test the dynamic generation of product elements in the browser to ensure everything is displayed correctly.
