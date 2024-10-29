@@ -10,7 +10,8 @@ Once you have a direction (the job profile you aspire to) and are aware of your 
 - How to search for jobs
 - Personal Branding
 
-### Task 1:
+### Task 1: 
+- Check the video on how to set up your Miro board
 - **Carry Out a Personal SWOT Analysis**
   
 - **Resources**: 
