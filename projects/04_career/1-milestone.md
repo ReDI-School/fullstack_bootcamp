@@ -17,7 +17,7 @@ Follow the Loom instructions to set up your workspace:
 - Create a new Miro board.
 - [Upload this template to the board](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/projects/04_career/Miro%20Template%20for%20Exercise%201) and lock it
 
-### Task 2: Develop your Professional Development Roadmap on Miro
+### Task 2: Work at your Professional Development Roadmap on Miro
 Following the steps listed both the template itself and here below:
 - Step 1: Dentify Job Profiles & Requirements: gather and analyze at least 5 job listings for the roles you are interested in. 
 - Step 2: Categorize the Skills Needed: You should look for common requirements and skills listed in these postings and group them in the board. After that, assess your current level for each of the skills listed
