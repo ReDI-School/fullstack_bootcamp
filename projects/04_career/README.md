@@ -7,13 +7,13 @@ In order to find a job, you will need to acquire the knowledge and tools that we
 
 ## Milestones
 
-### 1 - Career Orientation: Understanding the Job Market & Mapping your Career Path
+### 1 - [Career Orientation: Understanding the Job Market & Mapping your Career Path](https://redi-school-1.gitbook.io/full-stack-bootcamp/4.-project-career/milestone-1-career-orientation)
 At this stage, you'll understand the needs of the tech job market and some of the potential careers in your field of study. Having an understanding of where you are now and what your desired career destination is can pave the way for your future learning and development.
 
-### 2 - Establish Online Presence
+### 2 - [Establish Online Presence](https://redi-school-1.gitbook.io/full-stack-bootcamp/4.-project-career/milestone-2-establish-online-presence)
 You'll learn how to navigate the online jobs market and build your digital presence. We'll guide you on how to build your LinkedIn profile, resume, and portfolio / GitHub profile. We will also share some insights into building a professional network.
 
-### 3 - Application Process
+### 3 - [Application Process](https://redi-school-1.gitbook.io/full-stack-bootcamp/4.-project-career/milestone-3-application-process)
 You'll learn the steps of the job application process, from the introduction meeting to the technical interview! You will practice your skills through assigning you a technical assignment and a mock technical interview.
 
 ## Activities
