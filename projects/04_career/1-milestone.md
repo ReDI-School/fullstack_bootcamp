@@ -10,7 +10,7 @@ In this milestone, you'll explore the current job market by researching relevant
 
 ### Task 1: Set up Your Board on Miro
 
-Follow the Loom instructions to set up your workspace:
+Follow the [Loom instructions](https://www.loom.com/share/f18a4f026ca041f1a9b6c12091312fa6?sid=b7233075-32d2-42d8-96fa-33e77a4dfb8c) to set up your workspace:
 - Create an account on [Miro](https://miro.com).
 - Create a new Miro board.
 - [Upload this template to the board](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/projects/04_career/Miro%20Template%20for%20Exercise%201) and lock it
@@ -25,10 +25,13 @@ Note: If you’re interested in exploring multiple job profiles, you can certain
 - Step 4: Set specific goals: Use sheet 3 to organize your action points in a timeline divided into short, medium, and long-term goals.
 - Step 5: Reflect on your values and create your personal brand statement
 
-If you are unsure about how to go about using the board, you can check [this example of expected final result](https://miro.com/app/board/uXjVLMH9QTE=/?share_link_id=290789561693)
+If you are unsure about how to go about using the board, you can check [this example of expected final result](https://miro.com/app/board/uXjVLKfUXpg=/?share_link_id=729547255668)
 
 ### Resources: 
-  - Setup: Loom Video / [Miro template](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/projects/04_career/Miro%20Template%20for%20Exercise%201) / [Example of expected final result](https://miro.com/app/board/uXjVLMH9QTE=/?share_link_id=290789561693)
+  - Setup:
+      -  [Loom Video](https://www.loom.com/share/f18a4f026ca041f1a9b6c12091312fa6?sid=b7233075-32d2-42d8-96fa-33e77a4dfb8c)
+      -  [Miro template](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/projects/04_career/Miro%20Template%20for%20Exercise%201)
+      -  [Example of expected final result](https://miro.com/app/board/uXjVLMH9QTE=/?share_link_id=290789561693)
   - Resources for exercises: 
       -  [Career Development Plan](https://redi-school-1.gitbook.io/ux-ui-bootcamp/4.-project-career/milestone-1-career-orientation/careers-in-ux-ui-design/career-development-plan)
      - [SWOT Analysis](https://redi-school-1.gitbook.io/ux-ui-bootcamp/4.-project-career/milestone-1-career-orientation/careers-in-ux-ui-design/swot-analysis)
