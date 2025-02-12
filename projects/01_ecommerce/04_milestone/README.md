@@ -1,6 +1,9 @@
-# **Milestone 4: Recap & Enhancements – Milestone Guide**
+# ** BONUS Milestone: Recap & Enhancements – Milestone Guide (OPTIONAL)**
 
 ## **Overview**
+
+This **optional** milestone is designed for students who want to take their project to the next level AFTER completing milestone 1-3. If you haven't completed milestone 1-3 we strongly encourage you to finish them before starting this bonus milestone. 
+
 Welcome to **Milestone 4**, our **Recap & Enhancement** week!  
 This is your opportunity to review everything you've learned so far and apply improvements to your **E-commerce Project**.
 

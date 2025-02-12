@@ -1,6 +1,8 @@
-# **Milestone 4: Recap & Bonus Milestone - Next.js & Advanced Features**
+# **BONUS Milestone: Recap & Bonus Milestone - Next.js & Advanced Features (OPTIONAL)**
 
 ## **Overview**
+
+This optional milestone is designed for students who want to take their project to the next level AFTER completing milestone 1-3. If you haven't completed milestone 1-3 we strongly encourage you to finish them before starting this bonus milestone. 
 
 In this recap Milestone, you will refine your understanding of **Next.js, Tailwind CSS, authentication, API integration, and global state management**. You will revisit concepts from **Milestones 5, 6, and 7**, applying improvements and optimizations to your **Twitter Clone project**.
 
