@@ -11,7 +11,7 @@ The bootcamp consists of three main projects:
 
 ### Project 1: React Foundations
 
-![REACT](https://github.com/ReDI-School/fullstack_bootcamp/assets/51905839/1b14fb79-3ffc-46c5-94c2-7bd44b7e140d)
+![REACT](https://github.com/user-attachments/assets/02b32097-d3de-41a1-8be0-9420f45652cb)
 
 Dive into modern React development, learning component architecture, state management, and UI design. You'll build responsive interfaces using React and Tailwind CSS, master hooks and context management, and understand essential React patterns and best practices. This project establishes the foundation for building dynamic, interactive web applications.
 
@@ -27,6 +27,7 @@ Dive into modern React development, learning component architecture, state manag
 **Link to Project: [01_react](https://github.com/ReDI-School/fullstack_bootcamp/tree/main/projects/01_react)**
 
 ### Project 2: Full-Stack Integration
+![Full Stack](https://github.com/user-attachments/assets/18b20ac4-002f-4e6b-9278-bdbe78de8b6d)
 
 Build upon your React knowledge by integrating Next.js and MongoDB into your applications. Learn server-side rendering, database integration, and API development. This project introduces you to full-stack development, teaching you how to handle data persistence, manage server-side operations, and create secure, scalable applications.
 
@@ -41,7 +42,11 @@ Build upon your React knowledge by integrating Next.js and MongoDB into your app
 
 **Link to Project: [02_fullstack](https://github.com/ReDI-School/fullstack_bootcamp/tree/main/projects/02_fullstack)**
 
-### Project 3: Advanced Development & Deployment
+### Project 3: Capstone - Advanced Development & Deployment
+
+![Capstone](https://github.com/user-attachments/assets/ca3f9558-6ce5-4bf8-b7ce-781425f82c4e)
+
+
 
 Master advanced aspects of web development including authentication, security, and deployment. Learn how to optimize application performance, implement proper security measures, and deploy your applications to production. This project focuses on the real-world aspects of launching and maintaining web applications.
 
@@ -58,7 +63,7 @@ Master advanced aspects of web development including authentication, security, a
 
 
 ## 4. Project: Career Preparation
-![CAREER](https://github.com/ReDI-School/fullstack_bootcamp/assets/51905839/f19035a3-e624-4258-b90a-0936f661423b)
+![CAREER](https://github.com/user-attachments/assets/3a849e6f-1c2f-4591-b406-f3f023742576)
 
 In the final project, you create a powerful LinkedIn profile, CV, and portfolio, work on a case study, and learn how to apply for your first job.
 
