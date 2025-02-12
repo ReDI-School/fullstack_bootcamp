@@ -1,0 +1,43 @@
+/* globals.css - Global Styles */
+/* This file defines global styles for the Twitter Clone project */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Body styling */
+body {
+  @apply bg-gray-100 text-gray-900 font-sans;
+}
+
+/* Container styling */
+.container {
+  @apply max-w-4xl mx-auto px-4;
+}
+
+/* Button styling */
+button {
+  @apply px-4 py-2 rounded text-white font-medium transition-all duration-200;
+}
+
+button.bg-blue-500 {
+  @apply hover:bg-blue-700;
+}
+
+button.bg-gray-500 {
+  @apply hover:bg-gray-700;
+}
+
+/* Card styles */
+.card {
+  @apply bg-white shadow-md rounded-lg p-4 border border-gray-200;
+}
+
+/* Header styles */
+h1 {
+  @apply text-2xl font-bold text-blue-600;
+}
+
+h2 {
+  @apply text-xl font-semibold text-gray-700;
+}
