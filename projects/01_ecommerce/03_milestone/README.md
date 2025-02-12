@@ -1,179 +1,220 @@
-### Exercise 1: Enhance E-commerce Page with Flexbox and Responsive Design
+# **Milestone 3: Context API, State Management & Error Handling**
 
-**Objective:**
-Improve the e-commerce product page by using Flexbox for layout and ensuring the page is fully responsive for different screen sizes.
+## **Overview**
+This Milestone, we will refine our **E-commerce UI** by introducing **global state management using the Context API** and improving **error handling**. By using the Context API, we can efficiently manage shared state across components, such as user authentication, cart management, and theme settings.
 
-**Requirements:**
+Additionally, we will implement robust **error handling techniques** to improve the reliability of our application.
 
-### HTML Structure:
+---
 
-1. **Update Existing HTML Files:**
-   - Create two new HTML files (`clothing.html`, `electronics.html`) provided.
-   - Below the header, add a main section to display the relative type of products.
-   - Ensure the structure follows semantic HTML guidelines.
-   - Follow the same structure of `index.html`.
+## **Learning Objectives**
+1. **Global State Management with Context API**
+   - Understand the benefits of global state in React applications.
+   - Learn how to create and use the **Context API** to manage shared data.
+   - Implement a **Cart Context** to manage the shopping cart state.
 
-### Flexbox Layout:
+2. **Error Handling in React**
+   - Learn best practices for handling **errors in API calls**.
+   - Use **error boundaries** to catch UI-related errors.
+   - Implement fallback UI for failed API requests.
 
-1. **Header:**
-   - Use Flexbox to create a horizontal layout for the company logo and navigation links.
-2. **Main Section:**
-   - Use Flexbox to display products in a responsive grid layout.
-3. **Footer:**
-   - Arrange footer content (contact details and social media links) using Flexbox.
+3. **Refactoring the E-commerce Project**
+   - Replace prop drilling with Context API.
+   - Improve the user experience with proper error handling.
+   - Optimize API requests for better performance.
 
-### Responsive Design:
+---
 
-1. **Media Queries:**
-   - Use CSS media queries to adjust the layout for different screen sizes (e.g., mobile, tablet, desktop).
-2. **Responsive Product Images:**
-   - Ensure product images resize correctly on different devices.
-3. **Responsive Navigation:**
-   - Create a mobile-friendly navigation menu that converts to a hamburger menu on smaller screens.
+## **Why Use Context API?**
+React’s **prop drilling** can make state management difficult when multiple components need access to the same state. The **Context API** allows us to create a **global store** that provides data to any component without needing to pass props manually.
 
-### Detailed Steps:
+---
 
-1. **Header Flexbox Layout:**
-   - Update the `<header>` section to use Flexbox for the logo and navigation bar.
-   - Example:
-     ```html
-     <header class="site--bar">
-       <h1 id="site--logo"><a href="./index.html">R-Commerce</a></h1>
-       <ul class="navigation">
-         <li class="navigation--link">
-           <a href="./electronics.html">electronics</a>
-         </li>
-         <li class="navigation--link">
-           <a href="./clothing.html">clothing</a>
-         </li>
-       </ul>
-     </header>
-     ```
-2. **Product List Flexbox Layout:**
-   - Update the `<main>` section to display products using Flexbox.
-   - Example:
-     ```html
-     <main class="root">
-       <section class="site--hero">Ready to Shop</section>
-       <section class="products">
-         <h3 class="products--title">All the products</h3>
-         <ul class="products--list">
-           <li>
-             <div class="product">
-               <img
-                 alt="This is an image"
-                 src="https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg"
-                 class="product--image"
-               />
-               <h1 class="product--name">
-                 WD 2TB Elements Portable External Hard Drive - USB 3.0
-               </h1>
-               <p class="product--description">
-                 USB 3.0 and USB 2.0 Compatibility Fast data transfers Improve
-                 PC Performance High Capacity; Compatibility Formatted NTFS for
-                 Windows 10, Windows 8.1, Windows 7; Reformatting may be
-                 required for other operating systems; Compatibility may vary
-                 depending on user's hardware configuration and operating system
-               </p>
-               <p class="product--price">$ 64</p>
-             </div>
-           </li>
-           <!-- More products -->
-         </ul>
-       </section>
-     </main>
-     ```
-3. **Footer Flexbox Layout:**
-   - Update the `<footer>` section to use Flexbox for arranging content.
-   - Example:
-     ```html
-     <footer class="more">
-       <section>
-         <div class="more--credits">
-           <a href="./index.html" target="_blank">R-Commerce</a>
-           <p class="more--rights">(c) 2024</p>
-         </div>
-       </section>
-     </footer>
-     ```
+## **Project Enhancements**
+We will **upgrade the existing E-commerce UI** from Milestone 2 by:
+1. **Using Context API** for managing the cart state.
+2. **Handling API errors gracefully** using error boundaries and try/catch blocks.
+3. **Refactoring state management** to make the app more scalable.
 
-### CSS Styling:
+---
 
-1. **Basic Flexbox Styling:**
-   - Add Flexbox styling to the header, main section, and footer.
-   - Example:
-     ```css
-     /* Flexbox for Header */
-     .site--bar {
-       background-color: rgba(255, 255, 255, 0.5);
-       display: flex;
-       justify-content: space-between;
-       padding: 22px 32px;
-       position: absolute;
-       width: 100vw;
-     }
+## **Steps to Complete**
 
-     .navigation {
-       display: flex;
-       justify-content: space-between;
-       flex-direction: row;
-       flex-wrap: nowrap;
-     }
+### **1. Implement Global State Management with Context API**
+We will define a **Cart Context** that manages the cart items and provides functions to add or remove products.
 
-     /* Flexbox for Product List */
-     .products--list {
-       display: flex;
-       flex-wrap: wrap;
-       justify-content: space-around;
-       gap: 20px;
-     }
+**CartContext.js**
+```javascript
+import { createContext, useState, useContext } from "react";
 
-     .product {
-       display: flex;
-       flex-direction: column;
-       justify-content: flex-start;
-       padding: 6px;
-       text-align: center;
-       max-width: 200px;
-     }
+// Create a context
+const CartContext = createContext();
 
-     /* Flexbox for Footer */
-     .more--credits {
-       display: flex;
-       justify-content: space-between;
-     }
-     ```
-2. **Responsive Design with Media Queries:**
-   - Add media queries to ensure the layout adapts to different screen sizes.
-   - Example:
-     ```css
-     @media (max-width: 1024px) {
-       .products--list {
-         grid-template-columns: repeat(2, 500px);
-       }
-     }
+// Cart Provider Component
+export function CartProvider({ children }) {
+  const [cart, setCart] = useState([]);
 
-     @media (max-width: 768px) {
-       .products--list {
-         grid-template-columns: repeat(1, 500px);
-       }
+  const addToCart = (product) => {
+    setCart((prevCart) => [...prevCart, product]);
+  };
 
-       .product {
-         max-width: 230px;
-       }
-     }
+  const removeFromCart = (productId) => {
+    setCart((prevCart) => prevCart.filter((item) => item.id !== productId));
+  };
 
-     @media (max-width: 480px) {
-       .product {
-         max-width: 180px;
-       }
-     }
-     ```
+  return (
+    <CartContext.Provider value={{ cart, addToCart, removeFromCart }}>
+      {children}
+    </CartContext.Provider>
+  );
+}
 
-### Submission:
+// Custom hook for using cart context
+export function useCart() {
+  return useContext(CartContext);
+}
+```
 
-- Complete the HTML and CSS code as described.
-- Test the page in a web browser to ensure it looks good on different screen sizes.
-- Submit the final HTML file (e.g., `index.html`, `clothing.html`, `electronics.html`) for review.
+**Usage in App.js**
+```javascript
+import { CartProvider } from "./context/CartContext";
+import Header from "./components/Header";
+import Main from "./components/Main";
 
-Good luck, and have fun enhancing your e-commerce product page with Flexbox and responsive design!
+function App() {
+  return (
+    <CartProvider>
+      <Header />
+      <Main />
+    </CartProvider>
+  );
+}
+
+export default App;
+```
+
+---
+
+### **2. Implement Error Handling in API Requests**
+We will improve our **fetch logic** by handling API errors.
+
+**Updating Main.jsx**
+```javascript
+import { useEffect, useState } from "react";
+import ProductCard from "./ProductCard";
+
+function Main() {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    async function fetchProducts() {
+      try {
+        const response = await fetch("https://fakestoreapi.com/products");
+        if (!response.ok) throw new Error("Failed to load products");
+        const data = await response.json();
+        setProducts(data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchProducts();
+  }, []);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p style={{ color: "red" }}>Error: {error}</p>;
+
+  return (
+    <div>
+      {products.map((product) => (
+        <ProductCard key={product.id} product={product} />
+      ))}
+    </div>
+  );
+}
+
+export default Main;
+```
+
+---
+
+### **3. Using an Error Boundary**
+React **Error Boundaries** allow us to **catch runtime errors** and display a fallback UI instead of crashing the entire app.
+
+**Creating ErrorBoundary.jsx**
+```javascript
+import { Component } from "react";
+
+class ErrorBoundary extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    console.error("Error caught by boundary:", error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return <h2>Something went wrong. Please try again later.</h2>;
+    }
+
+    return this.props.children;
+  }
+}
+
+export default ErrorBoundary;
+```
+
+**Using Error Boundary in App.js**
+```javascript
+import ErrorBoundary from "./components/ErrorBoundary";
+import Main from "./components/Main";
+
+function App() {
+  return (
+    <ErrorBoundary>
+      <Main />
+    </ErrorBoundary>
+  );
+}
+
+export default App;
+```
+
+---
+
+## **Expected Outcome**
+1. **Cart State Management:** Products added to the cart remain accessible throughout the app.
+2. **Error Handling:** API errors display user-friendly messages instead of crashing the app.
+3. **Code Refactoring:** Cleaner and more modular structure using **Context API**.
+
+---
+
+## **Bonus Challenge**
+1. Allow users to **update product quantities** in the cart.
+2. Implement **local storage** to persist cart items across page reloads.
+3. Show a **loading spinner** instead of just text while fetching data.
+
+---
+
+## **Resources**
+1. [React Context API Guide](https://react.dev/reference/react/createContext)
+2. [Handling API Errors in React](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
+3. [React Error Boundaries](https://react.dev/reference/react/Component#catching-rendering-errors-with-an-error-boundary)
+
+---
+
+## **Next Steps**
+In **Milestone 4**, we will **recap all the fundamental React concepts** and **optimize our application further**. We will also discuss **best practices** to write clean and maintainable React code.
+
+🚀 **Great work! Keep building!**

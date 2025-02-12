@@ -1,0 +1,29 @@
+/* index.css - Milestone 2
+ * This file includes global styles and ensures Tailwind CSS is properly configured.
+ */
+
+/* Import Tailwind */
+@import "tailwindcss";
+
+/* Global styles */
+body {
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f9;
+  color: #333;
+}
+
+/* Utility for centering loading text */
+.text-center {
+  text-align: center;
+}
+
+/* Additional product card styling */
+.product-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.product-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}

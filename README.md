@@ -2,11 +2,6 @@
 
 ![Full Stack Bootcamp Banners](https://github.com/ReDI-School/fullstack_bootcamp/assets/51905839/36b1fd93-be54-4718-bde0-898c71d4c82c)
 
-> Here you can find an overview of the ReDI Full Stack bootcamp projects. The repo contains four projects which are at the core of this bootcamp. 
-
-- Are you a new volunteer? Take a look at our [Volunteer Guide](https://github.com/ReDI-School/fullstack_bootcamp/tree/main/volunteers) for some practical tips on how to get started!
-- Are you a new student? Be sure to get started with our [Welcome Guide](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/welcome.md) to see how to prepare for your first session and beyond!
-
 ## The Bootcamp 
 ReDI's Full Stack Bootcamp is a part-time (20 hours per week) bootcamp lasting for 18 weeks. It has a strong focus on front end and gives an introduction to back end elements. The goal is to support participants prepare for an internship in the industry. 
 

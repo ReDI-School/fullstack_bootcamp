@@ -1,60 +1,201 @@
-# Mini Milestone Project
+# **Milestone 0: JavaScript Fundamentals – Milestone Guide**
 
-### Index
+## **Overview**
+In Milestone 0, you will refresh your **JavaScript** knowledge and set up your development environment for the Full Stack Bootcamp. You will build a task management application that helps you practice core JavaScript concepts while getting familiar with VS Code, Git, and GitHub.
 
-1. Introduction
-2. Project Summary
-3. Milestone
-4. Further Resources
+This milestone is a **task management application**, where you will build features like **adding tasks, marking them complete, and storing them locally**.
 
 ---
 
-<p align="center">
-  <img width="400" alt="logo" src="https://github.com/user-attachments/assets/1acbf850-045b-49e3-ab7d-556838a40d17">
-</p>
+## **Learning Objectives**
+1. **Development Environment Setup**:
+   - Setting up VS Code with essential extensions
+   - Configuring Git and GitHub
+   - Understanding project structure and organization
 
-### 1. Introduction
+2. **JavaScript Core Concepts**:
+   - Working with arrays and objects
+   - DOM manipulation and event handling
+   - Using localStorage for data persistence
+   - Understanding modern JavaScript features
 
-Create a simple landing page for the marketing agency "BrightSpark" using HTML and CSS. The goal is to design a visually appealing page that clearly communicates the agency's services and encourages visitors to get in touch.
+3. **Version Control**:
+   - Basic Git commands and workflow
+   - GitHub repository management
+   - Creating and managing branches
 
+4. **Project Structure**:
+   - Organizing JavaScript code
+   - File and folder organization
+   - Code documentation and commenting
 
-### 2. Project Summary
+---
 
-You will create a landing page for a fictional marketing agency called "BrightSpark". To create the landing page for the marketing agency, they have shared their target audience with us. The target audience includes:
-- Small Business Owners: Entrepreneurs or owners of small businesses looking for marketing services to grow their business and enhance their online presence.
-- Startups: New companies seeking marketing strategies and solutions to effectively launch their products or services.
-- Freelancers: Individuals needing help building their brand and reaching a broader audience through targeted marketing.
-The landing page should be designed to appeal to these groups by highlighting the agency's services and providing a clear call to action for consultations.
+## **Example from Milestone 0 Project: TaskFlow App**
 
-### 3. Milestone: Create a Landing Page
+### **Project Setup**
 
-**What you do**: You will create a landing page for the marketing agency. The landing page consists of a simple HTML structure and CSS styling. 
+First, set up your development environment:
 
-**Steps:**
+```sh
+# Create project directory and initialize Git
+mkdir taskflow-app
+cd taskflow-app
+git init
 
-1. Start the project in VS Code
-2. Create the HTML structure
-3. Add styling with CSS (Have a look at the [style guide](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/projects/00_mini_milestone/style_guide.md) for color and font suggestions.)
-4. OPTIONAL: Push your code to a GitHub Repository ([further resources](https://redi-school-1.gitbook.io/full-stack-bootcamp/0.-project-mini-milestone/how-to-initiate-a-project))
+# Create project structure
+touch index.html
+mkdir css js
+touch css/style.css js/app.js
+touch README.md
+```
 
-**The page should include the following sections:**
+### **Project Structure**
 
-1. Header with navigation
-2. Hero section with a call-to-action
-3. Services section highlighting the services
-4. Contact Us form
-5. Footer with social media links
+📂 **Project Structure**
+```
+/taskflow-app
+ ├── index.html
+ ├── /css
+ │   └── style.css
+ ├── /js
+ │   └── app.js
+ └── README.md
+```
 
-**What you learn**: HTML, CSS, Git, GitHub, How to start a project
+### **Task Management Implementation**
 
-**Deliverables**:
+The `app.js` file implements core task management functionality:
 
-- A fully functional HTML file for the landing page.
-- A CSS file linked to the HTML that includes all the styles.
-- OPTIONAL: GitHub Repository for the project
-  
-### 4. Further Resources and Tips
+```javascript
+// Task structure
+class Task {
+  constructor(title, dueDate) {
+    this.id = Date.now();
+    this.title = title;
+    this.completed = false;
+    this.dueDate = dueDate;
+  }
+}
 
-- Check out the [Gitbook Section for the Mini Milestone](https://redi-school-1.gitbook.io/full-stack-bootcamp/0.-project-mini-milestone/how-to-initiate-a-project).
-- You can create text for the landing page using a ChatGPT for copywriting (for example, with [Copy Writing GPT](https://chatgpt.com/g/g-rkKtHhIOR-the-secret-copywriter)).
-- You can use the logo from BrightSpark, which is in this GitHub folder ([link](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/projects/00_mini_milestone/logo.png))
+// Task management
+class TaskManager {
+  constructor() {
+    this.tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+  }
+
+  addTask(title, dueDate) {
+    const task = new Task(title, dueDate);
+    this.tasks.push(task);
+    this.saveTasks();
+    return task;
+  }
+
+  toggleTask(id) {
+    const task = this.tasks.find(t => t.id === id);
+    if (task) {
+      task.completed = !task.completed;
+      this.saveTasks();
+    }
+  }
+
+  saveTasks() {
+    localStorage.setItem('tasks', JSON.stringify(this.tasks));
+  }
+}
+```
+
+### **DOM Manipulation Example**
+
+Handle UI updates and user interactions:
+
+```javascript
+class TaskUI {
+  constructor(taskManager) {
+    this.taskManager = taskManager;
+    this.taskList = document.querySelector('#taskList');
+    this.form = document.querySelector('#taskForm');
+    
+    this.form.addEventListener('submit', this.handleSubmit.bind(this));
+    this.renderTasks();
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    const title = document.querySelector('#taskTitle').value;
+    const dueDate = document.querySelector('#taskDue').value;
+    
+    const task = this.taskManager.addTask(title, dueDate);
+    this.renderTask(task);
+    this.form.reset();
+  }
+
+  renderTask(task) {
+    const li = document.createElement('li');
+    li.innerHTML = `
+      <span class="${task.completed ? 'completed' : ''}">${task.title}</span>
+      <span>${task.dueDate}</span>
+      <button onclick="toggleTask(${task.id})">Toggle</button>
+      <button onclick="deleteTask(${task.id})">Delete</button>
+    `;
+    this.taskList.appendChild(li);
+  }
+}
+```
+
+### **HTML Structure**
+
+Basic HTML structure in `index.html`:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskFlow</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>TaskFlow</h1>
+        <form id="taskForm">
+            <input type="text" id="taskTitle" placeholder="Task title" required>
+            <input type="date" id="taskDue" required>
+            <button type="submit">Add Task</button>
+        </form>
+        <ul id="taskList"></ul>
+    </div>
+    <script src="js/app.js"></script>
+</body>
+</html>
+```
+
+---
+
+## **Expected Outcome**
+By the end of Milestone 0, you should have:
+✅ A configured development environment with VS Code, Git, and GitHub  
+✅ A working task management application with core features  
+✅ Understanding of JavaScript fundamentals and DOM manipulation  
+✅ Experience with Git workflow and GitHub  
+
+---
+
+## **Bonus Challenge**
+- Add task categories or tags  
+- Implement task priority levels  
+- Add task filtering and sorting  
+- Create a task deadline countdown  
+
+---
+
+## **Resources**
+1. [VS Code Download](https://code.visualstudio.com/)
+2. [Git Installation Guide](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+3. [GitHub Getting Started](https://docs.github.com/en/get-started)
+4. [JavaScript MDN Guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide)
+
+---
+
+📌 **Next Step → Milestone 1: Introduction to React**

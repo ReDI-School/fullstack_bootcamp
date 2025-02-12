@@ -1,244 +1,132 @@
-### Exercise 1: Enhance E-commerce Page with Advanced Template Components
+# **Milestone 4: Recap & Enhancements – Milestone Guide**
 
-**Objective:**
-Add advanced template components to the e-commerce product page, such as cards, modals, and a hero section. Also, provide an overview of other useful components like sliders and breadcrumbs.
+## **Overview**
+Welcome to **Milestone 4**, our **Recap & Enhancement** week!  
+This is your opportunity to review everything you've learned so far and apply improvements to your **E-commerce Project**.
 
-### Requirements:
+In the past three weeks, we built a **React-based E-commerce UI**, integrated **state management**, and handled **API fetching** dynamically.  
+Now, we’ll focus on **optimizing**, **refactoring**, and **enhancing** the project to make it **more scalable and user-friendly**.
 
-### HTML Structure:
+---
 
-1. **Use Existing HTML Files:**
-   - Use the HTML files (`index.html`, `clothing.html`, `electronics.html`) provided in previous milestones.
+## **Learning Objectives**
+By the end of this Milestone, you will:
+1. **Refactor your code** to improve maintainability and efficiency.
+2. **Optimize state management** for better performance.
+3. **Enhance UI/UX** by adding loading states, error handling, and smoother navigation.
+4. **Improve accessibility** by following best practices.
+5. **Apply best coding practices** to make your React app more readable and scalable.
 
-### Advanced Template Components:
+---
 
-1. **Cards:**
-   - The product list is already using card-like structures for displaying products. Ensure these are styled as cards.
-2. **Modals:**
-   - Add a modal component to display additional product details or images.
-3. **Hero Section:**
-   - The hero section is already present. Ensure it is styled properly and can be reused across different pages.
+## **Key Enhancements**
+Let's take a look at **three major areas** where we can improve our project.
 
-### Additional Theoretical Components:
+### **1️⃣ Code Optimization & Refactoring**
+- Convert components to **reusable UI elements**.
+- Use **custom hooks** to handle fetching logic.
+- Move API requests to a **services folder** for cleaner architecture.
 
-1. **Sliders:**
-   - Mention the use of sliders for showcasing featured products or promotions.
-2. **Breadcrumbs:**
-   - Explain the use of breadcrumbs for better navigation and user experience.
-3. **Accordions:**
-   - Describe how accordions can be used for FAQ sections or additional product information.
+**Example: Before & After Refactoring API Calls**
+Before:
+```javascript
+useEffect(() => {
+  fetch("https://fakestoreapi.com/products")
+    .then((res) => res.json())
+    .then((data) => setProducts(data));
+}, []);
+```
 
-### Detailed Steps:
+After refactoring:
+```javascript
+import { fetchProducts } from "../services/api";
 
-1. **Cards:**
+useEffect(() => {
+  async function loadProducts() {
+    const data = await fetchProducts();
+    setProducts(data);
+  }
+  loadProducts();
+}, []);
+```
 
-   - Ensure the product list items are styled as cards.
-   - Example:
-     ```html
-     <ul class="products--list">
-       <li>
-         <div class="product card">
-           <img
-             alt="This is an image"
-             src="<https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg>"
-             class="product--image"
-           />
-           <h1 class="product--name">
-             WD 2TB Elements Portable External Hard Drive - USB 3.0
-           </h1>
-           <p class="product--description">
-             USB 3.0 and USB 2.0 Compatibility Fast data transfers Improve PC
-             Performance High Capacity; Compatibility Formatted NTFS for Windows
-             10, Windows 8.1, Windows 7; Reformatting may be required for other
-             operating systems; Compatibility may vary depending on user's
-             hardware configuration and operating system
-           </p>
-           <p class="product--price">$ 64</p>
-           <button class="product--details">View Details</button>
-         </div>
-       </li>
-       <!-- More products -->
-     </ul>
-     ```
-   - CSS:
+✅ **Why?** Keeping API logic in a separate file makes it easier to manage and reuse.
 
-     ```css
-     .card {
-       padding: 20px;
-       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-       border-radius: 12px;
-       overflow: hidden;
-       transition: transform 0.2s;
-     }
+---
 
-     .card:hover {
-       transform: scale(1.05);
-     }
+### **2️⃣ UI/UX Improvements**
+- Add **loading indicators** while fetching data.
+- Implement **error handling** for failed requests.
+- Improve **navigation experience** with smoother animations.
 
-     .product--details {
-       background-color: #dd4c93;
-       border: none;
-       color: white;
-       padding: 10px 20px;
-       text-align: center;
-       text-decoration: none;
-       display: inline-block;
-       font-size: 16px;
-       margin: 10px 2px;
-       cursor: pointer;
-       border-radius: 5px;
-     }
-     ```
+**Example: Adding a Loading State**
+```javascript
+const [loading, setLoading] = useState(true);
 
-2. **Modals:**
+useEffect(() => {
+  async function loadProducts() {
+    try {
+      const data = await fetchProducts();
+      setProducts(data);
+    } catch (error) {
+      console.error("Failed to fetch products:", error);
+    } finally {
+      setLoading(false);
+    }
+  }
+  loadProducts();
+}, []);
+```
 
-   - Add a modal component to display additional product details.
-   - Example:
-     ```html
-     <!-- Modal -->
-     <div id="productModal" class="modal">
-       <div class="modal-content">
-         <span class="close">&times;</span>
-         <h1>Product Details</h1>
-         <img src="" alt="Product Image" id="modalProductImage" />
-         <p id="modalProductDescription"></p>
-         <p id="modalProductPrice"></p>
-       </div>
-     </div>
-     ```
-   - CSS:
+**Rendering a Loading Spinner:**
+```javascript
+return (
+  <div>
+    {loading ? <p>Loading products...</p> : <ProductList products={products} />}
+  </div>
+);
+```
 
-     ```css
-     /* MODAL */
-     .modal {
-       display: none;
-       position: fixed;
-       z-index: 1;
-       left: 0;
-       top: 0;
-       width: 100%;
-       height: 100%;
-       overflow: auto;
-       background-color: rgb(0, 0, 0);
-       background-color: rgba(0, 0, 0, 0.4);
-       padding-top: 60px;
-     }
+✅ **Why?** Users will know the app is working and fetching data instead of experiencing blank screens.
 
-     .modal img {
-       width: 300px;
-     }
+---
 
-     .modal-content {
-       position: relative;
-       display: flex;
-       gap: 20px;
-       flex-direction: column;
-       justify-content: center;
-       align-items: center;
-       background-color: #fefefe;
-       margin: auto;
-       padding: 20px;
-       border: 1px solid #888;
-       width: 80%;
-     }
+### **3️⃣ Accessibility & SEO**
+- Use **semantic HTML** (`<button>`, `<nav>`, `<header>`).
+- Improve **keyboard navigation**.
+- Add **ARIA attributes** for screen readers.
 
-     .close {
-       position: absolute;
-       top: 10px;
-       right: 20px;
-       color: #ff0000;
-       font-size: 34px;
-       font-weight: bold;
-     }
+**Example: Adding ARIA Attributes**
+```jsx
+<button aria-label="Add to Cart" onClick={handleAddToCart}>
+  🛒 Add to Cart
+</button>
+```
 
-     .close:hover,
-     .close:focus {
-       color: black;
-       text-decoration: none;
-       cursor: pointer;
-     }
-     ```
+✅ **Why?** It improves **accessibility** for users relying on screen readers.
 
-   - JavaScript:
+---
 
-     ```javascript
-     ...
-     	...
-     		<script/>
-     			// Get the modal
-     			var modal = document.getElementById("productModal");
+## **Bonus Challenge: New Features**
+1. **Implement a Search Bar** 🔍  
+   Allow users to search for products dynamically.
+2. **Add Sorting & Filtering** 🏷️  
+   Let users sort by **price, category, or rating**.
+3. **Improve Cart Functionality** 🛒  
+   - Show total price updates in real-time.
+   - Allow users to remove items.
 
-     			// Get the button that opens the modal
-     			var btns = document.querySelectorAll(".product--details");
+---
 
-     			// Get the <span> element that closes the modal
-     			var span = document.getElementsByClassName("close")[0];
+## **Expected Outcome**
+After completing this Milestone, your **E-commerce Project** will be:
+✅ **More scalable** with better-organized code.  
+✅ **More user-friendly** with enhanced UI/UX.  
+✅ **More robust** with improved state management and error handling.
 
-     			// When the user clicks the button, open the modal
-     			btns.forEach(btn => {
-     			  btn.onclick = function() {
-     			    modal.style.display = "block";
-     			    // Populate modal content based on the product details
-     			    var product = btn.closest(".product");
-     			    document.getElementById("modalProductImage").src = product.querySelector(".product--image").src;
-     			    document.getElementById("modalProductDescription").innerText = product.querySelector(".product--description").innerText;
-     			    document.getElementById("modalProductPrice").innerText = product.querySelector(".product--price").innerText;
-     			  };
-     			});
+---
 
-     			// When the user clicks on <span> (x), close the modal
-     			span.onclick = function() {
-     			  modal.style.display = "none";
-     			};
-
-     			// When the user clicks anywhere outside of the modal, close it
-     			window.onclick = function(event) {
-     			  if (event.target == modal) {
-     			    modal.style.display = "none";
-     			  }
-     			};
-     		</script>
-     	</body>
-     </html>
-     ```
-
-     > _Don't be afraid! You will learn how to read this JavaScript code in the next section of the course. For now, feel free to just copy the code inside a `<script>` tag in your index.html._
-
-3. **Hero Section:**
-   - Ensure the hero section is styled properly.
-   - Example:
-     ```html
-     <section class="site--hero">Ready to Shop</section>
-     ```
-   - CSS:
-     ```css
-     .site--hero {
-       background-image: url(../images/shopping.jpg);
-       background-position: bottom;
-       background-repeat: no-repeat;
-       background-size: cover;
-       color: white;
-       font-size: 90px;
-       padding: 240px;
-       text-align: center;
-     }
-     ```
-
-### Additional Theoretical Components:
-
-1. **Sliders:**
-   - Sliders can be used to showcase featured products or promotions. They allow users to swipe through different items or images in a confined space, making it interactive and visually appealing.
-2. **Breadcrumbs:**
-   - Breadcrumbs improve navigation by showing the user's current location within the website's hierarchy. They provide a trail for the user to follow back to the starting or entry point.
-3. **Accordions:**
-   - Accordions can be used for FAQ sections or to hide and show additional product information. They help in organizing content in a clean and collapsible format, allowing users to expand sections of interest.
-
-> Not required for the exercise, but feel free to explore this arguments too.
-
-### Submission:
-
-- Complete the HTML, CSS, and JavaScript code as described.
-- Test the page in a web browser to ensure it looks good on different screen sizes.
-- Submit the final HTML files (e.g., `index.html`, `clothing.html`, `electronics.html`) for review.
-
-Good luck, and have fun enhancing your e-commerce product page with advanced template components!
+## **Resources**
+1. **Code Refactoring in React** - [React Docs](https://react.dev/learn)
+2. **Error Handling Best Practices** - [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling)
+3. **Accessibility in React** - [React A11y Guide](https://react.dev/reference/react-dom/components/common#aria-attributes)
