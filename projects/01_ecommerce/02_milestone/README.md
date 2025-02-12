@@ -1,106 +1,177 @@
-# Exercise 1: Style for the HTML E-commerce Page
+# **Milestone 2: React – Routing, API Fetching, and State Management**
 
-### Objective:
+## **Overview**
+In **Milestone 2**, we are advancing our React-based **E-commerce App** by adding:
+✅ **Routing with React Router** → Multiple pages in our app  
+✅ **Fetching real data from an API** → Using the Fake Store API  
+✅ **Dynamic State Updates** → Managing data and rendering updates  
 
-Design a simple e-commerce product page using HTML and basic CSS. This page
-should display a product with details like an image, name, price, description,
-and an "Add to Cart" button.
+This Milestone builds upon **Milestone 1**, transforming our static product listings into a fully functional app.
 
-### Requirements:
+---
 
-1. HTML Structure:
+## **Learning Objectives**
+1. **Implement Client-Side Routing** with `React Router`
+2. **Fetch Data from an API** and display real-time product information
+3. **Create Dynamic Product Pages** that update based on user selection
+4. **Manage State** to track and display cart items
 
-   - Create a new HTML file (e.g., `index.html`).
-   - The page should have a <header> with the company logo and a navigation bar
-     with links to "Home", "Shop", "Contact".
-   - Below the header, add a main section (<main>) to display the products
-   - Add a footer with basic information like contact details and social media
-     links.
+---
 
-2. Products List Section:
+## **Project Outcome**
+At the end of this Milestone, students will have:  
+🚀 **A working multi-page E-commerce app** that fetches live product data  
+🛒 **A cart system that updates dynamically**  
+🔗 **Navigation between pages with React Router**  
 
-   - Inside the <main> section, create a container for the products list.
-   - Include an image of the product.
-   - Add the product name as a heading (`<h1>`).
-   - Display the product price.
-   - Write a brief description of the product in a paragraph.
+---
 
-3. Basic CSS Styling:
+## **Project Breakdown**
 
-- Use a `<style>` tag within the `<head>` of your HTML file to add basic CSS.
-- Style the header to have a background color and properly spaced navigation
-  links.
-- Center the product image and make it responsive.
-- Style the product name, price, and description with appropriate font sizes and
-  colors.
+### **1️⃣ Setting Up Routing with React Router**
 
-### Additional Guidelines:
-
-    - Use semantic HTML elements where appropriate.
-    - Ensure the page is visually appealing and easy to navigate.
-    - Make sure the product image is responsive and fits well on different screen sizes.
-    - The "Add to Cart" button should have a hover effect to enhance user interaction.
-
-### Example Structure:
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>R-Commerce</title>
-  </head>
-  <body>
-    <header>
-      <h1><a href="./index.html">R-Commerce</a></h1>
-      <ul>
-        <li>
-          <a href=""><!-- link name --></a>
-        </li>
-        <!--
-            ...
-            <li></li>
-            ...
-        -->
-      </ul>
-    </header>
-    <main>
-      <section>
-        <h3>All the products</h3>
-        <ul>
-          <li>
-            <img
-              alt="This is an image"
-              src="https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg"
-            />
-            <h1>
-              <!-- Product name -->
-            </h1>
-            <p>
-              <!-- Product description -->
-            </p>
-            <p>
-              <!-- Product rpice -->
-            </p>
-          </li>
-          <!--
-            ...
-            <li></li>
-            ...
-          -->
-        </ul>
-      </section>
-    </main>
-  </body>
-</html>
+👉 First, install `react-router-dom`:  
+```sh
+npm install react-router-dom
 ```
 
-### Submission:
+👉 Update `App.jsx` to include the **Router and Routes**:  
+```jsx
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import ProductDetails from "./pages/ProductDetails";
 
-- Complete the HTML and CSS code as described.
-- Test the page in a web browser to ensure it looks good on different screen
-  sizes.
-- Submit the final HTML file (e.g., `index.html`) for review.
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/product/:id" element={<ProductDetails />} />
+      </Routes>
+    </Router>
+  );
+}
 
-Good luck, and have fun creating your e-commerce product page!
+export default App;
+```
+
+---
+
+### **2️⃣ Fetching Product Data from an API**
+
+👉 Use **Fake Store API** to load product data dynamically:
+
+```js
+import { useState, useEffect } from "react";
+
+function HomePage() {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    fetch("https://fakestoreapi.com/products")
+      .then((res) => res.json())
+      .then((data) => setProducts(data));
+  }, []);
+
+  return (
+    <div>
+      <h1>Product List</h1>
+      {products.map((product) => (
+        <div key={product.id}>
+          <h2>{product.title}</h2>
+          <p>${product.price}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+export default HomePage;
+```
+
+---
+
+### **3️⃣ Creating a Dynamic Product Page**
+
+👉 Use **React Router Params** to load product details dynamically:
+```js
+import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+
+function ProductDetails() {
+  const { id } = useParams();
+  const [product, setProduct] = useState(null);
+
+  useEffect(() => {
+    fetch(`https://fakestoreapi.com/products/${id}`)
+      .then((res) => res.json())
+      .then((data) => setProduct(data));
+  }, [id]);
+
+  if (!product) return <p>Loading...</p>;
+
+  return (
+    <div>
+      <h1>{product.title}</h1>
+      <img src={product.image} alt={product.title} />
+      <p>{product.description}</p>
+      <p>${product.price}</p>
+    </div>
+  );
+}
+
+export default ProductDetails;
+```
+
+---
+
+### **4️⃣ Managing State for the Cart**
+
+👉 Update `App.jsx` to manage cart state globally:
+```js
+import { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import ProductDetails from "./pages/ProductDetails";
+
+function App() {
+  const [cart, setCart] = useState([]);
+
+  const addToCart = (product) => {
+    setCart([...cart, product]);
+  };
+
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage addToCart={addToCart} />} />
+        <Route path="/product/:id" element={<ProductDetails />} />
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;
+```
+
+---
+
+## **Expected Output**
+
+- 🛒 **Users can browse products and view details dynamically**
+- 🔗 **Each product has a dedicated page**
+- 🚀 **Cart updates in real-time as users add items**
+
+---
+
+## **Bonus Challenge**
+✅ Add a **Cart Page**  
+✅ Implement a **"Remove from Cart"** button  
+✅ Enhance UI with **Tailwind CSS**  
+
+---
+
+## **Resources**
+1. [React Router Documentation](https://reactrouter.com/)
+2. [MDN Guide on Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
+3. [JavaScript State Management](https://react.dev/learn/state-management)
