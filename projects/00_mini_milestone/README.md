@@ -1,201 +1,416 @@
-# **Milestone 0: JavaScript Fundamentals – Milestone Guide**
+# Welcome to the Fullstack bootcamp - Milestone 0
 
-## **Overview**
-In Milestone 0, you will refresh your **JavaScript** knowledge and set up your development environment for the Full Stack Bootcamp. You will build a task management application that helps you practice core JavaScript concepts while getting familiar with VS Code, Git, and GitHub.
+This course will expand your web development skills to be able to develop complete projects!
 
-This milestone is a **task management application**, where you will build features like **adding tasks, marking them complete, and storing them locally**.
+The curriculum is structured around four major projects:
 
----
+- E-commerce shop: Frontend with React
+- Twitter: Frontend & Backend with React & Next.js
+- Capstone: Fullstack (Frontend, Backend, Database) with React, Next.js, and Mongo
+- Career: Finding a job in tech!
 
-## **Learning Objectives**
-1. **Development Environment Setup**:
-   - Setting up VS Code with essential extensions
-   - Configuring Git and GitHub
-   - Understanding project structure and organization
+By the end of Milestone 0, you should have:
 
-2. **JavaScript Core Concepts**:
-   - Working with arrays and objects
-   - DOM manipulation and event handling
-   - Using localStorage for data persistence
-   - Understanding modern JavaScript features
+- A configured development environment with VS Code & Git
+- Understanding of JavaScript fundamentals and DOM manipulation
+- A working project: task management application
 
-3. **Version Control**:
-   - Basic Git commands and workflow
-   - GitHub repository management
-   - Creating and managing branches
-
-4. **Project Structure**:
-   - Organizing JavaScript code
-   - File and folder organization
-   - Code documentation and commenting
+As a project we will be creating a task management application, where you will build features like adding tasks, marking them complete, and storing them locally.
 
 ---
 
-## **Example from Milestone 0 Project: TaskFlow App**
+# Development Environment
 
-### **Project Setup**
+A development environment is a workspace where you write and manage your code. For our course, we will focus on the following:
 
-First, set up your development environment:
+### Code Editor
+
+A code editor is a program that allows you to do just that, edit code. Some code editors include many additional functionalities, we usually call these IDEs (integrated development environments) because they allow you to do many stuff without leaving the editor, making your life easier!
+
+For our courses, we use [Visual Studio Code](https://code.visualstudio.com/)
+
+- It supports multiple programming languages
+- Has a lot of great and useful plugins
+- Integrates well with Git for version control (more about this later)
+
+Do you have VS Code installed? if not, install it!
+
+There are some helpful extensions that we recommend you to install
+
+- Prettier
+- ESlint
+
+More in the future!
+
+---
+
+# Version Control
+
+When building projects, especially bigger ones, there are two essential pieces we need to keep in mind:
+
+- Track the changes in our project over time: This allows us to easily understand all the changes being made to the code base, as well as going back to previous versions in case something goes wrong
+- Collaborate with other developers: Everyone is working on their own machine with their own code, version control allows us to _merge_ these changes together!
+
+The most popular version control tool is [Git](https://git-scm.com/downloads). Make sure it is installed because we are going to need it. It is possible to use git from inside of VS code.
+
+(live example)
+
+### Branches
+
+Git branches allow you to create separate paths for your code changes, by default a git repository has a "main" or "master" branch. This is where the main code lives.
+
+Then you can create branches where you can do your own changes, when you are finished with your changes, you can merge your changes back to main.
+
+Useful commands:
 
 ```sh
-# Create project directory and initialize Git
-mkdir taskflow-app
-cd taskflow-app
-git init
+# create a branch
+git branch <branch-name>
 
-# Create project structure
-touch index.html
-mkdir css js
-touch css/style.css js/app.js
-touch README.md
+# switch to your new branch
+git checkout <branch-name>
+
+
+# you can also go back to the main branch at any time
+git checkout main
 ```
 
-### **Project Structure**
+### Commits
 
-📂 **Project Structure**
-```
-/taskflow-app
- ├── index.html
- ├── /css
- │   └── style.css
- ├── /js
- │   └── app.js
- └── README.md
+Commits are a way to save snapshots of changes made in your code at different points during its development history.
+
+After doing some changes to some files, you can "stage" them using `git add`
+
+```sh
+git add index.html
 ```
 
-### **Task Management Implementation**
+And then we can create a commit that describes the changes
 
-The `app.js` file implements core task management functionality:
-
-```javascript
-// Task structure
-class Task {
-  constructor(title, dueDate) {
-    this.id = Date.now();
-    this.title = title;
-    this.completed = false;
-    this.dueDate = dueDate;
-  }
-}
-
-// Task management
-class TaskManager {
-  constructor() {
-    this.tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-  }
-
-  addTask(title, dueDate) {
-    const task = new Task(title, dueDate);
-    this.tasks.push(task);
-    this.saveTasks();
-    return task;
-  }
-
-  toggleTask(id) {
-    const task = this.tasks.find(t => t.id === id);
-    if (task) {
-      task.completed = !task.completed;
-      this.saveTasks();
-    }
-  }
-
-  saveTasks() {
-    localStorage.setItem('tasks', JSON.stringify(this.tasks));
-  }
-}
+```sh
+git commit -m "Added the main entry html file"
 ```
 
-### **DOM Manipulation Example**
+And now we have our change saved in our new branch.
 
-Handle UI updates and user interactions:
+You can always go back and forth between branches, each branch has their commits, but we can merge branches so that the changes are adopted.
 
-```javascript
-class TaskUI {
-  constructor(taskManager) {
-    this.taskManager = taskManager;
-    this.taskList = document.querySelector('#taskList');
-    this.form = document.querySelector('#taskForm');
-    
-    this.form.addEventListener('submit', this.handleSubmit.bind(this));
-    this.renderTasks();
-  }
-
-  handleSubmit(event) {
-    event.preventDefault();
-    const title = document.querySelector('#taskTitle').value;
-    const dueDate = document.querySelector('#taskDue').value;
-    
-    const task = this.taskManager.addTask(title, dueDate);
-    this.renderTask(task);
-    this.form.reset();
-  }
-
-  renderTask(task) {
-    const li = document.createElement('li');
-    li.innerHTML = `
-      <span class="${task.completed ? 'completed' : ''}">${task.title}</span>
-      <span>${task.dueDate}</span>
-      <button onclick="toggleTask(${task.id})">Toggle</button>
-      <button onclick="deleteTask(${task.id})">Delete</button>
-    `;
-    this.taskList.appendChild(li);
-  }
-}
+```sh
+# go back to main
+git checkout main
+# merge my new branch into main
+git merge <branch-name>
+# now the commit is on the main branch!
 ```
 
-### **HTML Structure**
+You can achieve all of this from the VS code UI.
 
-Basic HTML structure in `index.html`:
+---
+
+# Javascript Recap
+
+Ok now create the skeleton of a project. What do we need?
+
+<details>
+<summary>Solution</summary>
+We need at least an html file, but also having a css and js would be good
 
 ```html
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TaskFlow</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-    <div class="container">
-        <h1>TaskFlow</h1>
-        <form id="taskForm">
-            <input type="text" id="taskTitle" placeholder="Task title" required>
-            <input type="date" id="taskDue" required>
-            <button type="submit">Add Task</button>
-        </form>
-        <ul id="taskList"></ul>
-    </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <h1>Hello</h1>
     <script src="js/app.js"></script>
-</body>
+  </body>
 </html>
 ```
 
+```css
+h1 {
+  color: gray;
+}
+```
+
+```js
+console.log("Hello World!");
+```
+
+</details>
+
+Let's do a recap of some of javascript essentials.
+
+What data types do we have in Javascript?
+
+```js
+// numbers
+3.14
+// strings
+"Hi!"
+// boolean
+true
+// undefined & null
+undefined
+null
+// arrays
+[1, 2, 3]
+// objects
+{
+  firstName: "Alan",
+  lastName: "Turing"
+}
+```
+
+We can also combine using operators
+
+```js
+1 + 1
+3.14 * 10
+3 >= 5
+"hi" + " " + "class!"
+```
+
+How do we declare variables?
+
+```js
+// let for variables that can be reassigned
+let counter = 0;
+
+// const for values that won't change
+const API_URL = "https://api.example.com";
+```
+
+Modern JavaScript provides multiple ways to create functions:
+
+```js
+// Function Declaration
+function addNumbers(a, b) {
+  return a + b;
+}
+
+// Method in an object
+const calculator = {
+  add: function (a, b) {
+    return a + b;
+  },
+};
+
+// Arrow Function, shorter way to create functions
+const add = (a, b) => a + b;
+```
+
+## DOM Manipulation
+
+The Document Object Model (DOM) is how JavaScript interacts with HTML:
+
+```js
+// Selecting elements
+const button = document.getElementById("myButton");
+const items = document.querySelectorAll(".item");
+
+// Creating elements
+const newDiv = document.createElement("div");
+newDiv.textContent = "Hello, World!";
+document.body.appendChild(newDiv);
+
+// Event handling
+button.onClick = function () {
+  console.log("Button clicked!");
+};
+```
+
+### Exercise
+
+Now, using the stuff we talked about, you can take some time to implement a simple counter with:
+
+- Increment
+- Decrement
+- Reset
+
 ---
 
-## **Expected Outcome**
-By the end of Milestone 0, you should have:
-✅ A configured development environment with VS Code, Git, and GitHub  
-✅ A working task management application with core features  
-✅ Understanding of JavaScript fundamentals and DOM manipulation  
-✅ Experience with Git workflow and GitHub  
+What happens with the counter value when we refresh the page? How can we make it so that the value remains the same when you refresh?
+
+### Adding persistence
+
+Browser's localStorage provides a way to store data, so that when the user refreshes or re-opens the webpage, the data is still there!
+
+Please note that this only works on the same browser on the same device, so if you try to open you webpage in a different browser, or on a different device, you won't see the same data. We will talk about how to solve this problem in the future 😉
+
+```js
+// save value in local storage
+localStorage.setItem("username", "JohnDoe");
+
+// get value from local storage
+const username = localStorage.getItem("username");
+// it is important to check that the value exists! otherwise we will get null
+if (username !== null) {
+  console.log(username); // Output: "JohnDoe"
+} else {
+  console.log("There is no value in local storage!");
+}
+
+// if we want to delete something, we can use the following
+localStorage.removeItem("username");
+```
+
+Please note that `localStorage` can only store strings! if we want to save something that is not a string, we have to convert to and from a string. For that we use `JSON.stringify` and `JSON.parse`.
+
+```js
+const person = {
+  name: "Alan",
+  age: 20,
+};
+
+// convert to JSON before saving
+localStorage.setItem("info", JSON.stringify(person));
+
+// if we want to get the data, it will be a string
+const personJSON = localStorage.getItem("info");
+let person;
+if (personJSON !== null) {
+  person = JSON.parse(personJSON);
+} else {
+  // handle the case where the data is missing
+  // you can decide what to do here!
+  // maybe set some default value?
+  console.log("No person found in local storage");
+}
+```
+
+### Exercise
+
+Ok now add persistence to your counter, so that the values are persisted when you refresh the page.
 
 ---
 
-## **Bonus Challenge**
-- Add task categories or tags  
-- Implement task priority levels  
-- Add task filtering and sorting  
-- Create a task deadline countdown  
+Ok, now we want to move towards our milestone project, creating a todo app. But for that, we want to introduce some functionalities.
+
+### Exercise
+
+Ok lets assume we have an array of objects
+
+```js
+const myFriends = [
+  {
+    name: "Alice",
+    age: 20,
+  },
+  {
+    name: "Bob",
+    age: 25,
+  },
+  {
+    name: "Caro",
+    age: 15,
+  },
+];
+```
+
+Now write a function that takes an array as a parameter, and returns all the people who are old enough to drive (you need be at least 18 years old to drive)
+
+<details>
+<summary>Solution</summary>
+
+```js
+function getPeopleWhoCanDrive(people) {
+  const newArray = [];
+  for (let i = 0; i < people.length; i++) {
+    const person = people[i];
+    if (person.age >= 18) {
+      newArray.push(person);
+    }
+  }
+  return newArray;
+}
+
+const friendsWhoCanDrive = getPeopleWhoCanDrive(myFriends);
+console.log(friendsWhoCanDrive);
+```
+
+But actually, we don't need to write all of this code, javascript has some fancy array methods that we can use to achieve the same with less code!
+
+</details>
+
+## Array Methods
+
+Modern JavaScript provides powerful array methods:
+
+```js
+const tasks = [
+  { id: 1, title: "Learn JavaScript", completed: false },
+  { id: 2, title: "Build Project", completed: true },
+  { id: 3, title: "Write Tests", completed: false },
+];
+
+// Filter: Get incomplete tasks
+const incompleteTasks = tasks.filter((task) => !task.completed);
+
+// Map: Get all titles
+const titles = tasks.map((task) => task.title);
+
+// Find: Get specific task
+const task = tasks.find((task) => task.id === 2);
+
+// Some: Check if any task is completed
+const hasCompleted = tasks.some((task) => task.completed);
+```
+
+You can read more about these in the [MDN Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array#instance_methods)
+
+### Modular JavaScript
+
+Breaking code into modules improves maintainability, we can have separate files responsible for different pieces of functionality.
+
+For example
+
+```js
+// counter.js
+export const counter = {
+  increment: function () {
+    // some code
+  },
+};
+
+// app.js
+import { counter } from "./counter.js";
+counter.increment();
+```
+
+This helps us make the code more isolated, coherent, and easy to change.
 
 ---
 
-## **Resources**
-1. [VS Code Download](https://code.visualstudio.com/)
-2. [Git Installation Guide](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-3. [GitHub Getting Started](https://docs.github.com/en/get-started)
-4. [JavaScript MDN Guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide)
+# Project
 
----
+As a project we will be creating a task management application, with the features:
 
-📌 **Next Step → Milestone 1: Introduction to React**
+- Adding tasks
+- Removing tasks
+- Marking them as complete
+
+**Bonus**
+
+- Add task categories or tags
+- Implement task priority levels
+- Add task filtering and sorting
+- Create a task deadline countdown
+
+# Additional Resources
+
+1. [VS Code Documentation](https://code.visualstudio.com/docs)
+2. [VS Code Tips and Tricks](https://code.visualstudio.com/docs/getstarted/tips-and-tricks)
+3. [Git Basics Guide](https://git-scm.com/book/en/v2/Getting-Started-Git-Basics)
+4. [Git Cheat Sheet](https://education.github.com/git-cheat-sheet-education.pdf)
+5. [Chrome DevTools Guide](https://developers.google.com/web/tools/chrome-devtools)
+6. [JavaScript MDN Guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide)
+7. [Modern JavaScript Tutorial](https://javascript.info/)
+
+# What's Next?
+
+In the next milestone, we'll dive into React and start building more complex applications. The JavaScript fundamentals you've learned here will be essential as we move forward.
