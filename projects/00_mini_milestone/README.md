@@ -1,21 +1,21 @@
 # Welcome to the Fullstack bootcamp - Milestone 0
 
-This course will expand your web development skills to be able to develop complete projects!
+### Learning Objectives
 
-The curriculum is structured around four major projects:
+1. Development Environment Setup:
+   - Setting up VS Code with essential extensions
+   - Configuring Git and GitHub
+2. Version Control:
+   - Basic Git commands and workflow
+   - GitHub repository management
+   - Creating and managing branches
+3. JavaScript Core Concepts:
+   - Working with arrays and objects
+   - DOM manipulation and event handling
+   - Using localStorage for data persistence
+   - Understanding modern JavaScript features
 
-- E-commerce shop: Frontend with React
-- Twitter: Frontend & Backend with React & Next.js
-- Capstone: Fullstack (Frontend, Backend, Database) with React, Next.js, and Mongo
-- Career: Finding a job in tech!
-
-By the end of Milestone 0, you should have:
-
-- A configured development environment with VS Code & Git
-- Understanding of JavaScript fundamentals and DOM manipulation
-- A working project: task management application
-
-As a project we will be creating a task management application, where you will build features like adding tasks, marking them complete, and storing them locally.
+As a **project** we will be creating a task management application, where you will build features like adding tasks, marking them complete, and storing them locally.
 
 ---
 
@@ -169,10 +169,10 @@ null
 We can also combine using operators
 
 ```js
-1 + 1
-3.14 * 10
-3 >= 5
-"hi" + " " + "class!"
+1 + 1;
+3.14 * 10;
+3 >= 5;
+"hi" + " " + "class!";
 ```
 
 How do we declare variables?
