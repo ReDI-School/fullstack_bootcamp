@@ -68,7 +68,7 @@ git checkout feature/task-creation
 // Show modern JavaScript features
 const taskManager = {
   tasks: [],
-  
+
   addTask(title) {
     const task = {
       id: Date.now(),
@@ -103,11 +103,11 @@ Have students build a simple counter with:
 // Starter code for students
 const counter = {
   value: 0,
-  
+
   increment() {
     // TODO: Implement increment
   },
-  
+
   decrement() {
     // TODO: Implement decrement
   }
@@ -129,14 +129,14 @@ const counter = {
 function setupTaskForm() {
   const form = document.querySelector('#taskForm');
   const taskList = document.querySelector('#taskList');
-  
+
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const title = form.querySelector('input').value;
     addTask(title);
     form.reset();
   });
-  
+
   taskList.addEventListener('click', (e) => {
     if (e.target.matches('.toggle-task')) {
       const taskId = parseInt(e.target.dataset.taskId);
@@ -219,16 +219,3 @@ Students should be able to:
 4. Manipulate the DOM effectively
 5. Handle events and form data
 6. Store and retrieve data from localStorage
-
----
-
-## **Additional Resources**
-
-1. [JavaScript MDN Guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide)
-2. [Git Cheat Sheet](https://education.github.com/git-cheat-sheet-education.pdf)
-3. [VS Code Tips and Tricks](https://code.visualstudio.com/docs/getstarted/tips-and-tricks)
-4. [Chrome DevTools Guide](https://developers.google.com/web/tools/chrome-devtools)
-
----
-
-Remember to encourage questions and hands-on practice throughout the lesson. The goal is to ensure students have a solid foundation before moving on to React.
