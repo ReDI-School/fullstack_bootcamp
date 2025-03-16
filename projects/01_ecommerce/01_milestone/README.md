@@ -1,4 +1,4 @@
-# **Milestone 1: Introduction to React **
+# **Milestone 1: Introduction to React**
 
 ## **Overview**
 
@@ -8,11 +8,11 @@ Welcome to your first milestone in learning React.js! You will learn how to set 
 
 ## **Learning Objectives**
  
-✅ Understand React fundamentals and its component-based architecture
-✅ Create a new React project using Vite
-✅ Build and compose reusable functional components
-✅ Style your application using Tailwind CSS
-✅ Fetch and display dynamic data from an API
+✅ Understand React fundamentals and its component-based architecture \
+✅ Create a new React project using Vite \
+✅ Build and compose reusable functional components \
+✅ Style your application using Tailwind CSS \
+✅ Fetch and display dynamic data from an API 
 
 ---
 
