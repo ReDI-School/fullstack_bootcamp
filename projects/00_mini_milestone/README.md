@@ -111,6 +111,14 @@ git merge <branch-name>
 
 You can achieve all of this from the VS code UI.
 
+
+How can I push a branch to a remote repository?
+
+```sh
+git push origin <branch-name>
+```
+
+
 ---
 
 # Javascript Recap
