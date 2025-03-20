@@ -55,6 +55,12 @@ The most popular version control tool is [Git](https://git-scm.com/downloads). M
 
 (live example)
 
+```sh
+# initialize a folder to become a git repository
+git init .
+
+```
+
 ### Branches
 
 Git branches allow you to create separate paths for your code changes, by default a git repository has a "main" or "master" branch. This is where the main code lives.
