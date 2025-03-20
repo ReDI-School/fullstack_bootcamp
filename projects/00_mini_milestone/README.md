@@ -118,7 +118,7 @@ How can I push a branch to a remote repository?
 # push your branch
 git push origin <branch-name>
 # after it is merged, you need to
-git pull
+git pull origin <branch-name>
 ```
 
 
