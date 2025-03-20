@@ -115,7 +115,10 @@ You can achieve all of this from the VS code UI.
 How can I push a branch to a remote repository?
 
 ```sh
+# push your branch
 git push origin <branch-name>
+# after it is merged, you need to
+git pull origin <branch-name>
 ```
 
 
