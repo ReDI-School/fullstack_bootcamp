@@ -1,13 +1,13 @@
-# **Teacher Guide – Milestone 3: Advanced Next.js Features**
+# **Teacher Guide – Milestone 4: Advanced Next.js Features**
 
 ## **Introduction**
 This Milestone, students are introduced to **advanced Next.js concepts**, including **dynamic routing, middleware authentication, and API security**. These topics are essential for **building scalable and secure web applications**.
 
 By the end of this Milestone, students should be able to:
-✅ Implement **dynamic routes** for handling user and tweet data.  
-✅ Use **Next.js middleware** for authentication and route protection.  
-✅ Secure API routes with **authentication checks**.  
-✅ Implement **route guards** on the client-side using React Context.  
+✅ Implement **dynamic routes** for handling user and tweet data.
+✅ Use **Next.js middleware** for authentication and route protection.
+✅ Secure API routes with **authentication checks**.
+✅ Implement **route guards** on the client-side using React Context.
 
 ---
 
@@ -153,22 +153,22 @@ export default function Dashboard() {
 
 ## **Key Learning Outcomes**
 
-✅ **Students will understand how Next.js routing works.**  
-✅ **They will be able to secure API routes using authentication.**  
-✅ **They will implement protected routes with middleware and client-side guards.**  
-✅ **They will integrate authentication seamlessly across the app.**  
+✅ **Students will understand how Next.js routing works.**
+✅ **They will be able to secure API routes using authentication.**
+✅ **They will implement protected routes with middleware and client-side guards.**
+✅ **They will integrate authentication seamlessly across the app.**
 
 ---
 
 ## **Additional Resources**
 
-🔹 [Next.js Routing Guide](https://nextjs.org/docs/routing/introduction)  
-🔹 [Next.js Middleware Docs](https://nextjs.org/docs/advanced-features/middleware)  
-🔹 [Next.js API Routes](https://nextjs.org/docs/api-routes/introduction)  
+🔹 [Next.js Routing Guide](https://nextjs.org/docs/routing/introduction)
+🔹 [Next.js Middleware Docs](https://nextjs.org/docs/advanced-features/middleware)
+🔹 [Next.js API Routes](https://nextjs.org/docs/api-routes/introduction)
 
 ---
 
 ### **Next Steps: Moving to Full API Integration**
-Next Milestone, students will learn how to **integrate a real-time API** with their Twitter Clone, allowing users to post, fetch, and delete tweets dynamically.  
+Next Milestone, students will learn how to **integrate a real-time API** with their Twitter Clone, allowing users to post, fetch, and delete tweets dynamically.
 
 ---

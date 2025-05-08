@@ -1,12 +1,12 @@
-# **Milestone 3 - Reference Guide**
+# **Milestone 4 - Reference Guide**
 
 ## **Overview**
-This document serves as a **quick reference** for the key concepts, functions, and patterns used in **Milestone 3** of the Next.js module. It includes **dynamic routing, authentication, API protection, and client-side guards**.
+This document serves as a **quick reference** for the key concepts, functions, and patterns used in **Milestone 4** of the Next.js module. It includes **dynamic routing, authentication, API protection, and client-side guards**.
 
 ---
 
 ## **1️⃣ Dynamic Routing in Next.js**
-### **Creating Dynamic Routes**  
+### **Creating Dynamic Routes**
 - Use **bracket syntax** `[id]` for dynamic paths.
 - Access `params.id` to retrieve dynamic values.
 
@@ -30,8 +30,8 @@ export default async function TweetPage({ params }) {
 ```
 
 🔹 **Key Takeaways:**
-✅ Use `params.id` to fetch and display **dynamic data**.  
-✅ Next.js automatically **creates routes based on folder structure**.  
+✅ Use `params.id` to fetch and display **dynamic data**.
+✅ Next.js automatically **creates routes based on folder structure**.
 
 ---
 
@@ -61,9 +61,9 @@ export const config = {
 ```
 
 🔹 **Key Takeaways:**
-✅ Middleware **runs before the request reaches the page**.  
-✅ **If not authenticated**, users are **redirected to /login**.  
-✅ Use `matcher` to **restrict specific routes**.  
+✅ Middleware **runs before the request reaches the page**.
+✅ **If not authenticated**, users are **redirected to /login**.
+✅ Use `matcher` to **restrict specific routes**.
 
 ---
 
@@ -90,15 +90,15 @@ export async function GET(request) {
 ```
 
 🔹 **Key Takeaways:**
-✅ Always **validate authentication** inside API routes.  
-✅ If `authToken` is missing, return a **401 Unauthorized** response.  
-✅ API routes **should never expose sensitive user data** without authentication.  
+✅ Always **validate authentication** inside API routes.
+✅ If `authToken` is missing, return a **401 Unauthorized** response.
+✅ API routes **should never expose sensitive user data** without authentication.
 
 ---
 
 ## **4️⃣ Client-Side Route Guards**
 ### **Why Do We Need Route Guards?**
-Even with **middleware and API protection**, we still need to **protect client-side navigation**.  
+Even with **middleware and API protection**, we still need to **protect client-side navigation**.
 
 📌 **Example: Redirecting Unauthenticated Users**
 ```javascript
@@ -127,9 +127,9 @@ export default function Dashboard() {
 ```
 
 🔹 **Key Takeaways:**
-✅ **Prevent unauthorized users** from accessing protected pages.  
-✅ **Redirect users** to `/login` if they are **not authenticated**.  
-✅ **Check authentication state** using `useContext` inside protected pages.  
+✅ **Prevent unauthorized users** from accessing protected pages.
+✅ **Redirect users** to `/login` if they are **not authenticated**.
+✅ **Check authentication state** using `useContext` inside protected pages.
 
 ---
 
@@ -145,15 +145,15 @@ export default function Dashboard() {
 
 ## **🔗 Additional Resources**
 
-🔹 [Next.js Routing Guide](https://nextjs.org/docs/routing/introduction)  
-🔹 [Next.js Middleware Docs](https://nextjs.org/docs/advanced-features/middleware)  
-🔹 [Next.js API Routes](https://nextjs.org/docs/api-routes/introduction)  
+🔹 [Next.js Routing Guide](https://nextjs.org/docs/routing/introduction)
+🔹 [Next.js Middleware Docs](https://nextjs.org/docs/advanced-features/middleware)
+🔹 [Next.js API Routes](https://nextjs.org/docs/api-routes/introduction)
 
 ---
 
 ## **Next Steps: Connecting with a Database**
 Next Milestone, we will **integrate a real database** to store and fetch real user-generated tweets, making our Twitter Clone fully functional.
 
-🚀 **Get ready to take your project to the next level!**  
+🚀 **Get ready to take your project to the next level!**
 
 ---

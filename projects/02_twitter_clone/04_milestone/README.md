@@ -1,14 +1,14 @@
-# **Milestone 3: Advanced Next.js - API, Routing & Security**
+# **Milestone 4: Advanced Next.js - API, Routing & Security**
 
 ## **Overview**
-In Milestone 3, we take our **Twitter Clone project** to the next level by implementing **dynamic API routes, advanced data-fetching strategies, global state management, and authentication security** in Next.js. 
+In Milestone 4, we take our **Twitter Clone project** to the next level by implementing **dynamic API routes, advanced data-fetching strategies, global state management, and authentication security** in Next.js.
 
 By the end of this Milestone, you’ll be able to:
-✅ Build **dynamic API routes** to interact with a database  
-✅ Apply **Server-Side Rendering (SSR)**, **Static Site Generation (SSG)**, and **Incremental Static Regeneration (ISR)** for optimal performance  
-✅ Manage global state using **Context API**  
-✅ Secure your application with **protected routes and authentication middleware**  
-✅ Implement **client-side and server-side security measures**  
+✅ Build **dynamic API routes** to interact with a database
+✅ Apply **Server-Side Rendering (SSR)**, **Static Site Generation (SSG)**, and **Incremental Static Regeneration (ISR)** for optimal performance
+✅ Manage global state using **Context API**
+✅ Secure your application with **protected routes and authentication middleware**
+✅ Implement **client-side and server-side security measures**
 
 ---
 
@@ -16,9 +16,9 @@ By the end of this Milestone, you’ll be able to:
 Next.js allows us to create **API routes** directly in our project without needing a separate backend.
 
 ### **Why Use Dynamic API Routes?**
-✅ **Simplifies backend logic** – No need for a separate Node.js/Express server  
-✅ **Handles CRUD operations** – Fetch, update, and delete data from the database  
-✅ **Easily integrates with MongoDB**  
+✅ **Simplifies backend logic** – No need for a separate Node.js/Express server
+✅ **Handles CRUD operations** – Fetch, update, and delete data from the database
+✅ **Easily integrates with MongoDB**
 
 ### **Creating an API Route**
 📁 **Project Structure**
@@ -91,9 +91,9 @@ export async function getStaticProps() {
 When working on a project like a **Twitter Clone**, we need to share data between components (e.g., authentication status, user data, tweets).
 
 ### **Why Use Context API?**
-✅ Avoids **prop drilling**  
-✅ Centralized **authentication state management**  
-✅ Allows **global access to user data**  
+✅ Avoids **prop drilling**
+✅ Centralized **authentication state management**
+✅ Allows **global access to user data**
 
 📌 **Example: Creating a Global Auth Context**
 ```js
@@ -132,15 +132,15 @@ export default function Profile() {
 ## **Bonus Challenge: Implement Authentication**
 For a **real-world Twitter clone**, authentication is essential. Here’s how you can implement it:
 
-1️⃣ **User Registration & Login**  
-- Create a sign-up form  
-- Store user credentials securely in **MongoDB**  
-- Hash passwords using **bcrypt**  
+1️⃣ **User Registration & Login**
+- Create a sign-up form
+- Store user credentials securely in **MongoDB**
+- Hash passwords using **bcrypt**
 
-2️⃣ **JWT Authentication**  
-- Issue **JWT tokens** upon login  
-- Store tokens in **cookies** for persistence  
-- Use tokens to authenticate API requests  
+2️⃣ **JWT Authentication**
+- Issue **JWT tokens** upon login
+- Store tokens in **cookies** for persistence
+- Use tokens to authenticate API requests
 
 📌 **Example: Generating a JWT Token**
 ```js
@@ -148,14 +148,14 @@ import jwt from "jsonwebtoken";
 
 export async function POST(req) {
   const { username, password } = await req.json();
-  
+
   // Validate user (check in database)
   const user = await User.findOne({ username });
   if (!user) return NextResponse.json({ error: "User not found" }, { status: 404 });
 
   // Generate JWT
   const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: "1h" });
-  
+
   return NextResponse.json({ token }, { status: 200 });
 }
 ```

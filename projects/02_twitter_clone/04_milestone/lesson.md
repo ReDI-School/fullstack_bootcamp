@@ -1,4 +1,4 @@
-# **Milestone 3 - Advanced Next.js Features**
+# **Milestone 4 - Advanced Next.js Features**
 
 ## **Introduction**
 
@@ -57,9 +57,9 @@ export async function GET(request, { params }) {
 
 ### **Benefits of API Routes in Next.js**
 
-✅ Eliminates the need for an external backend service.  
-✅ Provides a seamless way to interact with databases or external APIs.  
-✅ Supports all HTTP methods (`GET`, `POST`, `PUT`, `DELETE`).  
+✅ Eliminates the need for an external backend service.
+✅ Provides a seamless way to interact with databases or external APIs.
+✅ Supports all HTTP methods (`GET`, `POST`, `PUT`, `DELETE`).
 ✅ Scales efficiently as the app grows.
 
 ---
@@ -99,8 +99,8 @@ export default async function TweetPage({ params }) {
 }
 ```
 
-✅ **SSR ensures each request gets the most up-to-date data**. However, it **slows down performance** for high-traffic pages.  
-✅ **SSG pre-renders content** for faster performance but isn't ideal for real-time content.  
+✅ **SSR ensures each request gets the most up-to-date data**. However, it **slows down performance** for high-traffic pages.
+✅ **SSG pre-renders content** for faster performance but isn't ideal for real-time content.
 ✅ **ISR combines both**, updating pages at regular intervals without rebuilding the entire app.
 
 ---
@@ -139,7 +139,7 @@ export const config = {
 };
 ```
 
-✅ **Middleware intercepts requests**, allowing us to check authentication before rendering pages.  
+✅ **Middleware intercepts requests**, allowing us to check authentication before rendering pages.
 ✅ **Prevents unauthorized access** to sensitive routes like `/profile` and `/dashboard`.
 
 ---
@@ -186,8 +186,8 @@ function Navbar({ user, setUser }) {
 
 The **Context API** allows us to store **global state** and access it from any component **without** passing props manually.
 
-✅ **Improves maintainability** by centralizing shared state.  
-✅ **Reduces unnecessary re-renders** by providing direct access to data.  
+✅ **Improves maintainability** by centralizing shared state.
+✅ **Reduces unnecessary re-renders** by providing direct access to data.
 ✅ **Ideal for authentication, theme settings, and global messages.**
 
 ---
@@ -293,8 +293,8 @@ export default function Header() {
 }
 ```
 
-✅ **Now, authentication state is available throughout the entire app.**  
-✅ **Any component can access the `user` object without prop drilling.**  
+✅ **Now, authentication state is available throughout the entire app.**
+✅ **Any component can access the `user` object without prop drilling.**
 ✅ **The `login` and `logout` functions handle user authentication easily.**
 
 ---
@@ -377,8 +377,8 @@ export default function TweetCard({ tweet }) {
 }
 ```
 
-✅ **The Like button dynamically updates for each tweet.**  
-✅ **Liked tweets persist across components without prop drilling.**  
+✅ **The Like button dynamically updates for each tweet.**
+✅ **Liked tweets persist across components without prop drilling.**
 ✅ **Global state management keeps UI interactions smooth and responsive.**
 
 ---
@@ -486,8 +486,8 @@ export const config = {
 
 ### **How It Works**
 
-✅ If a user **is not logged in**, they are **redirected to the login page**.  
-✅ If a user **has an auth token**, they can access the dashboard and profile pages.  
+✅ If a user **is not logged in**, they are **redirected to the login page**.
+✅ If a user **has an auth token**, they can access the dashboard and profile pages.
 ✅ The **matcher property** applies middleware **only to specific routes** (`/dashboard/*` and `/profile/*`).
 
 ---
@@ -594,8 +594,8 @@ This Milestone, we explored **advanced Next.js features** to enhance our Twitter
 
 ## **How These Concepts Improve Our Twitter Clone**
 
-✅ **Security** → API endpoints and frontend pages are now protected.  
-✅ **Scalability** → Dynamic routes and API handling improve flexibility.  
+✅ **Security** → API endpoints and frontend pages are now protected.
+✅ **Scalability** → Dynamic routes and API handling improve flexibility.
 ✅ **Performance** → Middleware optimizes authentication without extra server requests.
 
 ---
