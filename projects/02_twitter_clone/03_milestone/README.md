@@ -1,163 +1,187 @@
-# **Milestone 3: Advanced Next.js - API, Routing & Security**
+# **Milestone 3: Advanced Next.js - API, Routing, Backend**
 
-## **Overview**
-In Milestone 3, we take our **Twitter Clone project** to the next level by implementing **dynamic API routes, advanced data-fetching strategies, global state management, and authentication security** in Next.js. 
-
-By the end of this Milestone, you’ll be able to:
-✅ Build **dynamic API routes** to interact with a database  
-✅ Apply **Server-Side Rendering (SSR)**, **Static Site Generation (SSG)**, and **Incremental Static Regeneration (ISR)** for optimal performance  
-✅ Manage global state using **Context API**  
-✅ Secure your application with **protected routes and authentication middleware**  
-✅ Implement **client-side and server-side security measures**  
+In this lesson, we'll do some backend development, and learn how to create backend endpoints using Next.js API routes. These routes allow us to define server-side logic that runs when a request is made. For this lesson, and for simplicity's sake, we won't be using a database, we'll store data in files on disk. This helps us focus on the API design and backend logic. We'll talk about databases later.
 
 ---
 
-## **1️⃣ Dynamic API Routes in Next.js**
-Next.js allows us to create **API routes** directly in our project without needing a separate backend.
+## API Routes
 
-### **Why Use Dynamic API Routes?**
-✅ **Simplifies backend logic** – No need for a separate Node.js/Express server  
-✅ **Handles CRUD operations** – Fetch, update, and delete data from the database  
-✅ **Easily integrates with MongoDB**  
 
-### **Creating an API Route**
-📁 **Project Structure**
-```
-/app
- ├── /api
- │   ├── /tweets
- │   │   ├── route.js  (Handles all tweet operations)
- │   │   ├── [id].js   (Handles individual tweet requests)
-```
+You can read about routes in the [official tutorial](https://nextjs.org/docs/app/building-your-application/routing/route-handlers) and in the [reference](https://nextjs.org/docs/app/api-reference/file-conventions/route).
 
-📌 **Example: Fetching All Tweets** (`app/api/tweets/route.js`)
+
+
+Next.js allows us to create API routes inside our project, enabling you to do both frontend and backend development in the same project!
+
+So not only we will use `fetch` inside of our react app, we will also write the API that will be fetched.
+
+
+You can define routes in modern versions of next.js using the `route.js` file name, (or `ts` if using typescript), the structure is similar to how we did this with `page.js` to define pages, however, *you are not allowed to have a `page.js` and `route.js` in the same folder.*
+
+
+Let's start with an example, create the file `app/api/hello/route.js`
+
+and put this code inside of it
+
 ```js
-import { NextResponse } from "next/server";
-import connectDB from "@/lib/db";
-import Tweet from "@/models/Tweet";
+import { NextResponse, NextRequest } from "next/server";
 
-// GET: Fetch all tweets
-export async function GET() {
-  await connectDB();
-  const tweets = await Tweet.find().sort({ createdAt: -1 });
-  return NextResponse.json(tweets, { status: 200 });
+/**
+ * @param {NextRequest} request
+ */
+export async function GET(request) {
+  console.log("Request to", request.url);
+  return NextResponse.json({ ping: "pong" });
 }
 ```
 
-📌 **Example: Fetching a Single Tweet** (`app/api/tweets/[id]/route.js`)
+Then open your next js project in the browser, and in the developer tools' console run this command:
+
 ```js
-export async function GET(req, { params }) {
-  await connectDB();
-  const tweet = await Tweet.findById(params.id);
-  if (!tweet) {
-    return NextResponse.json({ error: "Tweet not found" }, { status: 404 });
-  }
-  return NextResponse.json(tweet, { status: 200 });
-}
+fetch("/api/hello").then(r => r.json()).then(console.log)
 ```
+
+What do you see? can you explain what happened? Can you check the network tab for details?
 
 ---
 
-## **2️⃣ Data Fetching Strategies**
-Next.js provides multiple ways to fetch data, each optimized for different use cases.
 
-| Fetching Method | When to Use | Pros | Example |
-|----------------|------------|------|---------|
-| **SSR (Server-Side Rendering)** | When you need **real-time data** on each request | Data is always fresh | `getServerSideProps()` |
-| **SSG (Static Site Generation)** | When data doesn’t change often | Faster page loads | `getStaticProps()` |
-| **ISR (Incremental Static Regeneration)** | When data needs **regular updates** but without full re-render | Best of both worlds | `revalidate` option in `getStaticProps()` |
 
-📌 **Example: Fetching Data with SSR**
+### HTTP
+
+We have just created a new API endpoint, and then we called this endpoint from the browser. More specifically we created an endpoint that listens on GET requests.
+
+Requests are done over something called [HTTP or Hypertext Transfer Protocol](https://developer.mozilla.org/en-US/docs/Web/HTTP). Your browser, sometimes referred to as a client, does a request to a server, using the HTTP format.
+
+
+HTTP consists of many parts:
+
+_URL_: Where the request is supposed to go, for example `https://dummyjson.com/posts` means go the server at `dummyjson.com` and then give me the route `/posts`, here sometimes you can have additional query parameters.
+
+
+In our next.js project, we created a file in `app/api/hello/`, which tells next js to create a new API that listens on the route `/api/hello`, and so when we did a fetch request from our browser like this `fetch('/api/hello')`, we got a response back from our server.
+
+If you don't define the _host_ (the part with `http://.....com`, then the current host of the browser will be used).
+
+
+_Method_: Sometimes referred to as the HTTP verb, this is a way to distinguish different HTTP operations, of which there are many
+* GET: get something
+* POST: create something
+* PUT: create or update something
+* PATCH: update something
+* DELETE: remove something
+
+And others, [You can find the full list here](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods).
+
+
+When you do a normal `fetch` request, the default method is `GET`, which is the same name of function we defined in our `route.js` file. You can change the method used for teh `fetch` request in the second parameter.
+
 ```js
-export async function getServerSideProps() {
-  const res = await fetch("https://api.example.com/tweets");
-  const tweets = await res.json();
-  return { props: { tweets } };
-}
+fetch("/api/hello", {
+  method: "POST"
+})
 ```
+if you run this code in your browser, what do you get?
 
-📌 **Example: Fetching Data with SSG**
-```js
-export async function getStaticProps() {
-  const res = await fetch("https://api.example.com/tweets");
-  const tweets = await res.json();
-  return { props: { tweets }, revalidate: 60 }; // ISR updates every 60 seconds
-}
-```
+<details>
+ <summary>You should get...</summary>
+
+ An HTTP 405 Error, Method not allowed, why?
+</details>
+
+
+_Headers_: Headers are metadata then you send with your request to explain to the server what you want, for example, you can send to the server `accept: application/json` which means: "Please respond with json because I can understand it".
+
+Sometimes if there is authorization for a request it will be sent in the headers, you will see something like `Authorization: Bearer .....`.
+
+
+_Body_: this is the data that we are sending to the server, this data could be anything, but usually we convert it to a json string before sending it. For example, if the user is creating a new tweet, this would be the content of the tweet.
+
+
+**Exercise**:
+
+Create a new text input in your next.js app, and a button.
+When a use clicks on this button, we want to send the text we have inside the input field to a new function inside of our `route.js` file.
+
+
 
 ---
 
-## **3️⃣ Global State Management with Context API**
-When working on a project like a **Twitter Clone**, we need to share data between components (e.g., authentication status, user data, tweets).
 
-### **Why Use Context API?**
-✅ Avoids **prop drilling**  
-✅ Centralized **authentication state management**  
-✅ Allows **global access to user data**  
 
-📌 **Example: Creating a Global Auth Context**
+
+### Static vs. Dynamic Routes
+
+A static route return the same data for all requests, our `/app/api/hello/route.js` is static.
+
+A dynamic route returns different data depending on the parameters of the request, something like `/app/api/hello/[name]/route.js` is dependant on the `name` parameter. These are called [Dynamic segments](https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes).
+
+You can access the parameters in the second parameter of your handler. Just like how we get the params in the browser, we do the same in our route handler.
+
 ```js
-import { createContext, useState, useContext } from "react";
-
-const AuthContext = createContext();
-
-export function AuthProvider({ children }) {
-  const [user, setUser] = useState(null);
-
-  return (
-    <AuthContext.Provider value={{ user, setUser }}>
-      {children}
-    </AuthContext.Provider>
-  );
-}
-
-export function useAuth() {
-  return useContext(AuthContext);
+export async function GET(request, { params }) {
+  const { name } = await params
+  return NextResponse.json({ greeting: "Hi " + name });
 }
 ```
+---
 
-📌 **Using Global State in a Component**
+## Dealing with data
+
+
+In a typical application, we would connect to a database to store and load the data, however, for this milestone, we will keep it simple and store everything on disk.
+
+
+But how to work with the disk?
+
+
+## Reading files
+
+
+We are running our next application in the node runtime, so we can use libraries provided for us by node to read / write files.
+
+If we search for the documentation, we find the following
+
 ```js
-import { useAuth } from "@/context/AuthContext";
-
-export default function Profile() {
-  const { user } = useAuth();
-
-  return <h1>Welcome, {user ? user.username : "Guest"}!</h1>;
-}
+import fs from 'node:fs/promises';
+const data = await fs.readFile('/Users/joe/test.txt', { encoding: 'utf8' });
+// You will get an error in the above code if this file does not exist.
 ```
+
+
+
+
+**Exercise**
+
+Create a file called `note.txt` and return the contents of this file in the response of you`GET /api/hello` endpoint.
+
+You should also handle the case where the file does not exist, you can google how to check for this.
+
+
+## Writing files
+
+Similar to when doing requests, we can store data as string in files.
+
+
+```js
+import fs from 'node:fs/promises';
+
+fs.writeFileSync('./programming.txt', 'this is an example', { encoding: 'utf8' });
+
+```
+
+
+**Exercise**
+
+In a previous exercise, you created an input with a button that sends the content of the input to the backend. Now update the code to store whatever the user send into the same `note.txt` file.
+
 
 ---
 
-## **Bonus Challenge: Implement Authentication**
-For a **real-world Twitter clone**, authentication is essential. Here’s how you can implement it:
+## Expected Outcomes
 
-1️⃣ **User Registration & Login**  
-- Create a sign-up form  
-- Store user credentials securely in **MongoDB**  
-- Hash passwords using **bcrypt**  
+By the end of Milestone 3, you should:
+* Allow user to create tweets and store them on disk
+* Allow the user to retrieve the tweets they created
 
-2️⃣ **JWT Authentication**  
-- Issue **JWT tokens** upon login  
-- Store tokens in **cookies** for persistence  
-- Use tokens to authenticate API requests  
 
-📌 **Example: Generating a JWT Token**
-```js
-import jwt from "jsonwebtoken";
-
-export async function POST(req) {
-  const { username, password } = await req.json();
-  
-  // Validate user (check in database)
-  const user = await User.findOne({ username });
-  if (!user) return NextResponse.json({ error: "User not found" }, { status: 404 });
-
-  // Generate JWT
-  const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: "1h" });
-  
-  return NextResponse.json({ token }, { status: 200 });
-}
-```
-
----

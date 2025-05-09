@@ -1,85 +1,174 @@
-# **Teacher Guide: Milestones 5 - 7 Recap**
+# **Teacher Guide – Milestone 4: Advanced Next.js Features**
 
-## **📌 Overview**
-This guide helps instructors reinforce key concepts from Milestones 5 - 7, focusing on **Next.js, Tailwind CSS, API integration, and authentication**. It includes teaching strategies, common challenges, and discussion points to engage students effectively.
+## **Introduction**
+This Milestone, students are introduced to **advanced Next.js concepts**, including **dynamic routing, middleware authentication, and API security**. These topics are essential for **building scalable and secure web applications**.
 
----
-
-## **🛠️ Key Teaching Objectives**
-
-1️⃣ **Explain Next.js File-Based Routing**  
-   - Ensure students understand how the `app/` directory automatically defines routes.
-   - Highlight the difference between **static and dynamic routes**.
-
-2️⃣ **Introduce API Routes & Data Fetching**  
-   - Guide students through **server-side API handling**.
-   - Differentiate between **SSR, SSG, and CSR** in Next.js.
-
-3️⃣ **Demonstrate UI Design with Tailwind CSS**  
-   - Encourage students to use **utility classes** instead of traditional CSS.
-   - Discuss responsive design principles.
-
-4️⃣ **Implement Authentication & State Management**  
-   - Help students grasp **how authentication works in Next.js**.
-   - Walk through global authentication handling using **context providers**.
+By the end of this Milestone, students should be able to:
+✅ Implement **dynamic routes** for handling user and tweet data.
+✅ Use **Next.js middleware** for authentication and route protection.
+✅ Secure API routes with **authentication checks**.
+✅ Implement **route guards** on the client-side using React Context.
 
 ---
 
-## **📌 Classroom Flow & Teaching Strategies**
+## **Lesson Overview**
 
-### **1️⃣ Milestone 1 - Next.js Fundamentals**
-#### ✅ **Teaching Next.js Routing**  
-- Demonstrate how the **file-based routing system** works.
-- Guide students through **creating dynamic pages**.
-
-**Example Exercise:**  
-Ask students to **create a dynamic profile page** (`user/[id]/page.js`) that fetches and displays user data.
-
----
-
-### **2️⃣ Milestone 2 - Tailwind & UI Improvements**
-#### ✅ **Teaching Tailwind CSS Basics**
-- Start by showing **basic utility classes**.
-- Encourage **hands-on practice** by letting students modify existing styles.
-
-**Discussion Prompt:**  
-Why is Tailwind CSS more **efficient than traditional CSS frameworks** like Bootstrap?
+| **Concept** | **Key Topics Covered** | **Practical Implementation** |
+|------------|----------------------|------------------------------|
+| **Dynamic Routing** | File-based routing, dynamic parameters | Fetch user/tweet data dynamically |
+| **Middleware** | Authentication, request interception | Restrict access to protected pages |
+| **API Security** | Auth checks, token validation | Prevent unauthorized API access |
+| **Client-Side Route Guards** | Redirect unauthenticated users | Use `useContext` and `useEffect` |
 
 ---
 
-### **3️⃣ Milestone 3 - API Integration & Authentication**
-#### ✅ **Teaching API Routes & Authentication**
-- Explain how **API routes in Next.js** function like a mini backend.
-- Walk through authentication logic using **NextAuth.js**.
+## **Teaching Plan**
 
-**Example Debugging Exercise:**  
-Give students a **broken login function** and ask them to **fix it**.
+### **1️⃣ Dynamic Routing in Next.js**
+Introduce students to **file-based routing** and how Next.js **automatically handles dynamic paths**.
+
+📌 **Key Points to Explain:**
+- Explain the **folder structure** for dynamic routes.
+- Show how `[id]` is used to create **parameterized pages**.
+- Discuss **static vs. dynamic routes**.
+
+📌 **Code Example – Dynamic Tweet Page**
+```javascript
+// app/tweet/[id]/page.js
+async function getTweet(id) {
+  const res = await fetch(`https://dummyjson.com/posts/${id}`);
+  return res.json();
+}
+
+export default async function TweetPage({ params }) {
+  const tweet = await getTweet(params.id);
+  return (
+    <main>
+      <h1>{tweet.title}</h1>
+      <p>{tweet.body}</p>
+    </main>
+  );
+}
+```
+
+### **2️⃣ Middleware for Authentication**
+Next.js middleware runs **before rendering a page**, making it useful for **protecting routes**.
+
+📌 **Key Points to Explain:**
+- What is middleware, and why do we use it?
+- How to apply **authentication checks** before loading pages.
+- The difference between **server-side middleware** and **client-side route guards**.
+
+📌 **Code Example – Middleware Authentication**
+```javascript
+// middleware.js
+import { NextResponse } from "next/server";
+
+export function middleware(request) {
+  const isAuthenticated = request.cookies.get("authToken");
+
+  if (!isAuthenticated) {
+    return NextResponse.redirect(new URL("/login", request.url));
+  }
+
+  return NextResponse.next();
+}
+
+// Apply middleware only to protected pages
+export const config = {
+  matcher: ["/dashboard/:path*", "/profile/:path*"],
+};
+```
+
+### **3️⃣ Securing API Routes with Authentication**
+Even if we protect frontend pages, **API routes must also be secured**.
+
+📌 **Key Points to Explain:**
+- API routes are **public by default** unless secured.
+- How to **check for authentication** inside API handlers.
+- Why returning **proper HTTP status codes** (e.g., `401 Unauthorized`) is important.
+
+📌 **Code Example – Protected API Route**
+```javascript
+// app/api/user/profile/route.js
+import { NextResponse } from "next/server";
+
+export async function GET(request) {
+  const authToken = request.cookies.get("authToken");
+
+  if (!authToken) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
+  const res = await fetch("https://dummyjson.com/users/1");
+  const data = await res.json();
+  return NextResponse.json(data);
+}
+```
+
+### **4️⃣ Client-Side Route Guards**
+While middleware protects **backend routes**, we also need **client-side protection**.
+
+📌 **Key Points to Explain:**
+- How to use `useContext` and `useEffect` for **authentication-based redirects**.
+- Why checking user **authentication status on the frontend** improves UX.
+
+📌 **Code Example – Client-Side Route Guard**
+```javascript
+import { useContext, useEffect } from "react";
+import { AuthContext } from "@/context/AuthContext";
+import { useRouter } from "next/navigation";
+
+export default function Dashboard() {
+  const { user } = useContext(AuthContext);
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!user) {
+      router.push("/login");
+    }
+  }, [user]);
+
+  if (!user) return <p>Redirecting...</p>;
+
+  return (
+    <div>
+      <h1>Welcome to your Dashboard, {user.name}!</h1>
+    </div>
+  );
+}
+```
 
 ---
 
-## **Common Student Challenges & Solutions**
+## **Common Student Issues & Fixes**
 
-❌ **Issue 1: Confusion Between SSR, SSG, and CSR**  
-💡 Solution: Use a **comparison table** to differentiate them.
-
-❌ **Issue 2: Forgetting to Configure Tailwind Correctly**  
-💡 Solution: Remind students to check their `tailwind.config.js` and `globals.css` files.
-
-❌ **Issue 3: Authentication Not Persisting**  
-💡 Solution: Ensure students understand **state persistence and context providers**.
+| **Issue** | **Solution** |
+|-----------|-------------|
+| Middleware not working | Ensure `matcher` is set correctly in `config`. |
+| API route is accessible without authentication | Add token verification inside API handler. |
+| Route guard redirects incorrectly | Verify `user` state is loaded before redirecting. |
 
 ---
 
-## **📌 Additional Teaching Resources**
-📖 **Next.js Official Docs:** [https://nextjs.org/docs](https://nextjs.org/docs)  
-🎨 **Tailwind CSS Docs:** [https://tailwindcss.com/docs](https://tailwindcss.com/docs)  
-🔐 **NextAuth.js Docs:** [https://next-auth.js.org/](https://next-auth.js.org/)  
-📡 **DummyJSON API:** [https://dummyjson.com/](https://dummyjson.com/)  
+## **Key Learning Outcomes**
+
+✅ **Students will understand how Next.js routing works.**
+✅ **They will be able to secure API routes using authentication.**
+✅ **They will implement protected routes with middleware and client-side guards.**
+✅ **They will integrate authentication seamlessly across the app.**
 
 ---
 
-## **Final Notes for Teachers**
-- Encourage students to **experiment and modify the project** to reinforce concepts.  
-- Promote **code reviews and debugging sessions** for collaborative learning.  
-- Prepare students for the **final capstone project**, ensuring they are confident with Next.js, API integration, and authentication.
+## **Additional Resources**
 
+🔹 [Next.js Routing Guide](https://nextjs.org/docs/routing/introduction)
+🔹 [Next.js Middleware Docs](https://nextjs.org/docs/advanced-features/middleware)
+🔹 [Next.js API Routes](https://nextjs.org/docs/api-routes/introduction)
+
+---
+
+### **Next Steps: Moving to Full API Integration**
+Next Milestone, students will learn how to **integrate a real-time API** with their Twitter Clone, allowing users to post, fetch, and delete tweets dynamically.
+
+---
