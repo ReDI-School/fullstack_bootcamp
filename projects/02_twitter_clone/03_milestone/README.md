@@ -2,6 +2,12 @@
 
 In this lesson, we'll do some backend development, and learn how to create backend endpoints using Next.js API routes. These routes allow us to define server-side logic that runs when a request is made. For this lesson, and for simplicity's sake, we won't be using a database, we'll store data in files on disk. This helps us focus on the API design and backend logic. We'll talk about databases later.
 
+### Expected Outcomes
+
+By the end of Milestone 3, you should:
+* Allow user to create tweets and store them on disk
+* Allow the user to see the tweets they created
+
 ---
 
 ## API Routes
@@ -101,7 +107,9 @@ _Body_: this is the data that we are sending to the server, this data could be a
 **Exercise**:
 
 Create a new text input in your next.js app, and a button.
-When a use clicks on this button, we want to send the text we have inside the input field to a new function inside of our `route.js` file.
+When the user clicks on this button, we want to send the text we have inside the input field to a new function inside of our `route.js` file.
+
+Inside of your route handler, log whatever input the user has sent.
 
 
 
@@ -129,7 +137,7 @@ export async function GET(request, { params }) {
 ## Dealing with data
 
 
-In a typical application, we would connect to a database to store and load the data, however, for this milestone, we will keep it simple and store everything on disk.
+In a typical application, we would connect to a database to store and load the data, however, for this milestone, we will keep it simple and store everything on disk. We will talk about databases later.
 
 
 But how to work with the disk?
@@ -175,13 +183,4 @@ fs.writeFileSync('./programming.txt', 'this is an example', { encoding: 'utf8' }
 
 In a previous exercise, you created an input with a button that sends the content of the input to the backend. Now update the code to store whatever the user send into the same `note.txt` file.
 
-
----
-
-## Expected Outcomes
-
-By the end of Milestone 3, you should:
-* Allow user to create tweets and store them on disk
-* Allow the user to retrieve the tweets they created
-
-
+If you are finished, you can work on Milestone 3 goals.
