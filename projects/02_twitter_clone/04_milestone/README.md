@@ -1,163 +1,221 @@
-# **Milestone 4: Advanced Next.js - API, Routing & Security**
+# **Milestone 4: Introduction to Databases**
 
-## **Overview**
-In Milestone 4, we take our **Twitter Clone project** to the next level by implementing **dynamic API routes, advanced data-fetching strategies, global state management, and authentication security** in Next.js.
+In the last lesson, we talked about how we can take data from the user and store it on disk, now we want to store it on a real database!
 
-By the end of this Milestone, you’ll be able to:
-✅ Build **dynamic API routes** to interact with a database
-✅ Apply **Server-Side Rendering (SSR)**, **Static Site Generation (SSG)**, and **Incremental Static Regeneration (ISR)** for optimal performance
-✅ Manage global state using **Context API**
-✅ Secure your application with **protected routes and authentication middleware**
-✅ Implement **client-side and server-side security measures**
+### Expected Outcomes
 
----
+By the end of Milestone 4, you should:
 
-## **1️⃣ Dynamic API Routes in Next.js**
-Next.js allows us to create **API routes** directly in our project without needing a separate backend.
+- Allow user to create tweets and store them in the database
+- Allow the user to see the tweets they created from the database
+- Allow up votes / down votes to be stored in the database
 
-### **Why Use Dynamic API Routes?**
-✅ **Simplifies backend logic** – No need for a separate Node.js/Express server
-✅ **Handles CRUD operations** – Fetch, update, and delete data from the database
-✅ **Easily integrates with MongoDB**
+# Introduction to databases
 
-### **Creating an API Route**
-📁 **Project Structure**
+## What is a Database?
+
+A database is a place where data is stored, organized, and accessed. In backend development, databases are used to save things like user information, product details, messages, or anything your app needs to remember. You can put data in (store), look at it (read), change it (update), or remove it (delete). These operations are often referred to as CRUD (Create, Read, Update, Delete).
+
+## Types of Databases
+
+There are several types of databases, but the two main categories are:
+
+### Relational Databases (SQL)
+
+Relational databases use tables with rows and columns (like spreadsheets).
+
+Here is an example with `SQL` how to define the schema for a table:
+
+```sql
+CREATE TABLE companies (
+  company_id SERIAL PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  industry VARCHAR(50),
+  founded_year INT
+);
 ```
-/app
- ├── /api
- │   ├── /tweets
- │   │   ├── route.js  (Handles all tweet operations)
- │   │   ├── [id].js   (Handles individual tweet requests)
+
+Every row is an entry to that database, so if you think about tweets, every row is a tweet.
+
+Data is connected using relations / foreign keys. A foreign key is an identified that connects two rows from different tables.
+
+```sql
+CREATE TABLE employees (
+  employee_id SERIAL PRIMARY KEY,
+  full_name VARCHAR(100) NOT NULL,
+  email VARCHAR(100) UNIQUE NOT NULL,
+  company_id INT NOT NULL,
+  FOREIGN KEY (company_id) REFERENCES companies(company_id) ON DELETE CASCADE
+);
 ```
 
-📌 **Example: Fetching All Tweets** (`app/api/tweets/route.js`)
+Generally, data in SQL is flat, you can add columns, but you cannot nest items inside other items. For that, you create a new table, and reference the items by the `key`.
+
+Examples: MySQL, PostgreSQL, SQLite, SQL Server.
+
+We won't dig deep into SQL in this course, but I just want to give you the basics.
+
+### Non-Relational Databases (NoSQL)
+
+Non-Relational Databases don't use traditional tables, they use a variety of other data formats, like documents, key-value pairs or graphs. Generally the data is not structured, you can store anything anywhere.
+
+Examples: Document-based: MongoDB, Key-Value: Redis, Graph: Neo4j
+
+Here is an example on how a document looks like in MongoDB
+
+```json
+{
+  "_id": ObjectId("64fb..."),
+  "fulL_name": "Alice Smith",
+  "email": "alice@technova.com",
+  "company_id": ObjectId("64fa...")  // Reference to the company
+}
+```
+
+Note that we are just looking at the data, because there is _no schema inside the database_. You can even put nested documents
+
+```json
+{
+  "_id": ObjectId("64fa..."),
+  "name": "TechNova",
+  "industry": "Technology",
+  "founded_year": 2010,
+  "employees": [
+    {
+      "full_name": "Alice Smith",
+      "email": "alice@technova.com"
+    },
+    {
+      "full_name": "Bob Lee",
+      "email": "bob@technova.com"
+    }
+  ]
+}
+```
+
+# Using databases in Your App
+
+There are many ways of using databases in our app, the main way of doing this using an _ORM_
+
+## ORM
+
+An ORM (Object-Relational Mapper) is a library that lets you interact with your database using your programming language’s objects and classes, instead of writing raw queries. Much easier and safer for beginners, and often cleaner in large applications.
+
+These libraries help you manage your database from your app a lot easier than talking to the DB directly.
+
+For this project we are going to use _MongoDB_ with _Mongoose_ ORM
+
+## Setup DB
+
+There are 2 main ways to setup a database for this project:
+
+### Atlas
+
+[MondoDB Atlas](https://www.mongodb.com/products/platform/atlas-database) is a service by company behind the mongodb database, basically, they will run the database for you, and then you can access from your app.
+
+Using a cloud service has many advantages:
+
+- You can access the database from anywhere
+- Mongo wil handle the updates / backups for you
+
+But also has advantages
+
+- You have to pay for it 💰
+
+If you are shipping an application to production, you should use a _managed_ database, since it makes your life easier. However, to get started, you can also use a local db.
+
+### Local Database
+
+MongoDB is open source, it means we can run the database on our machine for local development. There are many ways of starting mongodb locally, the easiest one would be to use a docker container:
+
+```yml
+services:
+  mongo:
+    image: mongo:8.0
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
+```
+
+You need to have [Docker](https://docs.docker.com/desktop/) installed on your machine. We won't go into details what containers are, feel free to look it up.
+
+Then to start the database, you run `docker compose up`
+
+### Using with next.js
+
+There is [an official example](https://github.com/vercel/next.js/tree/canary/examples/with-mongodb-mongoose) from next.js team on how to use mongoose.
+
+Go through code in the example and try to understand what is happening, and how we can apply this to our use case. Also, read the documentation of [Mongoose](https://mongoosejs.com/docs/).
+
+
+
+## Defining schemas
+
 ```js
-import { NextResponse } from "next/server";
-import connectDB from "@/lib/db";
-import Tweet from "@/models/Tweet";
+import mongoose from "mongoose";
 
-// GET: Fetch all tweets
-export async function GET() {
-  await connectDB();
-  const tweets = await Tweet.find().sort({ createdAt: -1 });
-  return NextResponse.json(tweets, { status: 200 });
-}
+const CompanySchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+    maxlength: [60, "Name cannot be more than 60 characters"],
+  },
+  industry: {
+    type: String,
+    required: true,
+    maxlength: [60, "Owner's Name cannot be more than 60 characters"],
+  },
+  founded_year: {
+    type: Number,
+    required: true,
+  },
+});
+
+// we have to define it this way because of hot reloading
+export let Company =
+  mongoose.models.Company ?? mongoose.model("Company", CompanySchema);
 ```
 
-📌 **Example: Fetching a Single Tweet** (`app/api/tweets/[id]/route.js`)
+Now our ORM knows we have a `Company` collection, and each company has a name, an industry, and the year it was founded.
+
+### Create
+
 ```js
-export async function GET(req, { params }) {
-  await connectDB();
-  const tweet = await Tweet.findById(params.id);
-  if (!tweet) {
-    return NextResponse.json({ error: "Tweet not found" }, { status: 404 });
-  }
-  return NextResponse.json(tweet, { status: 200 });
-}
+const company = await Company.create({
+  name: "Audi",
+  industry: "AutoMobile",
+  founded_year: 1990,
+});
+// company is an ORM object, we can convert it to a normal object by calling
+company.toObject();
 ```
 
----
+### Read
 
-## **2️⃣ Data Fetching Strategies**
-Next.js provides multiple ways to fetch data, each optimized for different use cases.
-
-| Fetching Method | When to Use | Pros | Example |
-|----------------|------------|------|---------|
-| **SSR (Server-Side Rendering)** | When you need **real-time data** on each request | Data is always fresh | `getServerSideProps()` |
-| **SSG (Static Site Generation)** | When data doesn’t change often | Faster page loads | `getStaticProps()` |
-| **ISR (Incremental Static Regeneration)** | When data needs **regular updates** but without full re-render | Best of both worlds | `revalidate` option in `getStaticProps()` |
-
-📌 **Example: Fetching Data with SSR**
 ```js
-export async function getServerSideProps() {
-  const res = await fetch("https://api.example.com/tweets");
-  const tweets = await res.json();
-  return { props: { tweets } };
-}
+const audi = await Company.find({name: "Audi"});
 ```
 
-📌 **Example: Fetching Data with SSG**
+
+### Update
+
 ```js
-export async function getStaticProps() {
-  const res = await fetch("https://api.example.com/tweets");
-  const tweets = await res.json();
-  return { props: { tweets }, revalidate: 60 }; // ISR updates every 60 seconds
-}
+const audi = await Company.findOne({name: "Audi"});
+audi.founded_year = 1950;
+await audi.save();
 ```
 
----
+### Delete
 
-## **3️⃣ Global State Management with Context API**
-When working on a project like a **Twitter Clone**, we need to share data between components (e.g., authentication status, user data, tweets).
-
-### **Why Use Context API?**
-✅ Avoids **prop drilling**
-✅ Centralized **authentication state management**
-✅ Allows **global access to user data**
-
-📌 **Example: Creating a Global Auth Context**
 ```js
-import { createContext, useState, useContext } from "react";
-
-const AuthContext = createContext();
-
-export function AuthProvider({ children }) {
-  const [user, setUser] = useState(null);
-
-  return (
-    <AuthContext.Provider value={{ user, setUser }}>
-      {children}
-    </AuthContext.Provider>
-  );
-}
-
-export function useAuth() {
-  return useContext(AuthContext);
-}
+await Company.findOneAndDelete({name: "Audi"});
 ```
 
-📌 **Using Global State in a Component**
-```js
-import { useAuth } from "@/context/AuthContext";
+### Task
 
-export default function Profile() {
-  const { user } = useAuth();
-
-  return <h1>Welcome, {user ? user.username : "Guest"}!</h1>;
-}
-```
-
----
-
-## **Bonus Challenge: Implement Authentication**
-For a **real-world Twitter clone**, authentication is essential. Here’s how you can implement it:
-
-1️⃣ **User Registration & Login**
-- Create a sign-up form
-- Store user credentials securely in **MongoDB**
-- Hash passwords using **bcrypt**
-
-2️⃣ **JWT Authentication**
-- Issue **JWT tokens** upon login
-- Store tokens in **cookies** for persistence
-- Use tokens to authenticate API requests
-
-📌 **Example: Generating a JWT Token**
-```js
-import jwt from "jsonwebtoken";
-
-export async function POST(req) {
-  const { username, password } = await req.json();
-
-  // Validate user (check in database)
-  const user = await User.findOne({ username });
-  if (!user) return NextResponse.json({ error: "User not found" }, { status: 404 });
-
-  // Generate JWT
-  const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: "1h" });
-
-  return NextResponse.json({ token }, { status: 200 });
-}
-```
-
----
+Take the time, go through the examples from next.js, this is a good example on how to learn from other people's code. update your code to save the user's tweets and read them from the DB.

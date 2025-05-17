@@ -1,92 +1,159 @@
-# **Reference Guide: Milestones 5 - 7**
+# **Milestone 4 - Reference Guide**
 
-## **📌 Overview**
-This document serves as a reference for the key concepts, techniques, and resources covered in Milestones 5 - 7 of the Bootcamp. It includes essential links, commands, and explanations of the most important topics.
+## **Overview**
+This document serves as a **quick reference** for the key concepts, functions, and patterns used in **Milestone 4** of the Next.js module. It includes **dynamic routing, authentication, API protection, and client-side guards**.
 
 ---
 
-## **🛠️ Next.js Fundamentals (Milestone 1)**
-### 🔹 File-Based Routing in Next.js
-- Pages are created automatically based on the file structure inside the `app/` directory.
-- Example: Dynamic User Profile (`app/user/[id]/page.js`)
-```jsx
-export default function UserProfile({ params }) {
-  return <h1>Profile of User {params.id}</h1>;
+## **1️⃣ Dynamic Routing in Next.js**
+### **Creating Dynamic Routes**
+- Use **bracket syntax** `[id]` for dynamic paths.
+- Access `params.id` to retrieve dynamic values.
+
+📌 **Example: Fetching a Tweet by ID**
+```javascript
+// app/tweet/[id]/page.js
+async function getTweet(id) {
+  const res = await fetch(`https://dummyjson.com/posts/${id}`);
+  return res.json();
 }
-```
 
-### 🔹 API Routes in Next.js
-- Next.js allows us to create API endpoints within the project.
-- Example: Fetching Users (`app/api/users/route.js`)
-```js
-export async function GET() {
-  const response = await fetch("https://dummyjson.com/users");
-  const data = await response.json();
-  return Response.json(data.users);
-}
-```
-
-🔗 **Official Docs**: [Next.js Routing](https://nextjs.org/docs/routing/introduction)  
-
----
-
-## **🎨 Tailwind CSS & UI Design (Milestone 2)**
-### 🔹 Installing Tailwind CSS in Next.js
-```bash
-npm install -D tailwindcss postcss autoprefixer
-npx tailwindcss init -p
-```
-- Configure `tailwind.config.js`:
-```js
-module.exports = {
-  content: ["./app/**/*.{js,ts,jsx,tsx}"],
-  theme: { extend: {} },
-  plugins: [],
-};
-```
-
-### 🔹 Using Tailwind Utility Classes
-- Example: Responsive Tweet Card
-```jsx
-<div className="bg-white shadow-md p-4 rounded-lg hover:shadow-lg transition-all">
-  <h3 className="text-lg font-bold">Tweet Title</h3>
-  <p className="text-gray-600">This is a sample tweet.</p>
-</div>
-```
-
-🔗 **Official Docs**: [Tailwind CSS Guide](https://tailwindcss.com/docs)  
-
----
-
-## **🔗 API Integration & Authentication (Milestone 3)**
-### 🔹 Fetching Data from an API
-Example: Fetching tweets from **DummyJSON API**
-```js
-fetch("https://dummyjson.com/posts")
-  .then((res) => res.json())
-  .then((data) => console.log(data.posts));
-```
-
-### 🔹 Authentication in Next.js
-We implemented **global authentication state** using context:
-```js
-const AuthContext = createContext();
-export function AuthProvider({ children }) {
-  const [user, setUser] = useState(null);
+export default async function TweetPage({ params }) {
+  const tweet = await getTweet(params.id);
   return (
-    <AuthContext.Provider value={{ user, setUser }}>
-      {children}
-    </AuthContext.Provider>
+    <main>
+      <h1>{tweet.title}</h1>
+      <p>{tweet.body}</p>
+    </main>
   );
 }
 ```
-🔗 **Official Docs**: [Next.js Authentication](https://next-auth.js.org/getting-started/introduction)  
+
+🔹 **Key Takeaways:**
+✅ Use `params.id` to fetch and display **dynamic data**.
+✅ Next.js automatically **creates routes based on folder structure**.
 
 ---
 
-## **📚 Additional Resources**
-🔹 **Next.js Docs:** [https://nextjs.org/docs](https://nextjs.org/docs)  
-🔹 **Tailwind CSS Docs:** [https://tailwindcss.com/docs](https://tailwindcss.com/docs)  
-🔹 **DummyJSON API:** [https://dummyjson.com/](https://dummyjson.com/)  
-🔹 **NextAuth.js:** [https://next-auth.js.org/](https://next-auth.js.org/)  
+## **2️⃣ Middleware for Authentication**
+### **What is Middleware?**
+Middleware **intercepts requests before they reach the page** and can be used for **authentication, logging, or redirects**.
 
+📌 **Example: Protecting Routes with Middleware**
+```javascript
+// middleware.js
+import { NextResponse } from "next/server";
+
+export function middleware(request) {
+  const isAuthenticated = request.cookies.get("authToken");
+
+  if (!isAuthenticated) {
+    return NextResponse.redirect(new URL("/login", request.url));
+  }
+
+  return NextResponse.next();
+}
+
+// Apply middleware to specific routes
+export const config = {
+  matcher: ["/dashboard/:path*", "/profile/:path*"],
+};
+```
+
+🔹 **Key Takeaways:**
+✅ Middleware **runs before the request reaches the page**.
+✅ **If not authenticated**, users are **redirected to /login**.
+✅ Use `matcher` to **restrict specific routes**.
+
+---
+
+## **3️⃣ Securing API Routes with Authentication**
+### **Protecting API Endpoints**
+By default, **Next.js API routes are public**. We need to **verify authentication** inside API handlers.
+
+📌 **Example: Secure API Endpoint**
+```javascript
+// app/api/user/profile/route.js
+import { NextResponse } from "next/server";
+
+export async function GET(request) {
+  const authToken = request.cookies.get("authToken");
+
+  if (!authToken) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
+  const res = await fetch("https://dummyjson.com/users/1");
+  const data = await res.json();
+  return NextResponse.json(data);
+}
+```
+
+🔹 **Key Takeaways:**
+✅ Always **validate authentication** inside API routes.
+✅ If `authToken` is missing, return a **401 Unauthorized** response.
+✅ API routes **should never expose sensitive user data** without authentication.
+
+---
+
+## **4️⃣ Client-Side Route Guards**
+### **Why Do We Need Route Guards?**
+Even with **middleware and API protection**, we still need to **protect client-side navigation**.
+
+📌 **Example: Redirecting Unauthenticated Users**
+```javascript
+import { useContext, useEffect } from "react";
+import { AuthContext } from "@/context/AuthContext";
+import { useRouter } from "next/navigation";
+
+export default function Dashboard() {
+  const { user } = useContext(AuthContext);
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!user) {
+      router.push("/login");
+    }
+  }, [user]);
+
+  if (!user) return <p>Redirecting...</p>;
+
+  return (
+    <div>
+      <h1>Welcome to your Dashboard, {user.name}!</h1>
+    </div>
+  );
+}
+```
+
+🔹 **Key Takeaways:**
+✅ **Prevent unauthorized users** from accessing protected pages.
+✅ **Redirect users** to `/login` if they are **not authenticated**.
+✅ **Check authentication state** using `useContext` inside protected pages.
+
+---
+
+## **🔹 Summary & Best Practices**
+| **Feature** | **Best Practice** |
+|------------|-------------------|
+| **Dynamic Routing** | Use `[id]` for parameterized routes. |
+| **Middleware** | Apply it only to protected routes (`/dashboard`, `/profile`). |
+| **API Security** | Always **validate authentication tokens** in API requests. |
+| **Client Route Guards** | Redirect users from protected pages **if they are not logged in**. |
+
+---
+
+## **🔗 Additional Resources**
+
+🔹 [Next.js Routing Guide](https://nextjs.org/docs/routing/introduction)
+🔹 [Next.js Middleware Docs](https://nextjs.org/docs/advanced-features/middleware)
+🔹 [Next.js API Routes](https://nextjs.org/docs/api-routes/introduction)
+
+---
+
+## **Next Steps: Connecting with a Database**
+Next Milestone, we will **integrate a real database** to store and fetch real user-generated tweets, making our Twitter Clone fully functional.
+
+🚀 **Get ready to take your project to the next level!**
+
+---
