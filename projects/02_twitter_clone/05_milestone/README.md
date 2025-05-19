@@ -1,219 +1,163 @@
-# **BONUS Milestone: Recap & Bonus Milestone - Next.js & Advanced Features (OPTIONAL)**
+# **Milestone 4: Advanced Next.js - API, Routing & Security**
 
 ## **Overview**
+In Milestone 4, we take our **Twitter Clone project** to the next level by implementing **dynamic API routes, advanced data-fetching strategies, global state management, and authentication security** in Next.js.
 
-This optional milestone is designed for students who want to take their project to the next level AFTER completing milestone 1-3. If you haven't completed milestone 1-3 we strongly encourage you to finish them before starting this bonus milestone. 
-
-In this recap Milestone, you will refine your understanding of **Next.js, Tailwind CSS, authentication, API integration, and global state management**. You will revisit concepts from **Milestones 5, 6, and 7**, applying improvements and optimizations to your **Twitter Clone project**.
-
-This is an opportunity to refactor your code, enhance the UI, and explore additional Next.js features. We will also introduce **middleware**, **incremental static regeneration (ISR)**, and **server components** as a **bonus milestone**.
-
----
-
-## **Learning Objectives**
-
-By the end of this Milestone, you should be able to:
-
-1. **Strengthen Your Understanding of Next.js Core Features**
-
-   - Improve routing logic (dynamic and API routes).
-   - Optimize data fetching strategies (**SSR, SSG, ISR**).
-   - Secure API endpoints and protect routes.
-
-2. **Enhance the UI with Tailwind CSS**
-
-   - Apply better UI/UX principles to the Twitter Clone.
-   - Use **Tailwind utility classes** effectively for responsiveness.
-   - Implement interactive animations.
-
-3. **Refine Authentication & Global State Management**
-
-   - Improve authentication logic using middleware.
-   - Enhance global state management with the Context API.
-
-4. **Bonus Challenge: Implement Middleware & ISR**
-   - Use Next.js **middleware** to handle authentication.
-   - Optimize your app with **incremental static regeneration (ISR)**.
+By the end of this Milestone, you’ll be able to:
+✅ Build **dynamic API routes** to interact with a database
+✅ Apply **Server-Side Rendering (SSR)**, **Static Site Generation (SSG)**, and **Incremental Static Regeneration (ISR)** for optimal performance
+✅ Manage global state using **Context API**
+✅ Secure your application with **protected routes and authentication middleware**
+✅ Implement **client-side and server-side security measures**
 
 ---
 
-## **1️⃣ Revisiting Next.js Routing & API**
+## **1️⃣ Dynamic API Routes in Next.js**
+Next.js allows us to create **API routes** directly in our project without needing a separate backend.
 
-One of the core principles of Next.js is **file-based routing**. Over the past three Milestones, you’ve worked with:
+### **Why Use Dynamic API Routes?**
+✅ **Simplifies backend logic** – No need for a separate Node.js/Express server
+✅ **Handles CRUD operations** – Fetch, update, and delete data from the database
+✅ **Easily integrates with MongoDB**
 
-✅ **Dynamic routes** (e.g., `/profile/[id]`)  
-✅ **API routes** for user authentication and posts  
-✅ **Protected routes** that require authentication
-
-Let’s **refactor our API routes** to improve readability and security.
-
-### **Refactoring API Routes**
-
-Instead of handling authentication logic directly in API handlers, move **authentication checks to middleware**.
-
-#### **🔹 Before (Milestone 3 Implementation)**
-
-```js
-import { getSession } from "next-auth/react";
-
-export async function GET(req) {
-  const session = await getSession({ req });
-
-  if (!session) {
-    return new Response(JSON.stringify({ error: "Unauthorized" }), {
-      status: 401,
-    });
-  }
-
-  return new Response(JSON.stringify({ message: "Welcome!" }), { status: 200 });
-}
+### **Creating an API Route**
+📁 **Project Structure**
+```
+/app
+ ├── /api
+ │   ├── /tweets
+ │   │   ├── route.js  (Handles all tweet operations)
+ │   │   ├── [id].js   (Handles individual tweet requests)
 ```
 
-#### **✅ After (Using Middleware)**
-
+📌 **Example: Fetching All Tweets** (`app/api/tweets/route.js`)
 ```js
 import { NextResponse } from "next/server";
-import { getToken } from "next-auth/jwt";
+import connectDB from "@/lib/db";
+import Tweet from "@/models/Tweet";
 
-export async function middleware(req) {
-  const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
+// GET: Fetch all tweets
+export async function GET() {
+  await connectDB();
+  const tweets = await Tweet.find().sort({ createdAt: -1 });
+  return NextResponse.json(tweets, { status: 200 });
+}
+```
 
-  if (!token) {
-    return NextResponse.redirect("/login");
+📌 **Example: Fetching a Single Tweet** (`app/api/tweets/[id]/route.js`)
+```js
+export async function GET(req, { params }) {
+  await connectDB();
+  const tweet = await Tweet.findById(params.id);
+  if (!tweet) {
+    return NextResponse.json({ error: "Tweet not found" }, { status: 404 });
   }
-
-  return NextResponse.next();
+  return NextResponse.json(tweet, { status: 200 });
 }
 ```
 
-Now, **every protected route will use middleware** instead of checking authentication in every API handler.
-
 ---
 
-## **2️⃣ UI Improvements with Tailwind CSS**
+## **2️⃣ Data Fetching Strategies**
+Next.js provides multiple ways to fetch data, each optimized for different use cases.
 
-Tailwind CSS allows us to build modern, responsive UIs quickly. This Milestone, refine your **Twitter Clone UI** by implementing:
+| Fetching Method | When to Use | Pros | Example |
+|----------------|------------|------|---------|
+| **SSR (Server-Side Rendering)** | When you need **real-time data** on each request | Data is always fresh | `getServerSideProps()` |
+| **SSG (Static Site Generation)** | When data doesn’t change often | Faster page loads | `getStaticProps()` |
+| **ISR (Incremental Static Regeneration)** | When data needs **regular updates** but without full re-render | Best of both worlds | `revalidate` option in `getStaticProps()` |
 
-✅ **Better spacing and alignment**  
-✅ **Consistent typography**  
-✅ **Dark mode support**
-
-### **Refactoring Components with Tailwind**
-
-Instead of manually applying classes everywhere, use **reusable utility classes**.
-
-#### **🔹 Before (Basic Button)**
-
-```jsx
-<button className="px-4 py-2 bg-blue-500 text-white rounded">Submit</button>
-```
-
-#### **✅ After (Reusable Button Component)**
-
-```jsx
-export default function Button({ children }) {
-  return (
-    <button className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded">
-      {children}
-    </button>
-  );
+📌 **Example: Fetching Data with SSR**
+```js
+export async function getServerSideProps() {
+  const res = await fetch("https://api.example.com/tweets");
+  const tweets = await res.json();
+  return { props: { tweets } };
 }
 ```
 
-Now, you can use `<Button>` anywhere in your project!
-
----
-
-## **3️⃣ Optimizing API Calls with ISR**
-
-**Incremental Static Regeneration (ISR)** allows pages to be **dynamically updated** after deployment.
-
-Instead of fetching data on **every request (SSR)**, we can **pre-build pages and update them in the background**.
-
-### **Example: Using ISR in Next.js**
-
-Modify your `/pages/index.js` to **pre-render tweets** and update them every 30 seconds.
-
+📌 **Example: Fetching Data with SSG**
 ```js
 export async function getStaticProps() {
-  const res = await fetch("https://dummyjson.com/posts");
-  const posts = await res.json();
-
-  return {
-    props: { posts },
-    revalidate: 30, // Re-fetch data every 30 seconds
-  };
+  const res = await fetch("https://api.example.com/tweets");
+  const tweets = await res.json();
+  return { props: { tweets }, revalidate: 60 }; // ISR updates every 60 seconds
 }
 ```
 
-With ISR:
-✅ The page is **pre-rendered at build time**.  
-✅ Every **30 seconds**, it refreshes with new data.  
-✅ **Faster loading** for users!
-
 ---
 
-## **Bonus Challenge: Implement Middleware & API Caching**
+## **3️⃣ Global State Management with Context API**
+When working on a project like a **Twitter Clone**, we need to share data between components (e.g., authentication status, user data, tweets).
 
-### **1. Use Middleware for Authentication**
+### **Why Use Context API?**
+✅ Avoids **prop drilling**
+✅ Centralized **authentication state management**
+✅ Allows **global access to user data**
 
-✅ Move authentication logic to middleware  
-✅ Redirect users to `/login` if they are not authenticated  
-✅ Protect sensitive routes like `/api/posts`
-
-### **2. Cache API Calls for Performance**
-
-Instead of hitting the database on **every request**, use **Next.js API caching**.
-
-#### **Example: API Caching with Redis**
-
+📌 **Example: Creating a Global Auth Context**
 ```js
-import Redis from "ioredis";
+import { createContext, useState, useContext } from "react";
 
-const redis = new Redis(process.env.REDIS_URL);
+const AuthContext = createContext();
 
-export async function GET(req) {
-  const cachedPosts = await redis.get("posts");
+export function AuthProvider({ children }) {
+  const [user, setUser] = useState(null);
 
-  if (cachedPosts) {
-    return new Response(JSON.stringify(JSON.parse(cachedPosts)), {
-      status: 200,
-    });
-  }
+  return (
+    <AuthContext.Provider value={{ user, setUser }}>
+      {children}
+    </AuthContext.Provider>
+  );
+}
 
-  const res = await fetch("https://dummyjson.com/posts");
-  const posts = await res.json();
-
-  await redis.set("posts", JSON.stringify(posts), "EX", 60); // Cache for 60 seconds
-
-  return new Response(JSON.stringify(posts), { status: 200 });
+export function useAuth() {
+  return useContext(AuthContext);
 }
 ```
 
-Now:
-✅ Posts are fetched **once per minute**, reducing database load  
-✅ Faster API responses for users
+📌 **Using Global State in a Component**
+```js
+import { useAuth } from "@/context/AuthContext";
+
+export default function Profile() {
+  const { user } = useAuth();
+
+  return <h1>Welcome, {user ? user.username : "Guest"}!</h1>;
+}
+```
 
 ---
 
-# **Key Takeaways from Milestones 5-7**
+## **Bonus Challenge: Implement Authentication**
+For a **real-world Twitter clone**, authentication is essential. Here’s how you can implement it:
 
-| Topic              | Key Concepts                    |
-| ------------------ | ------------------------------- |
-| **Next.js Basics** | Routing, API, SSR, SSG          |
-| **Tailwind CSS**   | Styling, Utility-First Approach |
-| **Authentication** | NextAuth.js, Protected Routes   |
-| **Global State**   | Context API, JWT Storage        |
-| **Data Fetching**  | ISR, Middleware, API Caching    |
+1️⃣ **User Registration & Login**
+- Create a sign-up form
+- Store user credentials securely in **MongoDB**
+- Hash passwords using **bcrypt**
+
+2️⃣ **JWT Authentication**
+- Issue **JWT tokens** upon login
+- Store tokens in **cookies** for persistence
+- Use tokens to authenticate API requests
+
+📌 **Example: Generating a JWT Token**
+```js
+import jwt from "jsonwebtoken";
+
+export async function POST(req) {
+  const { username, password } = await req.json();
+
+  // Validate user (check in database)
+  const user = await User.findOne({ username });
+  if (!user) return NextResponse.json({ error: "User not found" }, { status: 404 });
+
+  // Generate JWT
+  const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: "1h" });
+
+  return NextResponse.json({ token }, { status: 200 });
+}
+```
 
 ---
-
-# **What’s Next?**
-
-🚀 **In Milestone 1**, we will **integrate a database (MongoDB) and build a real-world Library App**!  
-You’ll learn:
-✅ How to **connect Next.js to a NoSQL database**  
-✅ How to **store and retrieve user data securely**  
-✅ How to **build a backend API for data management**
-
-Get ready for **full-stack development** with **Next.js & MongoDB**! 🎯
