@@ -111,7 +111,7 @@ There are 2 main ways to setup a database for this project:
 
 ### Atlas
 
-[MondoDB Atlas](https://www.mongodb.com/products/platform/atlas-database) is a service by company behind the mongodb database, basically, they will run the database for you, and then you can access from your app.
+[MongoDB Atlas](https://www.mongodb.com/products/platform/atlas-database) is a service by company behind the mongodb database, basically, they will run the database for you, and then you can access from your app.
 
 Using a cloud service has many advantages:
 
@@ -152,6 +152,41 @@ There is [an official example](https://github.com/vercel/next.js/tree/canary/exa
 
 Go through code in the example and try to understand what is happening, and how we can apply this to our use case. Also, read the documentation of [Mongoose](https://mongoosejs.com/docs/).
 
+## Connecting to the DB
+
+You can use the following code to connect to the DB, you can put this in any file you want outside of the `app` folder, usually something like `lib/db.js`
+```js
+import mongoose from "mongoose";
+import assert from "node:assert";
+
+// caching for local development
+let cached = global.mongoose;
+if (!cached) {
+  cached = global.mongoose = { conn: null, promise: null };
+}
+
+export async function makeSureDbIsReady() {
+  if (cached.conn) {
+    return cached.conn;
+  }
+
+  const MONGODB_URI = process.env.MONGODB_URI;
+  assert(
+    MONGODB_URI,
+    "Please define the MONGODB_URI environment variable inside .env.local"
+  );
+
+  if (!cached.promise) {
+    cached.promise = mongoose.connect(MONGODB_URI, { bufferCommands: false });
+  }
+
+  cached.conn = await cached.promise;
+  return cached.conn;
+}
+```
+
+Anytime you want to talk to the database, make sure to `await makeSureDbIsReady()` first!
+
 
 
 ## Defining schemas
@@ -168,7 +203,7 @@ const CompanySchema = new mongoose.Schema({
   industry: {
     type: String,
     required: true,
-    maxlength: [60, "Owner's Name cannot be more than 60 characters"],
+    maxlength: [60, "Industry cannot be more than 60 characters"],
   },
   founded_year: {
     type: Number,
@@ -182,6 +217,8 @@ export let Company =
 ```
 
 Now our ORM knows we have a `Company` collection, and each company has a name, an industry, and the year it was founded.
+
+Remember, you need to `await makeSureDbIsReady()` before calling any of the operations below:
 
 ### Create
 
