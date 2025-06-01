@@ -1,219 +1,174 @@
-# **BONUS Milestone: Recap & Bonus Milestone - Next.js & Advanced Features (OPTIONAL)**
+# Milestone 6 - Deployment
 
-## **Overview**
+So far, we have been working and developing our project locally in development mode, but now we want to take our next.js app to "production"
 
-This optional milestone is designed for students who want to take their project to the next level AFTER completing milestone 1-3. If you haven't completed milestone 1-3 we strongly encourage you to finish them before starting this bonus milestone. 
+## Development vs Production
 
-In this recap Milestone, you will refine your understanding of **Next.js, Tailwind CSS, authentication, API integration, and global state management**. You will revisit concepts from **Milestones 5, 6, and 7**, applying improvements and optimizations to your **Twitter Clone project**.
+So far we have been running the project with `npm run dev`, this includes:
 
-This is an opportunity to refactor your code, enhance the UI, and explore additional Next.js features. We will also introduce **middleware**, **incremental static regeneration (ISR)**, and **server components** as a **bonus milestone**.
+- Runs locally on your machine
+- Hot-reloading, when you change the code, next.js automatically builds and runs your code.
+- Detailed warnings / error messages and stack traces.
+- Fast iterations for development!
 
----
+For production, there are different requirements
 
-## **Learning Objectives**
+- Code is not going to change
+- We want to the code to run fast
+  - with minified JS / CSS
+  - static generation when possible
+- Usable from anywhere, not only your machine
 
-By the end of this Milestone, you should be able to:
+We can create a production version of our app using `npm run build`.
 
-1. **Strengthen Your Understanding of Next.js Core Features**
+### Next.js output modes
 
-   - Improve routing logic (dynamic and API routes).
-   - Optimize data fetching strategies (**SSR, SSG, ISR**).
-   - Secure API endpoints and protect routes.
+Next.js has different options for outputs of projects. [You can read more about them here](https://nextjs.org/docs/app/api-reference/config/next-config-js/output)
 
-2. **Enhance the UI with Tailwind CSS**
+By default, next.js will will automatically trace each page and its dependencies to determine all of the files that are needed for deploying a production version of your application. This feature helps reduce the size of deployments drastically.
 
-   - Apply better UI/UX principles to the Twitter Clone.
-   - Use **Tailwind utility classes** effectively for responsiveness.
-   - Implement interactive animations.
+`standalone` mode will create a folder at .next/standalone which can then be deployed on its own without installing `node_modules`. Additionally, a minimal `server.js` file is also output which can be used instead of `next start`.
 
-3. **Refine Authentication & Global State Management**
+Additionally, there is the `export` mode, [which you can read more about here](https://nextjs.org/docs/app/guides/static-exports), this will build all of your pages to static html / js / css. However, this mode has [many caveats](https://nextjs.org/docs/app/guides/static-exports#unsupported-features):
 
-   - Improve authentication logic using middleware.
-   - Enhance global state management with the Context API.
+- No API routes (meaning no databases)
+- No Dynamic routes
+- No middleware
+- And many others
 
-4. **Bonus Challenge: Implement Middleware & ISR**
-   - Use Next.js **middleware** to handle authentication.
-   - Optimize your app with **incremental static regeneration (ISR)**.
+Choose this option _only_ if you have a static website with no backend. This mode is great when you want to deploy to github pages.
 
----
+### Edge cases
 
-## **1️⃣ Revisiting Next.js Routing & API**
-
-One of the core principles of Next.js is **file-based routing**. Over the past three Milestones, you’ve worked with:
-
-✅ **Dynamic routes** (e.g., `/profile/[id]`)  
-✅ **API routes** for user authentication and posts  
-✅ **Protected routes** that require authentication
-
-Let’s **refactor our API routes** to improve readability and security.
-
-### **Refactoring API Routes**
-
-Instead of handling authentication logic directly in API handlers, move **authentication checks to middleware**.
-
-#### **🔹 Before (Milestone 3 Implementation)**
-
-```js
-import { getSession } from "next-auth/react";
-
-export async function GET(req) {
-  const session = await getSession({ req });
-
-  if (!session) {
-    return new Response(JSON.stringify({ error: "Unauthorized" }), {
-      status: 401,
-    });
-  }
-
-  return new Response(JSON.stringify({ message: "Welcome!" }), { status: 200 });
-}
-```
-
-#### **✅ After (Using Middleware)**
-
-```js
-import { NextResponse } from "next/server";
-import { getToken } from "next-auth/jwt";
-
-export async function middleware(req) {
-  const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
-
-  if (!token) {
-    return NextResponse.redirect("/login");
-  }
-
-  return NextResponse.next();
-}
-```
-
-Now, **every protected route will use middleware** instead of checking authentication in every API handler.
-
----
-
-## **2️⃣ UI Improvements with Tailwind CSS**
-
-Tailwind CSS allows us to build modern, responsive UIs quickly. This Milestone, refine your **Twitter Clone UI** by implementing:
-
-✅ **Better spacing and alignment**  
-✅ **Consistent typography**  
-✅ **Dark mode support**
-
-### **Refactoring Components with Tailwind**
-
-Instead of manually applying classes everywhere, use **reusable utility classes**.
-
-#### **🔹 Before (Basic Button)**
+Lets say you have this page:
 
 ```jsx
-<button className="px-4 py-2 bg-blue-500 text-white rounded">Submit</button>
-```
-
-#### **✅ After (Reusable Button Component)**
-
-```jsx
-export default function Button({ children }) {
-  return (
-    <button className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded">
-      {children}
-    </button>
-  );
+export default async function ShowCompany() {
+  await makeSureDbIsReady();
+  const allCompanies = await Company.find({});
+  return (<>
+  {allCompanies.map(...)}
+   </>
+  )
 }
 ```
 
-Now, you can use `<Button>` anywhere in your project!
+What do you think can go wrong when you try to build this app for production?
 
----
+<details>
+<summary>Answer</summary>
 
-## **3️⃣ Optimizing API Calls with ISR**
+This won't work unless the database is running when you run the build. Next.js will try to connect to the database to read the data to create the page at build time, which may not work.
 
-**Incremental Static Regeneration (ISR)** allows pages to be **dynamically updated** after deployment.
+We have to options to deal with this:
 
-Instead of fetching data on **every request (SSR)**, we can **pre-build pages and update them in the background**.
+_Use fetch instead of server components_
 
-### **Example: Using ISR in Next.js**
+By using `fetch` inside of `useEffect`, next.js won't fetch the data when building the app, but the browser will do the fetch request when you open the page.
 
-Modify your `/pages/index.js` to **pre-render tweets** and update them every 30 seconds.
+_`force-dynamic`_
+
+We can tell next.js to not build this page, but run this dynamically on every request using the dynamic option:
+
+Inside of your `page.js` file, add
 
 ```js
-export async function getStaticProps() {
-  const res = await fetch("https://dummyjson.com/posts");
-  const posts = await res.json();
-
-  return {
-    props: { posts },
-    revalidate: 30, // Re-fetch data every 30 seconds
-  };
-}
+export const dynamic = "force-dynamic";
 ```
 
-With ISR:
-✅ The page is **pre-rendered at build time**.  
-✅ Every **30 seconds**, it refreshes with new data.  
-✅ **Faster loading** for users!
+You can read more about the dynamic options [here](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#dynamic)
 
----
+</details>
 
-## **Bonus Challenge: Implement Middleware & API Caching**
+## Deploying your App
 
-### **1. Use Middleware for Authentication**
+Deployment means running your app on a different machine than your local one, and it is reachable from the internet. Not just `localhost`. This also means however that you need a database that is also reachable from the internet, so a local database won't work.
 
-✅ Move authentication logic to middleware  
-✅ Redirect users to `/login` if they are not authenticated  
-✅ Protect sensitive routes like `/api/posts`
+If you want, you can also buy a domain and make your app accessible through that domain.
 
-### **2. Cache API Calls for Performance**
+App deployment is a very very big topic, and this lesson we are going to talk broadly about the concepts. Don't be worried if you don't understand all of it, not many do.
 
-Instead of hitting the database on **every request**, use **Next.js API caching**.
+There are many ways to deploy next.js, [you can see them here](https://nextjs.org/docs/app/getting-started/deploying).
 
-#### **Example: API Caching with Redis**
+### Vercel
 
-```js
-import Redis from "ioredis";
+Vercel is the company that created next.js, and they provide an easy way to deploy your app. [You can read more about it here](https://nextjs.org/learn/pages-router/deploying-nextjs-app-deploy). Deploying a simple app that does not have a lot of traffic is free!
 
-const redis = new Redis(process.env.REDIS_URL);
+The process is simple
 
-export async function GET(req) {
-  const cachedPosts = await redis.get("posts");
+- Create an account on [Vercel's Website](https://vercel.com/signup)
+- Allow Vercel access to your github account
+- Import the project you want to deploy
 
-  if (cachedPosts) {
-    return new Response(JSON.stringify(JSON.parse(cachedPosts)), {
-      status: 200,
-    });
-  }
+![Example](https://content-media-cdn.codefinity.com/courses/383258e5-c318-41bc-b29c-0495ff30ccbe/deployment-%26-database/deployment-step-1-min.png)
 
-  const res = await fetch("https://dummyjson.com/posts");
-  const posts = await res.json();
+![Example 2](https://miro.medium.com/v2/resize:fit:720/format:webp/1*l63mFft_EHwmWy9g-Vzvaw.png)
 
-  await redis.set("posts", JSON.stringify(posts), "EX", 60); // Cache for 60 seconds
+Next.js is going to build your app, and then deploy it for you, and give you a url!
 
-  return new Response(JSON.stringify(posts), { status: 200 });
-}
+### Netlify
+
+Another big provider that allows you to deploy your app in a process very similar to Vercel, you can [read more about it here](https://www.netlify.com/blog/2020/11/30/how-to-deploy-next.js-sites-to-netlify/)
+
+### Docker
+
+This is an advanced of deploying your app and requires a lot of control and understanding.
+
+Docker containers are reusable applications that you can run anywhere, in a very similar way that we can run a mongodb locally, we can create a docker container for our app and deploy it anywhere.
+
+We need to have [docker](https://www.docker.com/get-started/) installed, to be able to do this. Using the `standalone` mode is the best for this kind of deployment.
+
+First we create a `Dockerfile`
+
+```dockerfile
+FROM node:24 AS builder
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci
+COPY . .
+RUN npm run build
+
+FROM node:24
+WORKDIR /app
+COPY --from=builder /app/.next/standalone ./
+COPY --from=builder /app/.next/static ./.next/static
+ENV HOSTNAME=0.0.0.0 PORT=80
+CMD [ "node" , "server.js"]
+
 ```
 
-Now:
-✅ Posts are fetched **once per minute**, reducing database load  
-✅ Faster API responses for users
+And then we can build a docker image from this:
 
----
+```sh
+docker build . -t my-website
+```
 
-# **Key Takeaways from Milestones 5-7**
+There are many ways to run our docker container, something like `AWS`, `Azure`, `GCP`, `DigitalOcean`, and many others. As an example with `GCP`, we can use [Google cloud run](https://cloud.google.com/run) to run your container. [More info here](https://github.com/nextjs/deploy-google-cloud-run). You need a GCP account to be able to do this. The first couple of months are free, but than it is paid.
 
-| Topic              | Key Concepts                    |
-| ------------------ | ------------------------------- |
-| **Next.js Basics** | Routing, API, SSR, SSG          |
-| **Tailwind CSS**   | Styling, Utility-First Approach |
-| **Authentication** | NextAuth.js, Protected Routes   |
-| **Global State**   | Context API, JWT Storage        |
-| **Data Fetching**  | ISR, Middleware, API Caching    |
+First, we need a google cloud project and an artifact registry to store our docker image.
 
----
+```sh
+gcloud config set project YOUR_PROJECT_ID
+gcloud auth configure-docker
+```
 
-# **What’s Next?**
+Then we can build and push our container
 
-🚀 **In Milestone 1**, we will **integrate a database (MongoDB) and build a real-world Library App**!  
-You’ll learn:
-✅ How to **connect Next.js to a NoSQL database**  
-✅ How to **store and retrieve user data securely**  
-✅ How to **build a backend API for data management**
+```sh
+docker build . -t gcr.io/YOUR_PROJECT_ID/nextjs-app
+docker push gcr.io/YOUR_PROJECT_ID/nextjs-app
+```
 
-Get ready for **full-stack development** with **Next.js & MongoDB**! 🎯
+Finally, we can tell GCP to run our container
+
+```sh
+gcloud run deploy nextjs-app \
+  --image gcr.io/YOUR_PROJECT_ID/nextjs-app \
+  --platform managed \
+  --region us-central1 \
+  --allow-unauthenticated
+```
+
+Of course, there are many additional edge cases needed to be able to achieve this that we won't handle in this course, this should just give you a rough idea on what the process would look like.
+
+The easiest approach is to deploy on vercel, and you can do this for now if you want.
