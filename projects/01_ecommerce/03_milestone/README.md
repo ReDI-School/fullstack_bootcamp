@@ -43,7 +43,205 @@ We will **upgrade the existing E-commerce UI** from Milestone 2 by:
 ### **1. Implement Global State Management with Context API**
 We will define a **Cart Context** that manages the cart items and provides functions to add or remove products.
 
+#### useConext():
+useContext() is a React Hook that allows you to share data globally across components, without passing props manually at every level.
+
+Normally in React, we pass data from parent to child components using props. But when the same data is needed by many components across different levels of the tree, prop drilling becomes messy.
+
+In such cases, useContext() is a cleaner and more efficient solution. It allows any component to access context values directly, no matter how deep it is in the component tree.
+
+> Instead of manually passing props through many layers, we can wrap components with a Context.Provider and consume that context anywhere using the useContext() hook.
+
+**Below one is a basic example without any context, just to give an idea of how the useContext working.**
+
+### Example 1
+
+**Step 1: create Context**
+
+Add following code to ```src/common.js```
+
+```javascript
+// import createContext function from react
+import { createContext } from 'react';  
+
+//create ThemeContext context, 
+//🔔 pay attention as we pass default values 
+export const ThemeContext = createContext('red');
+```
+
+**Step 2: use that context and also update it**
+
+Add following code to ```src/ThemeUpdateComponent.js```
+
+```javascript
+import { useContext, useState } from "react";
+import { ThemeContext } from './common';
+import  ThemeUseComponent  from './ThemeUseComponent';
+
+// we are updating the ThemeContext value also reading it
+export default function ThemeUpdateComponent() {
+   let value = useContext(ThemeContext);
+   let [textColor, setColor] = useState(value);
+   //using ThemeContext -> color in p tag style
+   //updating color on button click
+   return (
+           <ThemeContext value={textColor}>
+              <p style={{color: textColor }}>Parent Component</p>
+              <ThemeUseComponent></ThemeUseComponent>
+              <button onClick={() => { setColor( textColor == 'green' ? 'red' : 'green') }}> {textColor == 'green' ? 'Red' : 'Green' } Color</button>
+           </ThemeContext>
+   );
+}
+```
+
+**Step 3: use context in child component**
+Add following code to ```src/ThemeUseComponent.js```
+
+```javascript
+import { ThemeContext } from "./common";
+import { useContext } from "react";
+
+export default function ThemeUseComponent() {
+   let value = useContext(ThemeContext);
+   return (
+           <p style={{ color: value }}>Child Component: My color is {value}</p>
+   );
+}
+```
+
+**Step 4: Add our main Component to App.jsx file**
+Add following to ```src/App.jsx```
+
+```javascript 
+import './App.css'
+import ThemeUpdateComponent from './ThemeUpdateComponent'
+
+function App() {
+  return (
+    <>
+       <h1>useContext()</h1>
+       <ThemeUpdateComponent></ThemeUpdateComponent>
+   </>
+  );
+}
+
+export default App
+```
+
+
+### Example 2: Pass object in context
+
+**Step 1: Create a file ```src/common.js``` and initialize contexts**  
+
+>When creating context we added the default values for theme. Keep an eye on the object key name "theme" as we will use the same name when use context  
+
+```javascript
+import { createContext } from 'react';
+
+export const ThemeContextUpdated = createContext({ theme: {
+      bgColor: '#dedede',
+      textColor: 'black',
+      themeType: 'light'
+   }, setValue: () => { }});
+```
+
+
+**Step2: Use contexts and update their values** 
+```src/ThemeUpdateCompUpdated.jsx```
+
+```javascript
+import { useContext, useState } from "react";
+import { ThemeContextUpdated } from './common';
+import  ThemeUseComponentUpdated  from './ThemeUseComponentUpdated';
+
+// we are updating the ThemeContext value also reading it
+export default function ThemeUpdateCompUpdated() {
+    //key point: 🔔 Pay attention to {theme}
+   //the name should be same what we declared in createContext
+   let {theme} = useContext(ThemeContextUpdated);
+   let [themeState, setTheme] = useState(theme);
+   
+
+   function updateTheme() {
+      //for multilevel objects (Objects inside objects) this shallow copy will failed
+      //key point
+      let newTheme = {...themeState}; //spread operator
+      
+      if (newTheme.themeType === 'light') {
+         newTheme.themeType = 'dark';
+         newTheme.textColor = '#fff';
+         newTheme.bgColor = '#333';
+      } else {
+         newTheme.themeType = 'light';
+         newTheme.textColor = '#000';
+         newTheme.bgColor = '#dedede';
+      }
+
+      setTheme(newTheme);
+   }
+
+   return (
+            //key point: using themecontext and passing theme value with key
+           //naming is important
+           <ThemeContextUpdated value={{ theme: themeState, setTheme }}>
+              <div style={{ backgroundColor: themeState.bgColor, padding: '20px' }}>
+                 <p style={{color: themeState.textColor }}>Parent Component</p>
+                 <ThemeUseComponentUpdated></ThemeUseComponentUpdated>
+                 <button onClick={() => { updateTheme() }}> Change Theme</button>
+              </div>
+           </ThemeContextUpdated>
+   );
+}
+```
+
+
+**Step3: Child component using context**
+```src/ThemeUpdateCompUpdated.jsx```
+
+```javascript
+import { ThemeContextUpdated } from "./common";
+import { useContext } from "react";
+
+export default function ThemeUseComponentUpdated() {
+    // 🔔 The name that we passed as key in context
+   // <ThemeContextUpdated value={{ theme: themeState, setTheme }}>
+   let { theme } = useContext(ThemeContextUpdated);
+   return (
+           <p style={{ color: theme.textColor }}>Child Component: My color is {theme.textColor}
+              , Theme: { theme.themeType}
+           </p>
+   );
+}
+```
+
+**Step4: Add main component to app.jsx**
+
+```src/App.jsx```
+
+```javascript 
+import './App.css'
+
+import ThemeUpdateCompUpdated from './ThemeUpdateCompUpdated';
+
+function App() {
+  return (
+    <>
+       <h1>useContext()</h1>
+       <ThemeUpdateCompUpdated></ThemeUpdateCompUpdated>
+   </>
+  );
+}
+
+export default App
+```
+
+---------
+
+
 **CartContext.js**
+
+As new documentation of React ```CartContext.Provider``` might change with ```CartContext``` 
+
 ```javascript
 import { createContext, useState, useContext } from "react";
 
