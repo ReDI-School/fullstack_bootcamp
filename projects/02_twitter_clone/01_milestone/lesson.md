@@ -74,6 +74,32 @@ This will:
 | Number of Pages | Fixed               | Created dynamically      |
 | File Location   | `app/home/page.js`  | `app/tweet/[id]/page.js` |
 
+
+### 📘 API Routes in Next.js – When to Use
+>We’ll also be working with API routes in Next.js — a feature that lets you build backend logic directly into your application. You’ll see this used throughout the course.
+
+**What is API**
+
+API stands for Application Programming Interface.
+In simple terms, it’s a way for different software systems to talk to each other.
+
+In web development, an API typically refers to a backend endpoint (usually HTTP-based) that allows a frontend (or another system) to send or retrieve data.
+
+**Why Do We Use APIs?**
+
+Communication: APIs let frontend and backend parts of an app communicate efficiently.
+
+Data Access: APIs allow access to databases or external services (e.g., weather, auth).
+
+Code Separation: They enforce a clean separation of concerns between frontend and backend.
+
+3rd-party Integration: APIs enable integration with services like Stripe, Google Maps, or GitHub.
+
+| Use Case                           | Description               | Recommended? | Usage                                         |
+|------------------------------------|---------------------------|--------------|-----------------------------------------------|
+| `/app/api/tweets/route.js`         | Fetch list of tweets      | ✅ Yes       | /api/tweets                                   |
+| `/api/api/tweets/[id]/route.js`    | Get or Update tweet by Id | ✅ Yes       | /api/tweets/111                               |
+
 ---
 
 ## **5️⃣ Next Steps**
