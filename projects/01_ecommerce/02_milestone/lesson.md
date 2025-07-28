@@ -76,7 +76,25 @@ Props make this component reusable, as we can now create multiple `ProductCard` 
 
 ---
 
-## **2.2 Introduction to State**
+## **2.2 Introduction to React Hooks**
+
+### **What Are Hooks?**
+
+Hooks are special functions in React that let you use features like **state** and **lifecycle methods** in functional components. They make React more powerful and simplify component logic.
+
+#### **Why Hooks?**
+
+- Before hooks, state and lifecycle methods were only available in class components.
+- Hooks allow functional components to be dynamic and interactive.
+
+### **The Most Common Hooks**
+
+1. **`useState`**: Manages state within a component (covered in the previous section).
+2. **`useEffect`**: Handles **side effects**, such as data fetching, subscriptions, or manual DOM updates.
+
+---
+
+## **2.3 Introduction to State**
 
 ### **What Is State?**
 
@@ -174,24 +192,6 @@ function ProductCard({ title, price, image }) {
 1. State is used to manage dynamic data that changes over time.
 2. Use the `useState` hook to define and update state in functional components.
 3. State enables components to become interactive and respond to user actions.
-
----
-
-## **2.3 Introduction to React Hooks**
-
-### **What Are Hooks?**
-
-Hooks are special functions in React that let you use features like **state** and **lifecycle methods** in functional components. They make React more powerful and simplify component logic.
-
-#### **Why Hooks?**
-
-- Before hooks, state and lifecycle methods were only available in class components.
-- Hooks allow functional components to be dynamic and interactive.
-
-### **The Most Common Hooks**
-
-1. **`useState`**: Manages state within a component (covered in the previous section).
-2. **`useEffect`**: Handles **side effects**, such as data fetching, subscriptions, or manual DOM updates.
 
 ---
 
@@ -417,15 +417,15 @@ Over the course of this lesson, we explored several fundamental concepts in Reac
    - Enable parent components to pass data to child components.
    - Immutable, making components reusable and predictable.
 
-2. **State**:
-
-   - Local to a component and mutable, enabling dynamic behavior.
-   - Managed using the `useState` hook.
-
-3. **Hooks**:
+2. **Hooks**:
 
    - Bring powerful features to functional components.
    - `useEffect` helps manage side effects, such as data fetching.
+
+3. **State**:
+
+   - Local to a component and mutable, enabling dynamic behavior.
+   - Managed using the `useState` hook.
 
 4. **API Fetching**:
    - Integrates external data into our application using the `fetch` API.
