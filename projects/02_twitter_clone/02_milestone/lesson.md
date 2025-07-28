@@ -40,45 +40,39 @@ To add Tailwind to our **Twitter Clone**, follow these steps:
 Run this command in the terminal:
 
 ```bash
-npm install -D tailwindcss postcss autoprefixer
+npm install tailwindcss @tailwindcss/postcss postcss
 ```
 
 ### **2️⃣ Generate the Tailwind Config File**
 
-```bash
-npx tailwindcss init -p
-```
+Create a postcss.config.mjs file in the root of your project and add the @tailwindcss/postcss plugin to your PostCSS configuration.
 
-This will create:
+```postcss.config.mjs```
 
-```
-tailwind.config.js  # Configuration file
-postcss.config.js   # PostCSS setup
+```javascript
+const config = {
+  plugins: {
+    "@tailwindcss/postcss": {},
+  },
+};
+export default config;
 ```
 
 ### **3️⃣ Enable Tailwind in `globals.css`**
 
-Modify the `styles/globals.css` file to include:
+Add an @import to ./src/app/globals.css that imports Tailwind CSS.
+
+Add following line on top of ```./src/app/globals.css```
 
 ```css
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 ```
 
 ✅ Now, Tailwind classes will be available in all components!
 
----
+**For tailwind configuration, please follow below link.**
 
-## **📂 Folder Structure After Tailwind Setup**
-
-```
-my-twitter-clone/
-├── styles/
-│   ├── globals.css  # Tailwind imports and global styles
-├── tailwind.config.js  # Tailwind configuration file
-├── postcss.config.js  # PostCSS configuration
-```
+https://v2.tailwindcss.com/docs/configuration
 
 ---
 
