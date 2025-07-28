@@ -221,6 +221,40 @@ const calculator = {
 const add = (a, b) => a + b;
 ```
 
+### **Promises in JavaScript?**
+  A Promise in JavaScript is a way to handle asynchronous operations.
+  It represents the eventual completion (or failure) of a task and allows you to run code when that task is finished.  
+
+- **Throughout this course we will use promises a lot.    
+So it is really important to understand it well.**
+
+- A good example of Promise is `fetch` method of javascript which is also returns a promise.
+  https://developer.mozilla.org/en-US/docs/Web/API/Window/fetch
+
+
+- Promises use to handle time consuming tasks.
+  - Fetching data from an API
+  - Reading files
+  - Performing delayed computations
+  
+```javascript
+const myPromise = new Promise((resolve, reject) => {
+  // Your async task or condition here
+  if (/* success condition */) {
+    resolve('Task succeeded!');
+  } else {
+    reject('Task failed.');
+  }
+});
+
+//calling a promise
+myPromise
+  .then(result => console.log(result))
+  .catch(error => console.log(error));
+
+```
+
+
 ## DOM Manipulation
 
 The Document Object Model (DOM) is how JavaScript interacts with HTML:
