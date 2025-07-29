@@ -7,11 +7,11 @@
 In React, **props** (short for "properties") are used to pass data from a parent component to a child component. Props allow components to be **reusable** and **customizable**, enabling us to build dynamic user interfaces.
 
 - Props are **immutable**, meaning they cannot be changed by the child component.
-- They allow us to make components more versatile by providing input values.
+- Props allow us to make components more versatile by providing input values.
 
 ### **How Props Work**
 
-Props are passed to components as attributes in JSX. Inside the component, props can be accessed using the `props` object.
+Props are passed to components as "attributes" in JSX. Inside the component, props can be accessed using the `props` object.
 
 #### **Example**: Passing and Using Props
 
@@ -43,7 +43,7 @@ function Greeting({ name }) {
 
 ### **When to Use Props**
 
-- Use props when you want to pass **static** or **dynamic** data from a parent to a child component.
+- Use props when you want to pass data from a parent to a child component.
 - Props are ideal for **display-only** components, such as cards, buttons, or headers.
 
 ### **Hands-On Exercise**
@@ -55,10 +55,10 @@ Try creating a **ProductCard** component that accepts props for a product's titl
 ```jsx
 function ProductCard({ title, price, image }) {
   return (
-    <div className="p-4 bg-white shadow-md rounded-lg">
-      <img src={image} alt={title} className="w-32 h-32 object-cover mb-4" />
-      <h3 className="text-lg font-bold">{title}</h3>
-      <p className="text-gray-600">${price.toFixed(2)}</p>
+    <div>
+      <img src={image} alt={title} />
+      <h3>{title}</h3>
+      <p>${price}</p>
     </div>
   );
 }
@@ -70,7 +70,7 @@ Props make this component reusable, as we can now create multiple `ProductCard` 
 
 ### **Key Takeaways**
 
-1. Props allow us to pass data to components and make them dynamic.
+1. Props allow us to pass data to components and make them reusable.
 2. They are **immutable** and should not be modified inside child components.
 3. Use destructuring for cleaner and more readable code.
 
@@ -98,7 +98,7 @@ Hooks are special functions in React that let you use features like **state** an
 
 ### **What Is State?**
 
-In React, **state** refers to data that is managed inside a component and can change over time. Unlike props, which are passed from a parent component, state is **local** to the component and allows it to be interactive.
+In React, **state** refers to data that is managed inside a component and can change over time. Unlike props, which are passed from a parent component, state is **local** to the component.
 
 - State is **mutable**, meaning it can be updated by the component itself.
 - It is often used to handle dynamic data, such as user input or API responses.
@@ -142,7 +142,7 @@ export default Counter;
 - Use state to track **dynamic data** that changes during the lifecycle of a component.
 - Examples of state usage:
   - Handling user input (e.g., form fields).
-  - Toggling UI elements (e.g., modals, dropdowns).
+  - Toggling UI elements visibility and options (e.g., modals, dropdowns).
   - Storing data fetched from APIs.
 
 ### **Props vs. State**
@@ -208,7 +208,7 @@ useEffect(() => {
 ```
 
 - **Callback Function**: Contains the logic for the side effect.
-- **Dependency Array**: Determines when the effect runs. An empty array (`[]`) ensures the effect runs only once after the initial render.
+- **Dependency Array**: Determines when the effect runs. An empty array (`[]`) ensures the effect runs only once after the initial render. Passing no array will trigger the callback function after every render (this should be avoided, as it might trigger unnecessary side effects).
 
 #### **Example**: Using `useEffect` to Log a Message
 
@@ -395,14 +395,11 @@ export default ProductList;
 
    - Ensure the `useEffect` dependency array is configured correctly.
 
-4. **Optimize Performance**:
-   - Cache data or use libraries like SWR or React Query for advanced scenarios.
-
 ---
 
 ### **Key Takeaways**
 
-1. API fetching enables dynamic data integration into React applications.
+1. API fetching enables data integration into React applications.
 2. Use `useEffect` for fetching data after the component mounts.
 3. Always handle errors and loading states for a better user experience.
 
