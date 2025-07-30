@@ -507,6 +507,16 @@ npm run dev
   Installation: https://nodejs.org/en/download
 - nvm: Node version manager to allow use to work with different node versions.
 - `package.json`: Track dependencies of the project and scripts to automate tasks like start and build. Helps to transfer project, as there is no need to send the required dependencies.
+  
+| Type    | Description                                                                                                             |
+|---------|-------------------------------------------------------------------------------------------------------------------------|
+| Major   | Major changes can break old code, like removable of functions                                                           |
+| Minor   | New Features but still backward compatibility                                                                           |
+| Patch   | Bug fixes usually                                                                                                       |
+| ^19.1.0 | Allow updates but major version will not change, 19 here. 19.x.x, x can change here, minor and patch can to any version |
+| ~19.1.0 | Allow updates only patch version, like 19.1.x, x is to any version                                                      |
+| 19.1.0  | Locked to same version so no change                                                                                     | 
+
 - `package-lock.json`: maintain/lock the exact package versions when you run `npm install`. It regenerates every time with `npm install` but will keep the exist version number when we install any package first time. So `package-lock.json` file makes sure that our colleagues always install the same package versions.
 - **Deleting package-lock.json could lead to inconsistency and can break the project**
 
