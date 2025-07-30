@@ -12,67 +12,6 @@ Errors are inevitable in software development. In React applications, error hand
 
 ---
 
-### **Error Boundaries in React**
-
-An **Error Boundary** is a React component that **catches JavaScript errors** in its child components. It prevents the entire application from breaking by displaying a fallback UI.
-
-#### **When to Use Error Boundaries**
-
-- Wrapping critical UI sections like forms, product listings, or dynamic content.
-- Handling runtime JavaScript errors caused by incorrect props or logic.
-
----
-
-### **How to Create an Error Boundary**
-
-Error Boundaries are created using class components with the `componentDidCatch` and `getDerivedStateFromError` lifecycle methods.
-
-#### **Example**: Basic Error Boundary
-
-```jsx
-import React, { Component } from "react";
-
-class ErrorBoundary extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    console.error("Error caught by ErrorBoundary:", error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return <h1>Something went wrong. Please try again later.</h1>;
-    }
-    return this.props.children;
-  }
-}
-
-export default ErrorBoundary;
-```
-
----
-
-### **Using Error Boundaries**
-
-Wrap components with `ErrorBoundary` to catch and handle errors.
-
-#### **Example**:
-
-```jsx
-<ErrorBoundary>
-  <ProductList />
-</ErrorBoundary>
-```
-
----
-
 ### **Error Handling in API Calls**
 
 When fetching data, handle errors using `try...catch` or `.catch()`.
@@ -114,15 +53,14 @@ if (error) return <p>Error loading products. Please try again.</p>;
    - Use tools like Sentry or LogRocket for error monitoring.
 
 3. **Granular Boundaries**:
-   - Use multiple Error Boundaries to localize errors and prevent breaking the entire application.
+   - Use multiple Error handling messages or codes to localize errors and prevent breaking the entire application.
 
 ---
 
 ### **Key Takeaways**
 
-1. Use Error Boundaries to catch and handle runtime JavaScript errors.
-2. Handle API errors gracefully with `try...catch` or `.catch()`.
-3. Always provide fallback UI to enhance user experience.
+1. Handle API errors gracefully with `try...catch` or `.catch()`.
+2. Always provide fallback UI to enhance user experience.
 
 ---
 
