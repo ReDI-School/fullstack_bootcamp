@@ -61,15 +61,29 @@ Non-Relational Databases don't use traditional tables, they use a variety of oth
 
 Examples: Document-based: MongoDB, Key-Value: Redis, Graph: Neo4j
 
+
+### **Key Features of NoSQL Databases**
+
+- **Schema-less data storage** 🏗️ → No rigid structure like SQL tables.
+- **Horizontal scalability** 📈 → Data can be distributed across multiple servers.
+- **High availability & performance** ⚡ → Optimized for fast data retrieval.
+- **Variety of models** 🎭 → Document, Key-Value, Graph, and Column-based storage.
+
+
 ## **Why NoSQL & MongoDB?**
 
 Traditional SQL databases use **tables and relationships**, while NoSQL databases like **MongoDB** use **documents and collections**. This makes NoSQL **flexible** and **scalable**, especially for dynamic applications like our Library App.
 
-| Feature      | SQL (Relational) | MongoDB (NoSQL)              |
-| ------------ | ---------------- | ---------------------------- |
-| **Schema**   | Fixed structure  | Flexible JSON-like documents |
-| **Scaling**  | Vertical scaling | Horizontal scaling           |
-| **Best for** | Structured data  | Unstructured, scalable data  |
+### **MongoDB vs SQL: Key Differences**
+
+| Feature         | SQL (Relational DB)             | MongoDB (NoSQL)                                            |
+| --------------- | ------------------------------- | ---------------------------------------------------------- |
+| **Schema**      | Fixed schema                    | Dynamic schema                                             |
+| **Data Model**  | Tables & Rows                   | JSON-like Documents                                        |
+| **Scalability** | Vertical Scaling                | Horizontal Scaling                                         |
+| **Joins**       | Uses relationships              | Embedded documents                                         |
+| **Best for**    | Structured data (e.g., Banking) | Unstructured data (e.g., Social Media, Content Management) |
+
 
 MongoDB stores data in **documents** (JSON format), which allows us to **store book details** in an easy-to-query structure.
 
@@ -164,6 +178,16 @@ There is [an official example](https://github.com/vercel/next.js/tree/canary/exa
 
 Go through code in the example and try to understand what is happening, and how we can apply this to our use case. Also, read the documentation of [Mongoose](https://mongoosejs.com/docs/).
 
+## **What is Mongoose?**
+
+Mongoose is an **Object Data Modeling (ODM) library** for MongoDB in **Node.js**. It provides a structured way to interact with MongoDB by defining **schemas** and **models**.
+
+### **Why Use Mongoose?**
+
+✅ **Provides schema validation** to ensure data consistency  
+✅ **Simplifies database interactions** with an easy-to-use API  
+✅ **Handles relationships** between different data models
+
 ## Connecting to the DB
 
 You can use the following code to connect to the DB, you can put this in any file you want outside of the `app` folder, usually something like `lib/db.js`
@@ -232,6 +256,41 @@ Now our ORM knows we have a `Company` collection, and each company has a name, a
 
 Remember, you need to `await makeSureDbIsReady()` before calling any of the operations below:
 
+
+---
+
+
+## **CRUD Operations with MongoDB & Mongoose**
+
+Now that our database is connected, let's implement **CRUD (Create, Read, Update, Delete) operations** to manage books in our Library App.
+
+---
+
+## **1️⃣ Understanding CRUD Operations**
+
+| Operation  | HTTP Method      | Description                       |
+| ---------- | ---------------- | --------------------------------- |
+| **Create** | `POST`           | Add a new company to the database    |
+| **Read**   | `GET`            | Retrieve company from the database  |
+| **Update** | `PUT` or `PATCH` | Modify an existing company's details |
+| **Delete** | `DELETE`         | Remove a company from the database   |
+
+---
+
+## **2️⃣ Creating API Routes for CRUD Operations**
+
+In **Next.js App Router**, we structure our API routes inside `/app/api/books/`.
+
+📁 **Project Structure**
+
+```
+/app
+ ├── /api
+ │   ├── /company
+ │   │   ├── route.js  (Handles CRUD operations)
+```
+
+
 ### Create
 
 ```js
@@ -264,6 +323,188 @@ await audi.save();
 ```js
 await Company.findOneAndDelete({name: "Audi"});
 ```
+
+
+## **3️⃣ Implementing CRUD Routes**
+
+### **📌 Create a New Book (`POST`)**
+
+```js
+import connectToDatabase from "@/lib/mongodb";
+import Book from "@/models/Book";
+
+export async function POST(req) {
+  await connectToDatabase();
+  const body = await req.json();
+  try {
+    const newBook = await Book.create(body);
+    return new Response(JSON.stringify(newBook), { status: 201 });
+  } catch (error) {
+    return new Response(JSON.stringify({ error: "Error creating book" }), {
+      status: 500,
+    });
+  }
+}
+```
+
+### **📌 Read All Books (`GET`)**
+
+```js
+export async function GET(req) {
+  await connectToDatabase();
+  try {
+    const books = await Book.find({});
+    return new Response(JSON.stringify(books), { status: 200 });
+  } catch (error) {
+    return new Response(JSON.stringify({ error: "Error fetching books" }), {
+      status: 500,
+    });
+  }
+}
+```
+
+### **📌 Update a Book (`PUT` or `PATCH`)**
+
+```js
+export async function PUT(req) {
+  await connectToDatabase();
+  const { id, ...updatedData } = await req.json();
+  try {
+    const updatedBook = await Book.findByIdAndUpdate(id, updatedData, {
+      new: true,
+    });
+    return new Response(JSON.stringify(updatedBook), { status: 200 });
+  } catch (error) {
+    return new Response(JSON.stringify({ error: "Error updating book" }), {
+      status: 500,
+    });
+  }
+}
+```
+
+### **📌 Delete a Book (`DELETE`)**
+
+```js
+export async function DELETE(req) {
+  await connectToDatabase();
+  const { id } = await req.json();
+  try {
+    await Book.findByIdAndDelete(id);
+    return new Response(
+      JSON.stringify({ message: "Book deleted successfully" }),
+      { status: 200 }
+    );
+  } catch (error) {
+    return new Response(JSON.stringify({ error: "Error deleting book" }), {
+      status: 500,
+    });
+  }
+}
+```
+
+---
+
+
+## **4️⃣ Testing API Routes with Postman or Thunder Client**
+
+### **Testing a `POST` Request**
+
+1. Open **Postman** or **Thunder Client** (VSCode extension).
+2. Set the method to `POST`.
+3. Use the URL: `http://localhost:3000/api/books`
+4. Set the request body to JSON:
+   ```json
+   {
+     "title": "The Hobbit",
+     "author": "J.R.R. Tolkien",
+     "publishedYear": 1937,
+     "coverImage": "https://example.com/hobbit.jpg",
+     "description": "A classic fantasy novel."
+   }
+   ```
+5. Click **Send** → Expect a `201 Created` response.
+
+### **Testing a `GET` Request**
+
+1. Set the method to `GET`.
+2. Use the URL: `http://localhost:3000/api/books`
+3. Click **Send** → Expect a JSON array of books.
+
+### **Testing an `UPDATE` Request**
+
+1. Set the method to `PUT`.
+2. Use the URL: `http://localhost:3000/api/books`
+3. Set the request body:
+   ```json
+   {
+     "id": "64b2ff...",
+     "title": "The Hobbit - Updated Edition"
+   }
+   ```
+4. Click **Send** → Expect a `200 OK` response with updated data.
+
+### **Testing a `DELETE` Request**
+
+1. Set the method to `DELETE`.
+2. Use the URL: `http://localhost:3000/api/books`
+3. Set the request body:
+   ```json
+   { "id": "64b2ff..." }
+   ```
+4. Click **Send** → Expect a `200 OK` confirmation.
+
+---
+
+## **5️⃣ Frontend Integration (Fetching Books in Next.js)**
+
+### **Fetching Books from the API in Next.js**
+
+Inside `/app/library/page.js`, add:
+
+```js
+"use client";
+import { useEffect, useState } from "react";
+
+export default function Library() {
+  const [books, setBooks] = useState([]);
+
+  useEffect(() => {
+    async function fetchBooks() {
+      const res = await fetch("/api/books");
+      const data = await res.json();
+      setBooks(data);
+    }
+    fetchBooks();
+  }, []);
+
+  return (
+    <div>
+      <h1>Library</h1>
+      <ul>
+        {books.map((book) => (
+          <li key={book._id}>
+            {book.title} - {book.author}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+```
+
+---
+
+# **Conclusion - NoSQL & Database**
+
+## **Key Takeaways from This Milestone**
+
+1. **Understanding NoSQL** → We explored how NoSQL databases like MongoDB differ from relational databases, offering flexibility and scalability.
+2. **MongoDB Basics** → We set up a MongoDB database and learned how to interact with it using Mongoose.
+3. **Database Connection** → We established a connection between our Next.js app and MongoDB using Mongoose.
+4. **CRUD Operations** → We implemented Create, Read, Update, and Delete functionalities in our Library App.
+5. **Frontend Integration** → We fetched book data from our API and displayed it on the frontend.
+
+---
 
 ### Task
 
