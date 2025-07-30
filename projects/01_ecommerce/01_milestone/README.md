@@ -79,7 +79,7 @@ React is a powerful JavaScript library for building dynamic and efficient user i
 
     `import HeaderAsOtherName from './Header';`
 
-  - Named Import: named import are where we omit/don't use the default keword.
+  - Named Import: named import are where we omit/don't use the default keyword.
 
     `import { Header } from './Header';`
 
