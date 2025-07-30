@@ -61,6 +61,18 @@ Non-Relational Databases don't use traditional tables, they use a variety of oth
 
 Examples: Document-based: MongoDB, Key-Value: Redis, Graph: Neo4j
 
+## **Why NoSQL & MongoDB?**
+
+Traditional SQL databases use **tables and relationships**, while NoSQL databases like **MongoDB** use **documents and collections**. This makes NoSQL **flexible** and **scalable**, especially for dynamic applications like our Library App.
+
+| Feature      | SQL (Relational) | MongoDB (NoSQL)              |
+| ------------ | ---------------- | ---------------------------- |
+| **Schema**   | Fixed structure  | Flexible JSON-like documents |
+| **Scaling**  | Vertical scaling | Horizontal scaling           |
+| **Best for** | Structured data  | Unstructured, scalable data  |
+
+MongoDB stores data in **documents** (JSON format), which allows us to **store book details** in an easy-to-query structure.
+
 Here is an example on how a document looks like in MongoDB
 
 ```json
