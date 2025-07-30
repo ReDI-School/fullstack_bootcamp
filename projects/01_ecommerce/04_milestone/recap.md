@@ -11,7 +11,7 @@ In Milestone 1, we began our journey into React, a powerful library for building
 ### **1. React Overview**
 
 - React is a JavaScript library for building fast, interactive, and component-based web applications.
-- **Why React?**:
+- **Why React?**
   - Component-based architecture: Breaks the UI into reusable pieces.
   - Virtual DOM: Efficiently updates and renders changes.
   - Declarative syntax: Write components as functions of the UI state.
@@ -43,7 +43,7 @@ In Milestone 1, we began our journey into React, a powerful library for building
 ### **4. Setting Up a React Project**
 
 - We used Vite for setting up our React project:
-  - **Why Vite?**: Fast build tool with hot module replacement (HMR).
+  - **Why Vite?** Fast build tool with hot module replacement (HMR).
   - Steps to create a React app:
     1. Run `npm create vite@latest my-react-app --template react`.
     2. Navigate to the project folder and install dependencies: `npm install`.
@@ -51,7 +51,7 @@ In Milestone 1, we began our journey into React, a powerful library for building
 
 ### **5. Project Structure**
 
-- Organized the project into reusable components:
+- Organize the project into reusable components:
   - `src/components/`: Folder for all React components.
   - `App.jsx`: Root component combining all parts of the application.
 
@@ -72,7 +72,7 @@ In Milestone 1, we created the foundational components for an e-commerce store:
 
 - Represents a single product with its title, price, and image.
 - **Purpose**:
-  - Demonstrates the use of props to pass data from the parent to the child component.
+  - Demonstrates the use of props to pass data from parent to the child component.
 - **Example Usage**:
   ```javascript
   <ProductCard title="Laptop" price={999} image="laptop.jpg" />
@@ -128,7 +128,7 @@ In Milestone 2, we explored the fundamentals of state management and event handl
 ### **3. Event Handling**
 
 - **What is Event Handling?**
-  - React uses synthetic events to handle user interactions like clicks, key presses, and form submissions.
+  - React uses events to handle user interactions like clicks, key presses, and form submissions.
 - **Example**:
 
   ```javascript
@@ -142,7 +142,7 @@ In Milestone 2, we explored the fundamentals of state management and event handl
 ### **4. Fetching Data from APIs**
 
 - **Why Fetch Data?**
-  - Dynamic applications require data fetched from external sources like APIs.
+  - Sometimes, applications require data fetched from external sources like APIs.
 - **How to Fetch Data?**
   - Use the `fetch` function inside a `useEffect` hook to load data when a component mounts.
 - **Example**:
@@ -169,22 +169,22 @@ In Milestone 2, students expanded the e-commerce project with the following feat
 
 - **Purpose**: To allow users to add products to a shopping cart.
 - **Implementation**:
-  - Managed cart items using the `useState` hook in the `App` component.
-  - Passed the `onAddToCart` function as a prop to child components.
+  - Manage cart items using the `useState` hook in the `App` component.
+  - Pass the `onAddToCart` function as a prop to child components.
 
 ### **2. Dynamic Product Listings**
 
-- **Purpose**: Display products dynamically fetched from the Fake Store API.
+- **Purpose**: Display products fetched from the Fake Store API.
 - **Implementation**:
-  - Used the `useEffect` hook to fetch data when the `Main` component loads.
-  - Rendered each product using the `ProductCard` component.
+  - Use `useEffect` hook to fetch data when the `Main` component loads.
+  - Render each product using the `ProductCard` component.
 
 ### **3. Event-Driven Interactions**
 
 - **Purpose**: Enable user interactions, such as adding products to the cart.
 - **Implementation**:
-  - Added an "Add to Cart" button to the `ProductCard` component.
-  - Handled the button click to update the cart state.
+  - Add an "Add to Cart" button to the `ProductCard` component.
+  - Handle the button click to update cart state.
 
 ---
 
