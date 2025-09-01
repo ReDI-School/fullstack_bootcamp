@@ -13,7 +13,7 @@ In this milestone, you'll explore the current job market by researching relevant
 Follow the [Loom instructions](https://www.loom.com/share/f18a4f026ca041f1a9b6c12091312fa6?sid=b7233075-32d2-42d8-96fa-33e77a4dfb8c) to set up your workspace:
 - Create an account on [Miro](https://miro.com).
 - Create a new Miro board.
-- [Upload this template to the board](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/projects/04_career/Miro%20Template%20for%20Exercise%201) and lock it
+- [Upload this template to the board](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/projects/career_project/Miro%20Template%20for%20Exercise%201) and lock it
 
 ### Task 2: Work at your Professional Development Roadmap on Miro
 Following the steps listed both the template itself and here below:
@@ -30,7 +30,7 @@ If you are unsure about how to go about using the board, you can check [this exa
 ### Resources: 
   - Setup:
       -  [Loom Video](https://www.loom.com/share/f18a4f026ca041f1a9b6c12091312fa6?sid=b7233075-32d2-42d8-96fa-33e77a4dfb8c)
-      -  [Miro template](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/projects/04_career/Miro%20Template%20for%20Exercise%201)
+      -  [Miro template](https://github.com/ReDI-School/fullstack_bootcamp/blob/main/projects/career_project/Miro%20Template%20for%20Exercise%201)
       -  [Example of expected final result](https://miro.com/app/board/uXjVLMH9QTE=/?share_link_id=290789561693)
   - Resources for exercises: 
       -  [Career Development Plan](https://redi-school-1.gitbook.io/ux-ui-bootcamp/4.-project-career/milestone-1-career-orientation/careers-in-ux-ui-design/career-development-plan)

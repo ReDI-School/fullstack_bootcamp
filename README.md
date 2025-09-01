@@ -42,25 +42,6 @@ Build upon your React knowledge by integrating Next.js and MongoDB into your app
 
 **Link to Project: [02_fullstack](https://github.com/ReDI-School/fullstack_bootcamp/tree/main/projects/02_fullstack)**
 
-### Project 3: Capstone - Advanced Development & Deployment
-
-![Capstone](https://github.com/user-attachments/assets/ca3f9558-6ce5-4bf8-b7ce-781425f82c4e)
-
-
-
-Master advanced aspects of web development including authentication, security, and deployment. Learn how to optimize application performance, implement proper security measures, and deploy your applications to production. This project focuses on the real-world aspects of launching and maintaining web applications.
-
-**Learning Goals:**
-- Implement user authentication and authorization
-- Master security best practices and data protection
-- Learn deployment strategies and optimization
-- Understand environment configuration
-- Implement error handling and logging
-- Use SSH for secure server management
-- Master Git workflow and collaboration
-
-**Link to Project: [03_capstone](https://github.com/ReDI-School/fullstack_bootcamp/tree/main/projects/03_capstone)**
-
 
 ## 4. Project: Career Preparation
 ![CAREER](https://github.com/user-attachments/assets/3a849e6f-1c2f-4591-b406-f3f023742576)
@@ -76,7 +57,7 @@ By the end of this module, you should have a familiarity with and basic understa
 - `Application Process`: Understand and navigate the job application process.
 - `Mock Interview`: Participate in a mock interview to receive feedback and improve performance.
 
-**Link to Project: [04_career](https://github.com/ReDI-School/fullstack_bootcamp/tree/main/projects/04_career)**
+**Link to Project: [career_project](https://github.com/ReDI-School/fullstack_bootcamp/tree/main/projects/career_project)**
 
 
 ## Project Structure

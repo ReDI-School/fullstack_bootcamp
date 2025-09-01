@@ -81,5 +81,5 @@ Give students a **broken login function** and ask them to **fix it**.
 ## **Final Notes for Teachers**
 - Encourage students to **experiment and modify the project** to reinforce concepts.  
 - Promote **code reviews and debugging sessions** for collaborative learning.  
-- Prepare students for the **final capstone project**, ensuring they are confident with Next.js, API integration, and authentication.
+- Prepare students for the **career project**, ensuring they are confident with Next.js, API integration, and authentication.
 
