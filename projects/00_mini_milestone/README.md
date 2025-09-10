@@ -270,7 +270,7 @@ newDiv.textContent = "Hello, World!";
 document.body.appendChild(newDiv);
 
 // Event handling
-button.onClick = function () {
+button.onclick = function () {
   console.log("Button clicked!");
 };
 ```
