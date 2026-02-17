@@ -1,10 +1,10 @@
-# **Milestone 4: Introduction to Databases**
+# **Milestone 3: Introduction to Databases**
 
 In the last lesson, we talked about how we can take data from the user and store it on disk, now we want to store it on a real database!
 
 ### Expected Outcomes
 
-By the end of Milestone 4, you should:
+By the end of Milestone 3, you should:
 
 - Allow user to create tweets and store them in the database
 - Allow the user to see the tweets they created from the database
