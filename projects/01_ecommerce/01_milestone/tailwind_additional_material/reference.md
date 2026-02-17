@@ -1,10 +1,3 @@
-# **Milestone 2 - Reference Guide: Tailwind CSS & UI Design**  
-
-## **📌 Introduction to Tailwind CSS**  
-Tailwind is a **utility-first CSS framework** that allows developers to style applications using pre-built classes. Unlike traditional CSS, it removes the need for external `.css` files and provides **fast, reusable styling solutions**.
-
----  
-
 ## **🎯 Key Concepts**  
 
 ### **1️⃣ Installing & Configuring Tailwind CSS**  
@@ -111,5 +104,3 @@ npx tailwindcss init -p
 📌 **Tailwind CSS Docs:** [https://tailwindcss.com/docs](https://tailwindcss.com/docs)  
 📌 **Flexbox in Tailwind:** [https://tailwindcss.com/docs/flex](https://tailwindcss.com/docs/flex)  
 📌 **Grid System:** [https://tailwindcss.com/docs/grid-template-columns](https://tailwindcss.com/docs/grid-template-columns)  
-
-🚀 **Next: Applying Tailwind to Advanced Next.js Features!**  
