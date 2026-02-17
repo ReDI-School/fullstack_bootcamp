@@ -1,511 +1,774 @@
-# **Milestone 4: Introduction to Databases**
-
-In the last lesson, we talked about how we can take data from the user and store it on disk, now we want to store it on a real database!
-
-### Expected Outcomes
-
-By the end of Milestone 4, you should:
-
-- Allow user to create tweets and store them in the database
-- Allow the user to see the tweets they created from the database
-- Allow up votes / down votes to be stored in the database
-
-# Introduction to databases
-
-## What is a Database?
-
-A database is a place where data is stored, organized, and accessed. In backend development, databases are used to save things like user information, product details, messages, or anything your app needs to remember. You can put data in (store), look at it (read), change it (update), or remove it (delete). These operations are often referred to as CRUD (Create, Read, Update, Delete).
-
-## Types of Databases
-
-There are several types of databases, but the two main categories are:
-
-### Relational Databases (SQL)
-
-Relational databases use tables with rows and columns (like spreadsheets).
-
-Here is an example with `SQL` how to define the schema for a table:
-
-```sql
-CREATE TABLE companies (
-  company_id SERIAL PRIMARY KEY,
-  name VARCHAR(100) NOT NULL,
-  industry VARCHAR(50),
-  founded_year INT
-);
-```
-
-Every row is an entry to that database, so if you think about tweets, every row is a tweet.
-
-Data is connected using relations / foreign keys. A foreign key is an identified that connects two rows from different tables.
-
-```sql
-CREATE TABLE employees (
-  employee_id SERIAL PRIMARY KEY,
-  full_name VARCHAR(100) NOT NULL,
-  email VARCHAR(100) UNIQUE NOT NULL,
-  company_id INT NOT NULL,
-  FOREIGN KEY (company_id) REFERENCES companies(company_id) ON DELETE CASCADE
-);
-```
-
-Generally, data in SQL is flat, you can add columns, but you cannot nest items inside other items. For that, you create a new table, and reference the items by the `key`.
-
-Examples: MySQL, PostgreSQL, SQLite, SQL Server.
-
-We won't dig deep into SQL in this course, but I just want to give you the basics.
-
-### Non-Relational Databases (NoSQL)
-
-Non-Relational Databases don't use traditional tables, they use a variety of other data formats, like documents, key-value pairs or graphs. Generally the data is not structured, you can store anything anywhere.
-
-Examples: Document-based: MongoDB, Key-Value: Redis, Graph: Neo4j
-
-
-### **Key Features of NoSQL Databases**
-
-- **Schema-less data storage** 🏗️ → No rigid structure like SQL tables.
-- **Horizontal scalability** 📈 → Data can be distributed across multiple servers.
-- **High availability & performance** ⚡ → Optimized for fast data retrieval.
-- **Variety of models** 🎭 → Document, Key-Value, Graph, and Column-based storage.
-
-
-## **Why NoSQL & MongoDB?**
-
-Traditional SQL databases use **tables and relationships**, while NoSQL databases like **MongoDB** use **documents and collections**. This makes NoSQL **flexible** and **scalable**, especially for dynamic applications like our Library App.
-
-### **MongoDB vs SQL: Key Differences**
-
-| Feature         | SQL (Relational DB)             | MongoDB (NoSQL)                                            |
-| --------------- | ------------------------------- | ---------------------------------------------------------- |
-| **Schema**      | Fixed schema                    | Dynamic schema                                             |
-| **Data Model**  | Tables & Rows                   | JSON-like Documents                                        |
-| **Scalability** | Vertical Scaling                | Horizontal Scaling                                         |
-| **Joins**       | Uses relationships              | Embedded documents                                         |
-| **Best for**    | Structured data (e.g., Banking) | Unstructured data (e.g., Social Media, Content Management) |
-
-
-MongoDB stores data in **documents** (JSON format), which allows us to **store book details** in an easy-to-query structure.
-
-Here is an example on how a document looks like in MongoDB
-
-```json
-{
-  "_id": ObjectId("64fb..."),
-  "fulL_name": "Alice Smith",
-  "email": "alice@technova.com",
-  "company_id": ObjectId("64fa...")  // Reference to the company
-}
-```
-
-Note that we are just looking at the data, because there is _no schema inside the database_. You can even put nested documents
-
-```json
-{
-  "_id": ObjectId("64fa..."),
-  "name": "TechNova",
-  "industry": "Technology",
-  "founded_year": 2010,
-  "employees": [
-    {
-      "full_name": "Alice Smith",
-      "email": "alice@technova.com"
-    },
-    {
-      "full_name": "Bob Lee",
-      "email": "bob@technova.com"
-    }
-  ]
-}
-```
-
-# Using databases in Your App
-
-There are many ways of using databases in our app, the main way of doing this using an _ORM_
-
-## ORM
-
-An ORM (Object-Relational Mapper) is a library that lets you interact with your database using your programming language’s objects and classes, instead of writing raw queries. Much easier and safer for beginners, and often cleaner in large applications.
-
-These libraries help you manage your database from your app a lot easier than talking to the DB directly.
-
-For this project we are going to use _MongoDB_ with _Mongoose_ ORM
-
-## Setup DB
-
-There are 2 main ways to setup a database for this project:
-
-### Atlas
-
-[MongoDB Atlas](https://www.mongodb.com/products/platform/atlas-database) is a service by company behind the mongodb database, basically, they will run the database for you, and then you can access from your app.
-
-Using a cloud service has many advantages:
-
-- You can access the database from anywhere
-- Mongo wil handle the updates / backups for you
-
-But also has advantages
-
-- You have to pay for it 💰
-
-If you are shipping an application to production, you should use a _managed_ database, since it makes your life easier. However, to get started, you can also use a local db.
-
-### Local Database
-
-MongoDB is open source, it means we can run the database on our machine for local development. There are many ways of starting mongodb locally, the easiest one would be to use a docker container:
-
-```yml
-services:
-  mongo:
-    image: mongo:8.0
-    container_name: mongodb
-    ports:
-      - "27017:27017"
-    volumes:
-      - mongo-data:/data/db
-
-volumes:
-  mongo-data:
-```
-
-You need to have [Docker](https://docs.docker.com/desktop/) installed on your machine. We won't go into details what containers are, feel free to look it up.
-
-Then to start the database, you run `docker compose up`
-
-### Using with next.js
-
-There is [an official example](https://github.com/vercel/next.js/tree/canary/examples/with-mongodb-mongoose) from next.js team on how to use mongoose.
-
-Go through code in the example and try to understand what is happening, and how we can apply this to our use case. Also, read the documentation of [Mongoose](https://mongoosejs.com/docs/).
-
-## **What is Mongoose?**
-
-Mongoose is an **Object Data Modeling (ODM) library** for MongoDB in **Node.js**. It provides a structured way to interact with MongoDB by defining **schemas** and **models**.
-
-### **Why Use Mongoose?**
-
-✅ **Provides schema validation** to ensure data consistency  
-✅ **Simplifies database interactions** with an easy-to-use API  
-✅ **Handles relationships** between different data models
-
-## Connecting to the DB
-
-You can use the following code to connect to the DB, you can put this in any file you want outside of the `app` folder, usually something like `lib/db.js`
-```js
-import mongoose from "mongoose";
-import assert from "node:assert";
-
-// caching for local development
-let cached = global.mongoose;
-if (!cached) {
-  cached = global.mongoose = { conn: null, promise: null };
-}
-
-export async function makeSureDbIsReady() {
-  if (cached.conn) {
-    return cached.conn;
-  }
-
-  const MONGODB_URI = process.env.MONGODB_URI;
-  assert(
-    MONGODB_URI,
-    "Please define the MONGODB_URI environment variable inside .env.local"
-  );
-
-  if (!cached.promise) {
-    cached.promise = mongoose.connect(MONGODB_URI, { bufferCommands: false });
-  }
-
-  cached.conn = await cached.promise;
-  return cached.conn;
-}
-```
-
-Anytime you want to talk to the database, make sure to `await makeSureDbIsReady()` first!
-
-
-
-## Defining schemas
-
-```js
-import mongoose from "mongoose";
-
-const CompanySchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-    maxlength: [60, "Name cannot be more than 60 characters"],
-  },
-  industry: {
-    type: String,
-    required: true,
-    maxlength: [60, "Industry cannot be more than 60 characters"],
-  },
-  founded_year: {
-    type: Number,
-    required: true,
-  },
-});
-
-// we have to define it this way because of hot reloading
-export let Company =
-  mongoose.models.Company ?? mongoose.model("Company", CompanySchema);
-```
-
-Now our ORM knows we have a `Company` collection, and each company has a name, an industry, and the year it was founded.
-
-Remember, you need to `await makeSureDbIsReady()` before calling any of the operations below:
-
+# **Milestone 4: Advanced Next.js - API, Routing & Security**
+
+## **Overview**
+In Milestone 4, we take our **Twitter Clone project** to the next level by implementing **dynamic API routes, advanced data-fetching strategies, global state management, and authentication security** in Next.js.
+
+By the end of this Milestone, you’ll be able to:
+✅ Build **dynamic API routes** to interact with a database
+✅ Apply **Server-Side Rendering (SSR)**, **Static Site Generation (SSG)**, and **Incremental Static Regeneration (ISR)** for optimal performance
+✅ Manage global state using **Context API**
+✅ Secure your application with **protected routes and authentication middleware**
+✅ Implement **client-side and server-side security measures**
 
 ---
 
+## **1️⃣ Dynamic API Routes in Next.js**
+Next.js allows us to create **API routes** directly in our project without needing a separate backend.
 
-## **CRUD Operations with MongoDB & Mongoose**
+### **Why Use Dynamic API Routes?**
+✅ **Simplifies backend logic** – No need for a separate Node.js/Express server
+✅ **Handles CRUD operations** – Fetch, update, and delete data from the database
+✅ **Easily integrates with MongoDB**
 
-Now that our database is connected, let's implement **CRUD (Create, Read, Update, Delete) operations** to manage books in our Library App.
-
----
-
-## **1️⃣ Understanding CRUD Operations**
-
-| Operation  | HTTP Method      | Description                       |
-| ---------- | ---------------- | --------------------------------- |
-| **Create** | `POST`           | Add a new company to the database    |
-| **Read**   | `GET`            | Retrieve company from the database  |
-| **Update** | `PUT` or `PATCH` | Modify an existing company's details |
-| **Delete** | `DELETE`         | Remove a company from the database   |
-
----
-
-## **2️⃣ Creating API Routes for CRUD Operations**
-
-In **Next.js App Router**, we structure our API routes inside `/app/api/books/`.
-
+### **Creating an API Route**
 📁 **Project Structure**
-
 ```
 /app
  ├── /api
- │   ├── /company
- │   │   ├── route.js  (Handles CRUD operations)
+ │   ├── /tweets
+ │   │   ├── route.js  (Handles all tweet operations)
+ │   │   ├── [id].js   (Handles individual tweet requests)
 ```
 
-
-### Create
-
+📌 **Example: Fetching All Tweets** (`app/api/tweets/route.js`)
 ```js
-const company = await Company.create({
-  name: "Audi",
-  industry: "AutoMobile",
-  founded_year: 1990,
-});
-// company is an ORM object, we can convert it to a normal object by calling
-company.toObject();
-```
+import { NextResponse } from "next/server";
+import connectDB from "@/lib/db";
+import Tweet from "@/models/Tweet";
 
-### Read
-
-```js
-const audi = await Company.find({name: "Audi"});
-```
-
-
-### Update
-
-```js
-const audi = await Company.findOne({name: "Audi"});
-audi.founded_year = 1950;
-await audi.save();
-```
-
-### Delete
-
-```js
-await Company.findOneAndDelete({name: "Audi"});
-```
-
-
-## **3️⃣ Implementing CRUD Routes**
-
-### **📌 Create a New Book (`POST`)**
-
-```js
-import connectToDatabase from "@/lib/mongodb";
-import Book from "@/models/Book";
-
-export async function POST(req) {
-  await connectToDatabase();
-  const body = await req.json();
-  try {
-    const newBook = await Book.create(body);
-    return new Response(JSON.stringify(newBook), { status: 201 });
-  } catch (error) {
-    return new Response(JSON.stringify({ error: "Error creating book" }), {
-      status: 500,
-    });
-  }
+// GET: Fetch all tweets
+export async function GET() {
+  await connectDB();
+  const tweets = await Tweet.find().sort({ createdAt: -1 });
+  return NextResponse.json(tweets, { status: 200 });
 }
 ```
 
-### **📌 Read All Books (`GET`)**
-
+📌 **Example: Fetching a Single Tweet** (`app/api/tweets/[id]/route.js`)
 ```js
-export async function GET(req) {
-  await connectToDatabase();
-  try {
-    const books = await Book.find({});
-    return new Response(JSON.stringify(books), { status: 200 });
-  } catch (error) {
-    return new Response(JSON.stringify({ error: "Error fetching books" }), {
-      status: 500,
-    });
+export async function GET(req, { params }) {
+  await connectDB();
+  const tweet = await Tweet.findById(params.id);
+  if (!tweet) {
+    return NextResponse.json({ error: "Tweet not found" }, { status: 404 });
   }
-}
-```
-
-### **📌 Update a Book (`PUT` or `PATCH`)**
-
-```js
-export async function PUT(req) {
-  await connectToDatabase();
-  const { id, ...updatedData } = await req.json();
-  try {
-    const updatedBook = await Book.findByIdAndUpdate(id, updatedData, {
-      new: true,
-    });
-    return new Response(JSON.stringify(updatedBook), { status: 200 });
-  } catch (error) {
-    return new Response(JSON.stringify({ error: "Error updating book" }), {
-      status: 500,
-    });
-  }
-}
-```
-
-### **📌 Delete a Book (`DELETE`)**
-
-```js
-export async function DELETE(req) {
-  await connectToDatabase();
-  const { id } = await req.json();
-  try {
-    await Book.findByIdAndDelete(id);
-    return new Response(
-      JSON.stringify({ message: "Book deleted successfully" }),
-      { status: 200 }
-    );
-  } catch (error) {
-    return new Response(JSON.stringify({ error: "Error deleting book" }), {
-      status: 500,
-    });
-  }
+  return NextResponse.json(tweet, { status: 200 });
 }
 ```
 
 ---
 
+## **2️⃣ Data Fetching Strategies**
+Next.js provides multiple ways to fetch data, each optimized for different use cases.
 
-## **4️⃣ Testing API Routes with Postman or Thunder Client**
+| Fetching Method | When to Use | Pros | Example |
+|----------------|------------|------|---------|
+| **SSR (Server-Side Rendering)** | When you need **real-time data** on each request | Data is always fresh | `getServerSideProps()` |
+| **SSG (Static Site Generation)** | When data doesn’t change often | Faster page loads | `getStaticProps()` |
+| **ISR (Incremental Static Regeneration)** | When data needs **regular updates** but without full re-render | Best of both worlds | `revalidate` option in `getStaticProps()` |
 
-### **Testing a `POST` Request**
+📌 **Example: Fetching Data with SSR**
+```js
+export async function getServerSideProps() {
+  const res = await fetch("https://api.example.com/tweets");
+  const tweets = await res.json();
+  return { props: { tweets } };
+}
+```
 
-1. Open **Postman** or **Thunder Client** (VSCode extension).
-2. Set the method to `POST`.
-3. Use the URL: `http://localhost:3000/api/books`
-4. Set the request body to JSON:
-   ```json
-   {
-     "title": "The Hobbit",
-     "author": "J.R.R. Tolkien",
-     "publishedYear": 1937,
-     "coverImage": "https://example.com/hobbit.jpg",
-     "description": "A classic fantasy novel."
-   }
-   ```
-5. Click **Send** → Expect a `201 Created` response.
-
-### **Testing a `GET` Request**
-
-1. Set the method to `GET`.
-2. Use the URL: `http://localhost:3000/api/books`
-3. Click **Send** → Expect a JSON array of books.
-
-### **Testing an `UPDATE` Request**
-
-1. Set the method to `PUT`.
-2. Use the URL: `http://localhost:3000/api/books`
-3. Set the request body:
-   ```json
-   {
-     "id": "64b2ff...",
-     "title": "The Hobbit - Updated Edition"
-   }
-   ```
-4. Click **Send** → Expect a `200 OK` response with updated data.
-
-### **Testing a `DELETE` Request**
-
-1. Set the method to `DELETE`.
-2. Use the URL: `http://localhost:3000/api/books`
-3. Set the request body:
-   ```json
-   { "id": "64b2ff..." }
-   ```
-4. Click **Send** → Expect a `200 OK` confirmation.
+📌 **Example: Fetching Data with SSG**
+```js
+export async function getStaticProps() {
+  const res = await fetch("https://api.example.com/tweets");
+  const tweets = await res.json();
+  return { props: { tweets }, revalidate: 60 }; // ISR updates every 60 seconds
+}
+```
 
 ---
 
-## **5️⃣ Frontend Integration (Fetching Books in Next.js)**
+## **3️⃣ Global State Management with Context API**
+When working on a project like a **Twitter Clone**, we need to share data between components (e.g., authentication status, user data, tweets).
 
-### **Fetching Books from the API in Next.js**
+### **Why Use Context API?**
+✅ Avoids **prop drilling**
+✅ Centralized **authentication state management**
+✅ Allows **global access to user data**
 
-Inside `/app/library/page.js`, add:
-
+📌 **Example: Creating a Global Auth Context**
 ```js
-"use client";
-import { useEffect, useState } from "react";
+import { createContext, useState, useContext } from "react";
 
-export default function Library() {
-  const [books, setBooks] = useState([]);
+const AuthContext = createContext();
 
-  useEffect(() => {
-    async function fetchBooks() {
-      const res = await fetch("/api/books");
-      const data = await res.json();
-      setBooks(data);
-    }
-    fetchBooks();
-  }, []);
+export function AuthProvider({ children }) {
+  const [user, setUser] = useState(null);
 
   return (
-    <div>
-      <h1>Library</h1>
-      <ul>
-        {books.map((book) => (
-          <li key={book._id}>
-            {book.title} - {book.author}
-          </li>
-        ))}
-      </ul>
+    <AuthContext.Provider value={{ user, setUser }}>
+      {children}
+    </AuthContext.Provider>
+  );
+}
+
+export function useAuth() {
+  return useContext(AuthContext);
+}
+```
+
+📌 **Using Global State in a Component**
+```js
+import { useAuth } from "@/context/AuthContext";
+
+export default function Profile() {
+  const { user } = useAuth();
+
+  return <h1>Welcome, {user ? user.username : "Guest"}!</h1>;
+}
+```
+
+---
+
+## **Bonus Challenge: Implement Authentication**
+For a **real-world Twitter clone**, authentication is essential. Here’s how you can implement it:
+
+1️⃣ **User Registration & Login**
+- Create a sign-up form
+- Store user credentials securely in **MongoDB**
+- Hash passwords using **bcrypt**
+
+2️⃣ **JWT Authentication**
+- Issue **JWT tokens** upon login
+- Store tokens in **cookies** for persistence
+- Use tokens to authenticate API requests
+
+📌 **Example: Generating a JWT Token**
+```js
+import jwt from "jsonwebtoken";
+
+export async function POST(req) {
+  const { username, password } = await req.json();
+
+  // Validate user (check in database)
+  const user = await User.findOne({ username });
+  if (!user) return NextResponse.json({ error: "User not found" }, { status: 404 });
+
+  // Generate JWT
+  const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: "1h" });
+
+  return NextResponse.json({ token }, { status: 200 });
+}
+```
+
+---
+
+# **Advanced Next.js Features**
+
+## **Introduction**
+
+In this module, we dive into **advanced Next.js features**, building upon our foundational knowledge to enhance our Twitter Clone project. This Milestone, we will focus on:
+
+- **Dynamic API Routes**: Creating server-side API endpoints within Next.js.
+- **Data Fetching Strategies**: Understanding SSR, SSG, and ISR.
+- **Middleware and Route Handling**: Managing authentication and protected routes.
+
+By the end of this lesson, students will be able to build **scalable, server-side applications** with advanced data management techniques.
+
+---
+
+## **1️⃣ Dynamic API Routes in Next.js**
+
+### **What Are API Routes?**
+
+Next.js allows us to create API routes inside our project, eliminating the need for an external backend. These routes act as RESTful endpoints, responding to client requests dynamically.
+
+### **Static vs. Dynamic API Routes**
+
+- **Static API Route** → `/app/api/posts.js`: Returns the same data for all requests.
+- **Dynamic API Route** → `/app/api/posts/[id].js`: Returns different data based on the `id` parameter.
+
+### **Creating a Dynamic API Route**
+
+To create a dynamic API route, we define a file inside the `app/api/` directory using **square brackets `[id]`**, indicating that the parameter is dynamic.
+
+📌 **Project Structure Example:**
+
+```plaintext
+app/
+├── api/
+│   ├── tweet/
+│   │   ├── [id]/
+│   │   │   ├── route.js
+```
+
+📌 **Example Code (Fetching a Single Tweet by ID):**
+
+```javascript
+// app/api/tweet/[id]/route.js
+export async function GET(request, { params }) {
+  const { id } = params;
+  const res = await fetch(`https://dummyjson.com/posts/${id}`);
+  const data = await res.json();
+  return Response.json(data);
+}
+```
+
+### **How It Works:**
+
+- A GET request to `/api/tweet/1` returns **tweet 1**.
+- A GET request to `/api/tweet/45` returns **tweet 45**.
+- Next.js dynamically injects the `id` parameter into the request.
+
+### **Benefits of API Routes in Next.js**
+
+✅ Eliminates the need for an external backend service.
+✅ Provides a seamless way to interact with databases or external APIs.
+✅ Supports all HTTP methods (`GET`, `POST`, `PUT`, `DELETE`).
+✅ Scales efficiently as the app grows.
+
+---
+
+## **2️⃣ Data Fetching Strategies in Next.js**
+
+### **Why Choose the Right Data Fetching Method?**
+
+In Next.js, we have multiple strategies for fetching data, each optimized for different use cases:
+
+| **Method**                                | **Description**                     | **Best For**                                      |
+| ----------------------------------------- | ----------------------------------- | ------------------------------------------------- |
+| **SSR (Server-Side Rendering)**           | Fetches data on each request.       | Real-time, user-specific content.                 |
+| **SSG (Static Site Generation)**          | Pre-builds pages at compile time.   | Fast-loading, rarely updated content.             |
+| **ISR (Incremental Static Regeneration)** | Rebuilds static pages at intervals. | Blogs, dashboards, periodically updating content. |
+
+📌 **Example Code (Fetching Data Using SSR)**
+
+```javascript
+// app/tweet/[id]/page.js
+async function getTweet(id) {
+  const res = await fetch(`https://dummyjson.com/posts/${id}`);
+  return res.json();
+}
+
+export default async function TweetPage({ params }) {
+  const tweet = await getTweet(params.id);
+  return (
+    <main>
+      <h1>{tweet.title}</h1>
+      <p>{tweet.body}</p>
+      <p>
+        👍 {tweet.reactions.likes} | 👎 {tweet.reactions.dislikes}
+      </p>
+    </main>
+  );
+}
+```
+
+✅ **SSR ensures each request gets the most up-to-date data**. However, it **slows down performance** for high-traffic pages.
+✅ **SSG pre-renders content** for faster performance but isn't ideal for real-time content.
+✅ **ISR combines both**, updating pages at regular intervals without rebuilding the entire app.
+
+---
+
+## **3️⃣ Middleware and Protected Routes**
+
+### **What is Middleware in Next.js?**
+
+Middleware in Next.js runs **before** a request is completed. It is useful for authentication, logging, and request modifications.
+
+📌 **Example Use Cases:**
+
+- Redirecting unauthenticated users to the login page.
+- Blocking access to specific routes based on user roles.
+- Logging request metadata for analytics.
+
+📌 **Example Code (Middleware for Route Protection):**
+
+```javascript
+// middleware.js (root of the project)
+import { NextResponse } from "next/server";
+
+export function middleware(request) {
+  const isAuthenticated = request.cookies.get("authToken");
+
+  if (!isAuthenticated) {
+    return NextResponse.redirect(new URL("/login", request.url));
+  }
+
+  return NextResponse.next();
+}
+
+// Apply middleware only to protected routes
+export const config = {
+  matcher: ["/dashboard/:path*", "/profile/:path*"],
+};
+```
+
+✅ **Middleware intercepts requests**, allowing us to check authentication before rendering pages.
+✅ **Prevents unauthorized access** to sensitive routes like `/profile` and `/dashboard`.
+
+---
+
+## **Introduction**
+
+Managing application-wide state is essential when building scalable React and Next.js applications. In this lesson, we will cover **global state management** using the **React Context API** to efficiently manage authentication, user data, and global notifications.
+
+By the end of this lesson, students will understand:
+
+- How to create a **global state** using Context API.
+- How to manage **authentication state** in the Twitter Clone.
+- How to access and update global state from any component.
+
+---
+
+## **1️⃣ Why Use Global State?**
+
+### **The Problem with Prop Drilling**
+
+In traditional React applications, **props** are used to pass data between components. However, in large applications, **prop drilling** (passing data through multiple nested components) can make the code messy and difficult to maintain.
+
+📌 **Example of Prop Drilling Problem:**
+
+```javascript
+function App() {
+  const [user, setUser] = useState(null);
+
+  return <Header user={user} setUser={setUser} />;
+}
+
+function Header({ user, setUser }) {
+  return <Navbar user={user} setUser={setUser} />;
+}
+
+function Navbar({ user, setUser }) {
+  return <Profile user={user} setUser={setUser} />;
+}
+```
+
+🔴 **Issue:** The `user` state has to be manually passed down through every level of the component tree.
+
+### **The Solution: Context API**
+
+The **Context API** allows us to store **global state** and access it from any component **without** passing props manually.
+
+✅ **Improves maintainability** by centralizing shared state.
+✅ **Reduces unnecessary re-renders** by providing direct access to data.
+✅ **Ideal for authentication, theme settings, and global messages.**
+
+---
+
+## **2️⃣ Implementing Global Authentication State**
+
+### **Step 1: Creating an Auth Context**
+
+First, we create a `context/AuthContext.js` file to store authentication-related data.
+
+📌 **`context/AuthContext.js`**
+
+```javascript
+import { createContext, useState, useEffect } from "react";
+
+// Create authentication context
+export const AuthContext = createContext();
+
+export function AuthProvider({ children }) {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    // Simulate fetching a stored authentication token
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
+
+  const login = (userData) => {
+    setUser(userData);
+    localStorage.setItem("user", JSON.stringify(userData));
+  };
+
+  const logout = () => {
+    setUser(null);
+    localStorage.removeItem("user");
+  };
+
+  return (
+    <AuthContext.Provider value={{ user, login, logout }}>
+      {children}
+    </AuthContext.Provider>
+  );
+}
+```
+
+### **Step 2: Wrapping the App with the Provider**
+
+Now, we wrap our entire application in the `AuthProvider` so that all components can access authentication data.
+
+📌 **`app/layout.js`**
+
+```javascript
+import { AuthProvider } from "@/context/AuthContext";
+
+export default function RootLayout({ children }) {
+  return (
+    <AuthProvider>
+      <html lang="en">
+        <body>{children}</body>
+      </html>
+    </AuthProvider>
+  );
+}
+```
+
+### **Step 3: Using Context in a Component**
+
+Now, any component can **access authentication data** using the `useContext` hook.
+
+📌 **Example Usage in `Header.js`**
+
+```javascript
+import { useContext } from "react";
+import { AuthContext } from "@/context/AuthContext";
+
+export default function Header() {
+  const { user, login, logout } = useContext(AuthContext);
+
+  return (
+    <header className="bg-blue-500 p-4 flex justify-between items-center">
+      <h1 className="text-white text-xl">Twitter Clone</h1>
+      <nav>
+        {user ? (
+          <>
+            <span className="text-white mr-4">Welcome, {user.name}</span>
+            <button onClick={logout} className="bg-red-500 px-4 py-2 rounded">
+              Logout
+            </button>
+          </>
+        ) : (
+          <button
+            onClick={() => login({ name: "John Doe" })}
+            className="bg-green-500 px-4 py-2 rounded"
+          >
+            Login
+          </button>
+        )}
+      </nav>
+    </header>
+  );
+}
+```
+
+✅ **Now, authentication state is available throughout the entire app.**
+✅ **Any component can access the `user` object without prop drilling.**
+✅ **The `login` and `logout` functions handle user authentication easily.**
+
+---
+
+## **3️⃣ Expanding Global State: Managing Liked Tweets**
+
+Besides authentication, we can use **Context API** to store user preferences, such as **liked tweets**.
+
+### **Step 1: Create a New Context for Likes**
+
+📌 **`context/LikesContext.js`**
+
+```javascript
+import { createContext, useState } from "react";
+
+export const LikesContext = createContext();
+
+export function LikesProvider({ children }) {
+  const [likedTweets, setLikedTweets] = useState([]);
+
+  const toggleLike = (tweetId) => {
+    setLikedTweets((prevLikes) =>
+      prevLikes.includes(tweetId)
+        ? prevLikes.filter((id) => id !== tweetId)
+        : [...prevLikes, tweetId]
+    );
+  };
+
+  return (
+    <LikesContext.Provider value={{ likedTweets, toggleLike }}>
+      {children}
+    </LikesContext.Provider>
+  );
+}
+```
+
+### **Step 2: Wrap the App in LikesProvider**
+
+📌 **Modify `app/layout.js`**
+
+```javascript
+import { LikesProvider } from "@/context/LikesContext";
+
+export default function RootLayout({ children }) {
+  return (
+    <AuthProvider>
+      <LikesProvider>{children}</LikesProvider>
+    </AuthProvider>
+  );
+}
+```
+
+### **Step 3: Implementing the Like Feature in a Component**
+
+📌 **Example Usage in `TweetCard.js`**
+
+```javascript
+import { useContext } from "react";
+import { LikesContext } from "@/context/LikesContext";
+
+export default function TweetCard({ tweet }) {
+  const { likedTweets, toggleLike } = useContext(LikesContext);
+
+  return (
+    <div className="p-4 border rounded-lg shadow-md">
+      <h2 className="text-xl font-semibold">{tweet.title}</h2>
+      <p className="text-gray-700">{tweet.body}</p>
+      <button
+        onClick={() => toggleLike(tweet.id)}
+        className={`mt-2 px-4 py-2 rounded ${
+          likedTweets.includes(tweet.id)
+            ? "bg-red-500 text-white"
+            : "bg-gray-200"
+        }`}
+      >
+        {likedTweets.includes(tweet.id) ? "Unlike ❤️" : "Like ♡"}
+      </button>
     </div>
   );
 }
 ```
 
----
-
-# **Conclusion - NoSQL & Database**
-
-## **Key Takeaways from This Milestone**
-
-1. **Understanding NoSQL** → We explored how NoSQL databases like MongoDB differ from relational databases, offering flexibility and scalability.
-2. **MongoDB Basics** → We set up a MongoDB database and learned how to interact with it using Mongoose.
-3. **Database Connection** → We established a connection between our Next.js app and MongoDB using Mongoose.
-4. **CRUD Operations** → We implemented Create, Read, Update, and Delete functionalities in our Library App.
-5. **Frontend Integration** → We fetched book data from our API and displayed it on the frontend.
+✅ **The Like button dynamically updates for each tweet.**
+✅ **Liked tweets persist across components without prop drilling.**
+✅ **Global state management keeps UI interactions smooth and responsive.**
 
 ---
 
-### Task
+## **Introduction**
 
-Take the time, go through the examples from next.js, this is a good example on how to learn from other people's code. update your code to save the user's tweets and read them from the DB.
+In the final part of this module, we will explore **advanced routing in Next.js**, including **protected routes**, **middleware**, and **dynamic API routes with authentication**.
+
+By the end of this lesson, students will be able to:
+
+- Implement **protected routes** using **middleware**.
+- Secure API routes to prevent unauthorized access.
+- Utilize **dynamic parameters** in Next.js routing.
+
+---
+
+## **1️⃣ Understanding Next.js Routing**
+
+### **Static vs. Dynamic Routing**
+
+Next.js uses a **file-based routing system**, meaning that the file structure inside the `app/` directory determines the URL paths.
+
+📌 **Basic Routing Example:**
+
+```plaintext
+app/
+├── page.js          →  "/"
+├── about/
+│   ├── page.js      →  "/about"
+├── user/
+│   ├── [id]/
+│   │   ├── page.js  →  "/user/{id}"
+```
+
+### **Dynamic Routes in Next.js**
+
+Dynamic routes allow us to create **custom paths based on parameters**. These are especially useful for profile pages, tweets, or other **dynamic content**.
+
+📌 **Example: Fetching User Profile Based on ID**
+
+```javascript
+// app/user/[id]/page.js
+async function getUser(id) {
+  const res = await fetch(`https://dummyjson.com/users/${id}`);
+  return res.json();
+}
+
+export default async function UserProfile({ params }) {
+  const user = await getUser(params.id);
+  return (
+    <main>
+      <h1>
+        {user.firstName} {user.lastName}
+      </h1>
+      <p>Email: {user.email}</p>
+      <p>Username: {user.username}</p>
+    </main>
+  );
+}
+```
+
+🔹 **What happens here?**
+
+- A request to `/user/5` fetches **user 5** dynamically.
+- The `params.id` value is used to fetch the correct profile.
+- Next.js automatically injects the parameter into the function.
+
+---
+
+## **2️⃣ Protecting Routes with Middleware**
+
+### **What is Middleware?**
+
+Middleware in Next.js **runs before the request is processed**, allowing us to:
+
+- Restrict access to protected pages.
+- Redirect unauthorized users.
+- Log request details for security.
+
+### **Adding Authentication Middleware**
+
+To protect pages like `/dashboard`, we can **restrict access to logged-in users only**.
+
+📌 **Example Middleware for Authentication**
+
+```javascript
+// middleware.js (root of the project)
+import { NextResponse } from "next/server";
+
+export function middleware(request) {
+  const isAuthenticated = request.cookies.get("authToken");
+
+  if (!isAuthenticated) {
+    return NextResponse.redirect(new URL("/login", request.url));
+  }
+
+  return NextResponse.next();
+}
+
+// Apply middleware only to protected routes
+export const config = {
+  matcher: ["/dashboard/:path*", "/profile/:path*"],
+};
+```
+
+### **How It Works**
+
+✅ If a user **is not logged in**, they are **redirected to the login page**.
+✅ If a user **has an auth token**, they can access the dashboard and profile pages.
+✅ The **matcher property** applies middleware **only to specific routes** (`/dashboard/*` and `/profile/*`).
+
+---
+
+## **3️⃣ Securing API Routes with Authentication**
+
+Just like we protect pages, we can **secure API routes** by verifying authentication before serving data.
+
+📌 **Example: Protected API Route**
+
+```javascript
+// app/api/user/profile/route.js
+import { NextResponse } from "next/server";
+
+export async function GET(request) {
+  const authToken = request.cookies.get("authToken");
+
+  if (!authToken) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
+  const res = await fetch("https://dummyjson.com/users/1");
+  const data = await res.json();
+  return NextResponse.json(data);
+}
+```
+
+🔹 **How It Works:**
+
+- If the user **has a valid auth token**, the API returns profile data.
+- If the user **is not authenticated**, a `401 Unauthorized` response is sent.
+
+---
+
+## **4️⃣ Implementing Route Guards in Components**
+
+Even with API security and middleware, **client-side protection is still important**. We can create a **higher-order component (HOC)** that wraps around protected pages.
+
+📌 **Example: Protecting a Dashboard Page**
+
+```javascript
+import { useContext, useEffect } from "react";
+import { AuthContext } from "@/context/AuthContext";
+import { useRouter } from "next/navigation";
+
+export default function Dashboard() {
+  const { user } = useContext(AuthContext);
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!user) {
+      router.push("/login");
+    }
+  }, [user]);
+
+  if (!user) return <p>Redirecting...</p>;
+
+  return (
+    <div>
+      <h1>Welcome to your Dashboard, {user.name}!</h1>
+    </div>
+  );
+}
+```
+
+🔹 **What Happens Here?**
+
+- If the user **is not logged in**, they are redirected to `/login`.
+- If the user **is logged in**, they can see their **dashboard**.
+
+---
+
+# **Conclusion**
+
+## **Recap of Advanced Next.js Features**
+
+This Milestone, we explored **advanced Next.js features** to enhance our Twitter Clone project. The key takeaways include:
+
+### **1️⃣ Dynamic Routing & API Routes**
+
+- **File-based routing** allows us to create dynamic paths effortlessly.
+- **Dynamic API routes** provide flexible, scalable backend endpoints.
+- **Example:** `/user/[id]` fetches a specific user's data dynamically.
+
+### **2️⃣ Middleware for Authentication**
+
+- **Middleware runs before page rendering**, allowing authentication checks.
+- Protecting sensitive routes like `/dashboard` ensures **only logged-in users** can access them.
+- **Example:** Redirecting unauthorized users to `/login`.
+
+### **3️⃣ Securing API Endpoints**
+
+- API routes must be **secured with authentication**.
+- **Auth token verification** prevents unauthorized access to user data.
+- **Example:** If no auth token is found, return a `401 Unauthorized` error.
+
+### **4️⃣ Route Guards for Client-Side Protection**
+
+- Even with middleware, protecting **frontend routes** is essential.
+- **React Context & Hooks** ensure only authenticated users can view protected pages.
+- **Example:** Redirecting users from the dashboard if they are not logged in.
+
+---
+
+## **How These Concepts Improve Our Twitter Clone**
+
+✅ **Security** → API endpoints and frontend pages are now protected.
+✅ **Scalability** → Dynamic routes and API handling improve flexibility.
+✅ **Performance** → Middleware optimizes authentication without extra server requests.
+
+---
+
+## **Next Steps: Preparing for Milestone 5**
+
+In the next module, we will **connect our frontend to a real backend service**, implementing **real-time API interactions** to fetch, post, and update tweets dynamically.
+
+Get ready to take our Twitter Clone to the next level! 🚀
+
+---
+

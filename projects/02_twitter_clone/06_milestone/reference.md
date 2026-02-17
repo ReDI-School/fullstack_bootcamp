@@ -1,11 +1,11 @@
-# **Reference Guide: Milestones 5 - 7**
+# **Reference Guide: Recap**
 
 ## **📌 Overview**
-This document serves as a reference for the key concepts, techniques, and resources covered in Milestones 5 - 7 of the Bootcamp. It includes essential links, commands, and explanations of the most important topics.
+This document serves as a reference for the key concepts, techniques, and resources covered in previous modules. It includes essential links, commands, and explanations of the most important topics.
 
 ---
 
-## **🛠️ Next.js Fundamentals (Milestone 1)**
+## **🛠️ Next.js Fundamentals**
 ### 🔹 File-Based Routing in Next.js
 - Pages are created automatically based on the file structure inside the `app/` directory.
 - Example: Dynamic User Profile (`app/user/[id]/page.js`)
@@ -30,7 +30,7 @@ export async function GET() {
 
 ---
 
-## **🎨 Tailwind CSS & UI Design (Milestone 2)**
+## **🎨 Tailwind CSS & UI Design**
 ### 🔹 Installing Tailwind CSS in Next.js
 ```bash
 npm install -D tailwindcss postcss autoprefixer
@@ -58,7 +58,7 @@ module.exports = {
 
 ---
 
-## **🔗 API Integration & Authentication (Milestone 3)**
+## **🔗 API Integration & Authentication**
 ### 🔹 Fetching Data from an API
 Example: Fetching tweets from **DummyJSON API**
 ```js
