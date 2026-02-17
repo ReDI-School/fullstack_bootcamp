@@ -2,13 +2,11 @@
 
 ## **Overview**
 
-In this Milestone, we transitioned from React to **Next.js**, a powerful React framework for building fast, SEO-friendly web applications. We explored:
+We transitioned from React to **Next.js**, a powerful React framework for building fast, SEO-friendly web applications. We explored:
 
 - The differences between React and Next.js
 - File-based routing system in Next.js
 - Fetching and displaying dynamic content
-
-By the end of this Milestone, we built the foundation for our **Twitter Clone** using Next.js.
 
 ---
 
@@ -85,7 +83,7 @@ export default function Tweets() {
 
 ## **What We Built**
 
-This Milestone, we laid the foundation for our **Twitter Clone** by setting up:
+We laid the foundation for our **Twitter Clone** by setting up:
 ✅ A Next.js project with **file-based routing**  
 ✅ Dynamic pages (`user/[id]`) for fetching user profiles  
 ✅ API routes (`api/tweets/route.js`) to handle data fetching
@@ -96,14 +94,12 @@ This Milestone, we laid the foundation for our **Twitter Clone** by setting up:
 
 ## **Overview**
 
-In Milestone 2, we focused on **UI design** using **Tailwind CSS** and improved our Twitter Clone's layout and responsiveness.  
+We focused on **UI design** using **Tailwind CSS** and improved our Twitter Clone's layout and responsiveness.  
 Key topics covered:
 
 - Tailwind CSS and its utility-first approach
 - Styling components efficiently
 - Implementing a mobile-friendly UI
-
-By the end of this Milestone, we significantly improved the **visual design** of our Twitter Clone.
 
 ---
 
@@ -200,13 +196,11 @@ Example: Responsive Layout for the Feed
 
 ## **Overview**
 
-In Milestone 3, we focused on **advanced Next.js features**, including:
+We focused on **advanced Next.js features**, including:
 
 - API routes for backend logic
 - Authentication with user login/logout
 - Fetching and managing dynamic data
-
-By the end of this Milestone, our Twitter Clone supported **user authentication, real-time tweet fetching, and API communication.**
 
 ---
 
@@ -359,20 +353,20 @@ export default function ProfilePage() {
 
 ## **What We Accomplished**
 
-Over the last three Milestones, we built a **Twitter Clone** while learning **Next.js, Tailwind CSS, and API integration**. Here’s a summary of our achievements:
+Previously, we've built a **Twitter Clone** while learning **Next.js, Tailwind CSS, and API integration**. Here’s a summary of our achievements:
 
-✅ **Milestone 1 - Next.js Basics**
+✅ **Next.js Basics**
 
 - Set up a Next.js project with `app router`
 - Implemented **file-based routing** and **dynamic pages**
 - Introduced **server-side data fetching**
 
-✅ **Milestone 2 - Tailwind & UI Design**
+✅ **Tailwind & UI Design**
 
 - Designed and structured our Twitter Clone UI with **Tailwind CSS**
 - Implemented **responsive layouts** and modern **styling techniques**
 
-✅ **Milestone 3 - Advanced Next.js Features**
+✅ **Advanced Next.js Features**
 
 - Built **API routes** to fetch and manage tweets/users
 - Implemented **authentication (login/logout)**

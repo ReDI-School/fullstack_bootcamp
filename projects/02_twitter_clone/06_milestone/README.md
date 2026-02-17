@@ -2,9 +2,9 @@
 
 ## **Overview**
 
-This optional milestone is designed for students who want to take their project to the next level AFTER completing milestone 1-3. If you haven't completed milestone 1-3 we strongly encourage you to finish them before starting this bonus milestone. 
+This optional milestone is designed for students who want to take their project to the next level AFTER completing the previous 3 milestones. If you haven't completed the previous 3 milestones we strongly encourage you to finish them before starting this bonus milestone. 
 
-In this recap Milestone, you will refine your understanding of **Next.js, Tailwind CSS, authentication, API integration, and global state management**. You will revisit concepts from **Milestones 5, 6, and 7**, applying improvements and optimizations to your **Twitter Clone project**.
+In this recap Milestone, you will refine your understanding of **Next.js, Tailwind CSS, authentication, API integration, and global state management**. You will revisit concepts from earlier projects and milestones, applying improvements and optimizations to your **Twitter Clone project**.
 
 This is an opportunity to refactor your code, enhance the UI, and explore additional Next.js features. We will also introduce **middleware**, **incremental static regeneration (ISR)**, and **server components** as a **bonus milestone**.
 
@@ -195,25 +195,3 @@ Now:
 ✅ Faster API responses for users
 
 ---
-
-# **Key Takeaways from Milestones 5-7**
-
-| Topic              | Key Concepts                    |
-| ------------------ | ------------------------------- |
-| **Next.js Basics** | Routing, API, SSR, SSG          |
-| **Tailwind CSS**   | Styling, Utility-First Approach |
-| **Authentication** | NextAuth.js, Protected Routes   |
-| **Global State**   | Context API, JWT Storage        |
-| **Data Fetching**  | ISR, Middleware, API Caching    |
-
----
-
-# **What’s Next?**
-
-🚀 **In Milestone 1**, we will **integrate a database (MongoDB) and build a real-world Library App**!  
-You’ll learn:
-✅ How to **connect Next.js to a NoSQL database**  
-✅ How to **store and retrieve user data securely**  
-✅ How to **build a backend API for data management**
-
-Get ready for **full-stack development** with **Next.js & MongoDB**! 🎯

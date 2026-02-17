@@ -1,7 +1,7 @@
-# **Teacher Guide: Milestones 5 - 7 Recap**
+# **Teacher Guide: Recap**
 
 ## **📌 Overview**
-This guide helps instructors reinforce key concepts from Milestones 5 - 7, focusing on **Next.js, Tailwind CSS, API integration, and authentication**. It includes teaching strategies, common challenges, and discussion points to engage students effectively.
+This guide helps instructors reinforce key concepts from previous Milestones, focusing on **Next.js, Tailwind CSS, API integration, and authentication**. It includes teaching strategies, common challenges, and discussion points to engage students effectively.
 
 ---
 
@@ -27,7 +27,7 @@ This guide helps instructors reinforce key concepts from Milestones 5 - 7, focus
 
 ## **📌 Classroom Flow & Teaching Strategies**
 
-### **1️⃣ Milestone 1 - Next.js Fundamentals**
+### **1️⃣ Next.js Fundamentals**
 #### ✅ **Teaching Next.js Routing**  
 - Demonstrate how the **file-based routing system** works.
 - Guide students through **creating dynamic pages**.
@@ -37,7 +37,7 @@ Ask students to **create a dynamic profile page** (`user/[id]/page.js`) that fet
 
 ---
 
-### **2️⃣ Milestone 2 - Tailwind & UI Improvements**
+### **2️⃣ Tailwind & UI Improvements**
 #### ✅ **Teaching Tailwind CSS Basics**
 - Start by showing **basic utility classes**.
 - Encourage **hands-on practice** by letting students modify existing styles.
@@ -47,7 +47,7 @@ Why is Tailwind CSS more **efficient than traditional CSS frameworks** like Boot
 
 ---
 
-### **3️⃣ Milestone 3 - API Integration & Authentication**
+### **3️⃣ API Integration & Authentication**
 #### ✅ **Teaching API Routes & Authentication**
 - Explain how **API routes in Next.js** function like a mini backend.
 - Walk through authentication logic using **NextAuth.js**.
