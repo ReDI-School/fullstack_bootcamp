@@ -1,7 +1,7 @@
-# **Milestone 5.0: Advanced Next.js - API, Routing & Security**
+# **Milestone 4: Advanced Next.js - API, Routing & Security**
 
 ## **Overview**
-In Milestone 5, we take our **Twitter Clone project** to the next level by implementing **dynamic API routes, advanced data-fetching strategies, global state management, and authentication security** in Next.js.
+In Milestone 4, we take our **Twitter Clone project** to the next level by implementing **dynamic API routes, advanced data-fetching strategies, global state management, and authentication security** in Next.js.
 
 By the end of this Milestone, you’ll be able to:
 ✅ Build **dynamic API routes** to interact with a database
@@ -162,7 +162,7 @@ export async function POST(req) {
 
 ---
 
-# **Milestone 5.1 - Advanced Next.js Features**
+# **Advanced Next.js Features**
 
 ## **Introduction**
 
@@ -764,7 +764,7 @@ This Milestone, we explored **advanced Next.js features** to enhance our Twitter
 
 ---
 
-## **Next Steps: Preparing for Milestone 4**
+## **Next Steps: Preparing for Milestone 5**
 
 In the next module, we will **connect our frontend to a real backend service**, implementing **real-time API interactions** to fetch, post, and update tweets dynamically.
 
