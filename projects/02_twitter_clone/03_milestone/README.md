@@ -1,179 +1,511 @@
-# **Milestone 3: Advanced Next.js - API, Routing, Backend**
+# **Milestone 4: Introduction to Databases**
 
-In this lesson, we'll do some backend development, and learn how to create backend endpoints using Next.js API routes. These routes allow us to define server-side logic that runs when a request is made. For this lesson, and for simplicity's sake, we won't be using a database, we'll store data in files on disk. This helps us focus on the API design and backend logic. We'll talk about databases later.
+In the last lesson, we talked about how we can take data from the user and store it on disk, now we want to store it on a real database!
 
 ### Expected Outcomes
 
-By the end of Milestone 3, you should:
+By the end of Milestone 4, you should:
 
-- Allow user to create tweets and store them on disk
-- Allow the user to see the tweets they created
+- Allow user to create tweets and store them in the database
+- Allow the user to see the tweets they created from the database
+- Allow up votes / down votes to be stored in the database
 
----
+# Introduction to databases
 
-## Frontend vs Backend
+## What is a Database?
 
-Imagine a website like a restaurant.
+A database is a place where data is stored, organized, and accessed. In backend development, databases are used to save things like user information, product details, messages, or anything your app needs to remember. You can put data in (store), look at it (read), change it (update), or remove it (delete). These operations are often referred to as CRUD (Create, Read, Update, Delete).
 
-The frontend is like the part of the restaurant you see — the tables, chairs, menus, and the food when it's brought to your table. It's what customers (users) interact with.
+## Types of Databases
 
-The backend is like the kitchen — you don’t see it, but it’s where the real work happens. It’s where the food is prepared (data is processed), orders are handled (requests are managed), and everything runs behind the scenes to make the restaurant function.
+There are several types of databases, but the two main categories are:
 
-When we are building website, the frontend is everything you see in the browser, the backend is what happens on the "server".
+### Relational Databases (SQL)
 
-A server is a computer that’s always on and waiting to respond to requests. When you open a website, you send a request to a server — and the server sends back what you need, like a web page, images, or data.
+Relational databases use tables with rows and columns (like spreadsheets).
 
-When we are doing backend development, we are working in the server, and we define API routes, that your website can make requests to.
+Here is an example with `SQL` how to define the schema for a table:
 
-## API Routes
+```sql
+CREATE TABLE companies (
+  company_id SERIAL PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  industry VARCHAR(50),
+  founded_year INT
+);
+```
 
-You can read about routes in the [official tutorial](https://nextjs.org/docs/app/building-your-application/routing/route-handlers) and in the [reference](https://nextjs.org/docs/app/api-reference/file-conventions/route).
+Every row is an entry to that database, so if you think about tweets, every row is a tweet.
 
-Next.js allows us to create API routes inside our project, enabling you to do both frontend and backend development in the same project!
+Data is connected using relations / foreign keys. A foreign key is an identified that connects two rows from different tables.
 
-So not only we will use `fetch` inside of our react app, we will also write the API that will be fetched.
+```sql
+CREATE TABLE employees (
+  employee_id SERIAL PRIMARY KEY,
+  full_name VARCHAR(100) NOT NULL,
+  email VARCHAR(100) UNIQUE NOT NULL,
+  company_id INT NOT NULL,
+  FOREIGN KEY (company_id) REFERENCES companies(company_id) ON DELETE CASCADE
+);
+```
 
-You can define routes in modern versions of next.js using the `route.js` file name, (or `ts` if using typescript), the structure is similar to how we did this with `page.js` to define pages, however, _you are not allowed to have a `page.js` and `route.js` in the same folder._
+Generally, data in SQL is flat, you can add columns, but you cannot nest items inside other items. For that, you create a new table, and reference the items by the `key`.
 
-Let's start with an example, create the file `app/api/hello/route.js`
+Examples: MySQL, PostgreSQL, SQLite, SQL Server.
 
-and put this code inside of it
+We won't dig deep into SQL in this course, but I just want to give you the basics.
 
-```js
-import { NextResponse, NextRequest } from "next/server";
+### Non-Relational Databases (NoSQL)
 
-/**
- * @param {NextRequest} request
- */
-export async function GET(request) {
-  console.log("Request to", request.url);
-  return NextResponse.json({ ping: "pong" });
+Non-Relational Databases don't use traditional tables, they use a variety of other data formats, like documents, key-value pairs or graphs. Generally the data is not structured, you can store anything anywhere.
+
+Examples: Document-based: MongoDB, Key-Value: Redis, Graph: Neo4j
+
+
+### **Key Features of NoSQL Databases**
+
+- **Schema-less data storage** 🏗️ → No rigid structure like SQL tables.
+- **Horizontal scalability** 📈 → Data can be distributed across multiple servers.
+- **High availability & performance** ⚡ → Optimized for fast data retrieval.
+- **Variety of models** 🎭 → Document, Key-Value, Graph, and Column-based storage.
+
+
+## **Why NoSQL & MongoDB?**
+
+Traditional SQL databases use **tables and relationships**, while NoSQL databases like **MongoDB** use **documents and collections**. This makes NoSQL **flexible** and **scalable**, especially for dynamic applications like our Library App.
+
+### **MongoDB vs SQL: Key Differences**
+
+| Feature         | SQL (Relational DB)             | MongoDB (NoSQL)                                            |
+| --------------- | ------------------------------- | ---------------------------------------------------------- |
+| **Schema**      | Fixed schema                    | Dynamic schema                                             |
+| **Data Model**  | Tables & Rows                   | JSON-like Documents                                        |
+| **Scalability** | Vertical Scaling                | Horizontal Scaling                                         |
+| **Joins**       | Uses relationships              | Embedded documents                                         |
+| **Best for**    | Structured data (e.g., Banking) | Unstructured data (e.g., Social Media, Content Management) |
+
+
+MongoDB stores data in **documents** (JSON format), which allows us to **store book details** in an easy-to-query structure.
+
+Here is an example on how a document looks like in MongoDB
+
+```json
+{
+  "_id": ObjectId("64fb..."),
+  "fulL_name": "Alice Smith",
+  "email": "alice@technova.com",
+  "company_id": ObjectId("64fa...")  // Reference to the company
 }
 ```
 
-Then open your next js project in the browser, and in the developer tools' console run this command:
+Note that we are just looking at the data, because there is _no schema inside the database_. You can even put nested documents
 
-```js
-fetch("/api/hello")
-  .then((r) => r.json())
-  .then(console.log);
+```json
+{
+  "_id": ObjectId("64fa..."),
+  "name": "TechNova",
+  "industry": "Technology",
+  "founded_year": 2010,
+  "employees": [
+    {
+      "full_name": "Alice Smith",
+      "email": "alice@technova.com"
+    },
+    {
+      "full_name": "Bob Lee",
+      "email": "bob@technova.com"
+    }
+  ]
+}
 ```
 
-What do you see? can you explain what happened? Can you check the network tab for details?
+# Using databases in Your App
 
----
+There are many ways of using databases in our app, the main way of doing this using an _ORM_
 
-### HTTP
+## ORM
 
-We have just created a new API endpoint, and then we called this endpoint from the browser. More specifically we created an endpoint that listens on GET requests.
+An ORM (Object-Relational Mapper) is a library that lets you interact with your database using your programming language’s objects and classes, instead of writing raw queries. Much easier and safer for beginners, and often cleaner in large applications.
 
-Requests are done over something called [HTTP or Hypertext Transfer Protocol](https://developer.mozilla.org/en-US/docs/Web/HTTP). Your browser, sometimes referred to as a client, does a request to a server, using the HTTP format.
+These libraries help you manage your database from your app a lot easier than talking to the DB directly.
 
-HTTP consists of many parts:
+For this project we are going to use _MongoDB_ with _Mongoose_ ORM
 
-_URL_: Where the request is supposed to go, for example `https://dummyjson.com/posts` means go the server at `dummyjson.com` and then give me the route `/posts`, here sometimes you can have additional query parameters.
+## Setup DB
 
-In our next.js project, we created a file in `app/api/hello/`, which tells next js to create a new API that listens on the route `/api/hello`, and so when we did a fetch request from our browser like this `fetch('/api/hello')`, we got a response back from our server.
+There are 2 main ways to setup a database for this project:
 
-If you don't define the _host_ (the part with `http://.....com`, then the current host of the browser will be used).
+### Atlas
 
-_Method_: Sometimes referred to as the HTTP verb, this is a way to distinguish different HTTP operations, of which there are many
+[MongoDB Atlas](https://www.mongodb.com/products/platform/atlas-database) is a service by company behind the mongodb database, basically, they will run the database for you, and then you can access from your app.
 
-- GET: get something
-- POST: create something
-- PUT: create or update something
-- PATCH: update something
-- DELETE: remove something
+Using a cloud service has many advantages:
 
-And others, [You can find the full list here](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods).
+- You can access the database from anywhere
+- Mongo wil handle the updates / backups for you
 
-When you do a normal `fetch` request, the default method is `GET`, which is the same name of function we defined in our `route.js` file. You can change the method used for teh `fetch` request in the second parameter.
+But also has advantages
+
+- You have to pay for it 💰
+
+If you are shipping an application to production, you should use a _managed_ database, since it makes your life easier. However, to get started, you can also use a local db.
+
+### Local Database
+
+MongoDB is open source, it means we can run the database on our machine for local development. There are many ways of starting mongodb locally, the easiest one would be to use a docker container:
+
+```yml
+services:
+  mongo:
+    image: mongo:8.0
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
+```
+
+You need to have [Docker](https://docs.docker.com/desktop/) installed on your machine. We won't go into details what containers are, feel free to look it up.
+
+Then to start the database, you run `docker compose up`
+
+### Using with next.js
+
+There is [an official example](https://github.com/vercel/next.js/tree/canary/examples/with-mongodb-mongoose) from next.js team on how to use mongoose.
+
+Go through code in the example and try to understand what is happening, and how we can apply this to our use case. Also, read the documentation of [Mongoose](https://mongoosejs.com/docs/).
+
+## **What is Mongoose?**
+
+Mongoose is an **Object Data Modeling (ODM) library** for MongoDB in **Node.js**. It provides a structured way to interact with MongoDB by defining **schemas** and **models**.
+
+### **Why Use Mongoose?**
+
+✅ **Provides schema validation** to ensure data consistency  
+✅ **Simplifies database interactions** with an easy-to-use API  
+✅ **Handles relationships** between different data models
+
+## Connecting to the DB
+
+You can use the following code to connect to the DB, you can put this in any file you want outside of the `app` folder, usually something like `lib/db.js`
+```js
+import mongoose from "mongoose";
+import assert from "node:assert";
+
+// caching for local development
+let cached = global.mongoose;
+if (!cached) {
+  cached = global.mongoose = { conn: null, promise: null };
+}
+
+export async function makeSureDbIsReady() {
+  if (cached.conn) {
+    return cached.conn;
+  }
+
+  const MONGODB_URI = process.env.MONGODB_URI;
+  assert(
+    MONGODB_URI,
+    "Please define the MONGODB_URI environment variable inside .env.local"
+  );
+
+  if (!cached.promise) {
+    cached.promise = mongoose.connect(MONGODB_URI, { bufferCommands: false });
+  }
+
+  cached.conn = await cached.promise;
+  return cached.conn;
+}
+```
+
+Anytime you want to talk to the database, make sure to `await makeSureDbIsReady()` first!
+
+
+
+## Defining schemas
 
 ```js
-fetch("/api/hello", {
-  method: "POST",
+import mongoose from "mongoose";
+
+const CompanySchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+    maxlength: [60, "Name cannot be more than 60 characters"],
+  },
+  industry: {
+    type: String,
+    required: true,
+    maxlength: [60, "Industry cannot be more than 60 characters"],
+  },
+  founded_year: {
+    type: Number,
+    required: true,
+  },
 });
+
+// we have to define it this way because of hot reloading
+export let Company =
+  mongoose.models.Company ?? mongoose.model("Company", CompanySchema);
 ```
 
-if you run this code in your browser, what do you get?
+Now our ORM knows we have a `Company` collection, and each company has a name, an industry, and the year it was founded.
 
-<details>
- <summary>You should get...</summary>
+Remember, you need to `await makeSureDbIsReady()` before calling any of the operations below:
 
-An HTTP 405 Error, Method not allowed, why?
-
-</details>
-
-_Headers_: Headers are metadata then you send with your request to explain to the server what you want, for example, you can send to the server `accept: application/json` which means: "Please respond with json because I can understand it".
-
-Sometimes if there is authorization for a request it will be sent in the headers, you will see something like `Authorization: Bearer .....`.
-
-_Body_: this is the data that we are sending to the server, this data could be anything, but usually we convert it to a json string before sending it. For example, if the user is creating a new tweet, this would be the content of the tweet.
-
-**Exercise**:
-
-Create a new text input in your next.js app, and a button.
-When the user clicks on this button, we want to send the text we have inside the input field to a new function inside of our `route.js` file.
-
-Inside of your route handler, log whatever input the user has sent.
 
 ---
 
-### Static vs. Dynamic Routes
 
-A static route return the same data for all requests, our `/app/api/hello/route.js` is static.
+## **CRUD Operations with MongoDB & Mongoose**
 
-A dynamic route returns different data depending on the parameters of the request, something like `/app/api/hello/[name]/route.js` is dependant on the `name` parameter. These are called [Dynamic segments](https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes).
+Now that our database is connected, let's implement **CRUD (Create, Read, Update, Delete) operations** to manage books in our Library App.
 
-You can access the parameters in the second parameter of your handler. Just like how we get the params in the browser, we do the same in our route handler.
+---
+
+## **1️⃣ Understanding CRUD Operations**
+
+| Operation  | HTTP Method      | Description                       |
+| ---------- | ---------------- | --------------------------------- |
+| **Create** | `POST`           | Add a new company to the database    |
+| **Read**   | `GET`            | Retrieve company from the database  |
+| **Update** | `PUT` or `PATCH` | Modify an existing company's details |
+| **Delete** | `DELETE`         | Remove a company from the database   |
+
+---
+
+## **2️⃣ Creating API Routes for CRUD Operations**
+
+In **Next.js App Router**, we structure our API routes inside `/app/api/books/`.
+
+📁 **Project Structure**
+
+```
+/app
+ ├── /api
+ │   ├── /company
+ │   │   ├── route.js  (Handles CRUD operations)
+```
+
+
+### Create
 
 ```js
-export async function GET(request, { params }) {
-  const { name } = await params;
-  return NextResponse.json({ greeting: "Hi " + name });
+const company = await Company.create({
+  name: "Audi",
+  industry: "AutoMobile",
+  founded_year: 1990,
+});
+// company is an ORM object, we can convert it to a normal object by calling
+company.toObject();
+```
+
+### Read
+
+```js
+const audi = await Company.find({name: "Audi"});
+```
+
+
+### Update
+
+```js
+const audi = await Company.findOne({name: "Audi"});
+audi.founded_year = 1950;
+await audi.save();
+```
+
+### Delete
+
+```js
+await Company.findOneAndDelete({name: "Audi"});
+```
+
+
+## **3️⃣ Implementing CRUD Routes**
+
+### **📌 Create a New Book (`POST`)**
+
+```js
+import connectToDatabase from "@/lib/mongodb";
+import Book from "@/models/Book";
+
+export async function POST(req) {
+  await connectToDatabase();
+  const body = await req.json();
+  try {
+    const newBook = await Book.create(body);
+    return new Response(JSON.stringify(newBook), { status: 201 });
+  } catch (error) {
+    return new Response(JSON.stringify({ error: "Error creating book" }), {
+      status: 500,
+    });
+  }
+}
+```
+
+### **📌 Read All Books (`GET`)**
+
+```js
+export async function GET(req) {
+  await connectToDatabase();
+  try {
+    const books = await Book.find({});
+    return new Response(JSON.stringify(books), { status: 200 });
+  } catch (error) {
+    return new Response(JSON.stringify({ error: "Error fetching books" }), {
+      status: 500,
+    });
+  }
+}
+```
+
+### **📌 Update a Book (`PUT` or `PATCH`)**
+
+```js
+export async function PUT(req) {
+  await connectToDatabase();
+  const { id, ...updatedData } = await req.json();
+  try {
+    const updatedBook = await Book.findByIdAndUpdate(id, updatedData, {
+      new: true,
+    });
+    return new Response(JSON.stringify(updatedBook), { status: 200 });
+  } catch (error) {
+    return new Response(JSON.stringify({ error: "Error updating book" }), {
+      status: 500,
+    });
+  }
+}
+```
+
+### **📌 Delete a Book (`DELETE`)**
+
+```js
+export async function DELETE(req) {
+  await connectToDatabase();
+  const { id } = await req.json();
+  try {
+    await Book.findByIdAndDelete(id);
+    return new Response(
+      JSON.stringify({ message: "Book deleted successfully" }),
+      { status: 200 }
+    );
+  } catch (error) {
+    return new Response(JSON.stringify({ error: "Error deleting book" }), {
+      status: 500,
+    });
+  }
 }
 ```
 
 ---
 
-## Dealing with data
 
-In a typical application, we would connect to a database to store and load the data, however, for this milestone, we will keep it simple and store everything on disk. We will talk about databases later.
+## **4️⃣ Testing API Routes with Postman or Thunder Client**
 
-But how to work with the disk?
+### **Testing a `POST` Request**
 
-## Reading files
+1. Open **Postman** or **Thunder Client** (VSCode extension).
+2. Set the method to `POST`.
+3. Use the URL: `http://localhost:3000/api/books`
+4. Set the request body to JSON:
+   ```json
+   {
+     "title": "The Hobbit",
+     "author": "J.R.R. Tolkien",
+     "publishedYear": 1937,
+     "coverImage": "https://example.com/hobbit.jpg",
+     "description": "A classic fantasy novel."
+   }
+   ```
+5. Click **Send** → Expect a `201 Created` response.
 
-We are running our next application in the node runtime, so we can use libraries provided for us by node to read / write files.
+### **Testing a `GET` Request**
 
-If we search for the documentation, we find the following
+1. Set the method to `GET`.
+2. Use the URL: `http://localhost:3000/api/books`
+3. Click **Send** → Expect a JSON array of books.
+
+### **Testing an `UPDATE` Request**
+
+1. Set the method to `PUT`.
+2. Use the URL: `http://localhost:3000/api/books`
+3. Set the request body:
+   ```json
+   {
+     "id": "64b2ff...",
+     "title": "The Hobbit - Updated Edition"
+   }
+   ```
+4. Click **Send** → Expect a `200 OK` response with updated data.
+
+### **Testing a `DELETE` Request**
+
+1. Set the method to `DELETE`.
+2. Use the URL: `http://localhost:3000/api/books`
+3. Set the request body:
+   ```json
+   { "id": "64b2ff..." }
+   ```
+4. Click **Send** → Expect a `200 OK` confirmation.
+
+---
+
+## **5️⃣ Frontend Integration (Fetching Books in Next.js)**
+
+### **Fetching Books from the API in Next.js**
+
+Inside `/app/library/page.js`, add:
 
 ```js
-import fs from "node:fs/promises";
-const data = await fs.readFile("/Users/joe/test.txt", { encoding: "utf8" });
-// You will get an error in the above code if this file does not exist.
+"use client";
+import { useEffect, useState } from "react";
+
+export default function Library() {
+  const [books, setBooks] = useState([]);
+
+  useEffect(() => {
+    async function fetchBooks() {
+      const res = await fetch("/api/books");
+      const data = await res.json();
+      setBooks(data);
+    }
+    fetchBooks();
+  }, []);
+
+  return (
+    <div>
+      <h1>Library</h1>
+      <ul>
+        {books.map((book) => (
+          <li key={book._id}>
+            {book.title} - {book.author}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
 ```
 
-**Exercise**
+---
 
-Create a file called `note.txt` and return the contents of this file in the response of you`GET /api/hello` endpoint.
+# **Conclusion - NoSQL & Database**
 
-You should also handle the case where the file does not exist, you can google how to check for this.
+## **Key Takeaways from This Milestone**
 
-## Writing files
+1. **Understanding NoSQL** → We explored how NoSQL databases like MongoDB differ from relational databases, offering flexibility and scalability.
+2. **MongoDB Basics** → We set up a MongoDB database and learned how to interact with it using Mongoose.
+3. **Database Connection** → We established a connection between our Next.js app and MongoDB using Mongoose.
+4. **CRUD Operations** → We implemented Create, Read, Update, and Delete functionalities in our Library App.
+5. **Frontend Integration** → We fetched book data from our API and displayed it on the frontend.
 
-Similar to when doing requests, we can store data as string in files.
+---
 
-```js
-import fs from "node:fs/promises";
+### Task
 
-fs.writeFileSync("./programming.txt", "this is an example", {
-  encoding: "utf8",
-});
-```
-
-**Exercise**
-
-In a previous exercise, you created an input with a button that sends the content of the input to the backend. Now update the code to store whatever the user send into the same `note.txt` file.
-
-If you are finished, you can work on Milestone 3 goals.
+Take the time, go through the examples from next.js, this is a good example on how to learn from other people's code. update your code to save the user's tweets and read them from the DB.
