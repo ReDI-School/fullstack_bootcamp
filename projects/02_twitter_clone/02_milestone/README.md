@@ -1,10 +1,10 @@
-# **Milestone 3: Advanced Next.js - API, Routing, Backend**
+# **Milestone 2: Advanced Next.js - API, Routing, Backend**
 
 In this lesson, we'll do some backend development, and learn how to create backend endpoints using Next.js API routes. These routes allow us to define server-side logic that runs when a request is made. For this lesson, and for simplicity's sake, we won't be using a database, we'll store data in files on disk. This helps us focus on the API design and backend logic. We'll talk about databases later.
 
 ### Expected Outcomes
 
-By the end of Milestone 3, you should:
+By the end of Milestone 2, you should:
 
 - Allow user to create tweets and store them on disk
 - Allow the user to see the tweets they created
@@ -176,4 +176,4 @@ fs.writeFileSync("./programming.txt", "this is an example", {
 
 In a previous exercise, you created an input with a button that sends the content of the input to the backend. Now update the code to store whatever the user send into the same `note.txt` file.
 
-If you are finished, you can work on Milestone 3 goals.
+If you are finished, you can work on Milestone 2 goals.
