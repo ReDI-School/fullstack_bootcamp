@@ -42,24 +42,6 @@ Build upon your React knowledge by integrating Next.js and MongoDB into your app
 
 **Link to Project: [02_fullstack](https://github.com/ReDI-School/fullstack_bootcamp/tree/main/projects/02_fullstack)**
 
-
-## 4. Project: Career Preparation
-![CAREER](https://github.com/user-attachments/assets/3a849e6f-1c2f-4591-b406-f3f023742576)
-
-In the final project, you create a powerful LinkedIn profile, CV, and portfolio, work on a case study, and learn how to apply for your first job.
-
-**Learning Goals:**
-By the end of this module, you should have a familiarity with and basic understanding of the following:
-- `LinkedIn`: Create and optimize a LinkedIn profile based on industry feedback.
-- `CV`: Update and refine CV with professional feedback.
-- `Professional Identity`: Sharpen and articulate a clear professional identity.
-- `Coding Challenge`: Complete and review a coding challenge to showcase technical skills.
-- `Application Process`: Understand and navigate the job application process.
-- `Mock Interview`: Participate in a mock interview to receive feedback and improve performance.
-
-**Link to Project: [career_project](https://github.com/ReDI-School/fullstack_bootcamp/tree/main/projects/career_project)**
-
-
 ## Project Structure
 
 Each project follows a consistent structure:
