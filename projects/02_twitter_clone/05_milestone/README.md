@@ -1,4 +1,4 @@
-# Milestone 6 - Deployment
+# Milestone 5 - Deployment
 
 So far, we have been working and developing our project locally in development mode, but now we want to take our next.js app to "production"
 
