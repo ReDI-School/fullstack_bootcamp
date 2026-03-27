@@ -6,17 +6,12 @@
 
 import Header from "./components/Header";
 import Main from "./components/Main";
-import Button from "./components/Button"
 
 function App() {
   return (
     <div className="App">
       {/* Header Component */}
-      <Header title= "My E-Commerce Store" subtitle="Welcome to our store"/>
-      <Header title= "Second header title variant" subtitle="Browse our collection"/>
-      <Header title= "Third variant"/>
-
-      <Button onClick={() => alert("button clicked")} title="click me"/>
+      <Header />
 
       {/* Main Content Component */}
       <Main />
