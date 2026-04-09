@@ -1,0 +1,35 @@
+.
+├── code
+│   ├── App.jsx
+│   ├── Filters.jsx
+│   ├── Header.jsx
+│   ├── index.css
+│   └── Main.jsx
+├── project
+│   ├── eslint.config.js
+│   ├── index.html
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── public
+│   │   └── vite.svg
+│   ├── README.md
+│   ├── src
+│   │   ├── App.css
+│   │   ├── App.jsx
+│   │   ├── assets
+│   │   │   └── react.svg
+│   │   ├── components
+│   │   │   ├── Filters.jsx
+│   │   │   ├── Header.jsx
+│   │   │   ├── Main.jsx
+│   │   │   └── ProductCard.jsx
+│   │   ├── index.css
+│   │   └── main.jsx
+│   ├── tailwind.config.js
+│   └── vite.config.js
+├── README.md
+├── reference.md
+├── teacher_guide.md
+└── tree.txt
+
+7 directories, 26 files
