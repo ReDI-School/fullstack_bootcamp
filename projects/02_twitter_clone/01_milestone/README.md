@@ -81,9 +81,46 @@ export async function GET() {
     { id: 1, user: "JohnDoe", content: "Hello Next.js!", timestamp: "2m ago" },
     { id: 2, user: "JaneDoe", content: "Loving React & Next.js!", timestamp: "10m ago" }
   ];
-  return new Response(JSON.stringify(tweets), { status: 200 });
+  return Response.json(tweets);
 }
 ```
+ ```return Response.json(tweets);``` is used instead of ```return new Response(JSON.stringify(tweets), { status: 200 }); ``` because ```Response.json(data)``` is the cleaner built-in way to return JSON from a route handler. It automatically returns:
+- a JSON body
+- status 200
+- Content-Type: application/json
+
+Which would be roughly equivalent to 
+``` return new Response(JSON.stringify(tweets), { status: 200, headers: { "Content-Type": "application/json" } })```
+which is longer and harder to read. 
+
+As for when to use ```Response``` or ```new Response(...)```, the later is the better choice when you need lower-level control over the response.
+
+Common cases:
+
+- Custom headers <br>
+Example: cache headers, cookies, CORS headers, content disposition.
+- Non-JSON content <br>
+Such as plain text, HTML, XML, CSV, a file, or a stream.
+- Custom status handling with a custom body format <br>
+For example, returning an empty body with 204, or a text error message.
+- Streaming responses <br>
+Useful for SSE, AI/chat streaming, or large generated content.
+- Binary data<br>
+Such as images, PDFs, ZIP files, or blobs.
+
+Examples:
+- JSON with full manual control:
+```return new Response(JSON.stringify(tweets), { status: 200, headers: { "Content-Type": "application/json", "Cache-Control": "no-store" } })```
+- Plain text:
+```return new Response("OK", { status: 200, headers: { "Content-Type": "text/plain" } })```
+- No content:
+```return new Response(null, { status: 204 })```
+- File download:
+```return new Response(fileBuffer, { headers: { "Content-Type": "application/pdf", "Content-Disposition": "attachment; filename=\"report.pdf\"" } })```
+
+Rule of thumb:
+- Use ```Response.json(...)``` when returning normal JSON data.
+- Use ```new Response(...)``` when you need custom response behavior.
 
 ---
 
