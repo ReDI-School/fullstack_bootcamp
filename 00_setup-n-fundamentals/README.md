@@ -394,7 +394,211 @@ This session is for breakout rooms. Use the time to:
 
 # Week 2 · Session 1 — TypeScript Basics
 
-> **Note:** This section is a placeholder. Content for this session — covering TypeScript fundamentals (basic types, interfaces, and typing functions) as a foundation for using TypeScript with React and Next.js — still needs to be added here.
+### What is TypeScript, and why use it?
+
+TypeScript is a superset of JavaScript that adds **static types**. Any valid JavaScript is also valid TypeScript — but TypeScript lets you describe the *shape* of your data (what a variable, function, or object should look like), and it checks that shape while you're writing code, before you ever run it.
+
+Why it matters for us specifically:
+
+- It catches a whole category of bugs early (e.g. calling a function with the wrong kind of argument)
+- It gives much better autocomplete and inline documentation in the editor
+- Both **React** and **Next.js** are commonly used with TypeScript, and most real-world codebases you'll encounter use it
+
+Browsers can't run TypeScript directly — it gets compiled ("transpiled") down to plain JavaScript. In React and Next.js projects, this happens automatically as part of the build tooling, so in practice you rarely run the compiler by hand.
+
+### Basic types
+
+```ts
+let username: string = "JohnDoe";
+let age: number = 25;
+let isCompleted: boolean = false;
+
+let scores: number[] = [10, 20, 30];
+let names: string[] = ["Alice", "Bob"];
+```
+
+If you don't give TypeScript an explicit type, it will often figure it out on its own from the value you assign — this is called **type inference**:
+
+```ts
+let city = "Berlin"; // TypeScript infers this is a string
+city = 5; // ❌ Error: Type 'number' is not assignable to type 'string'
+```
+
+### Typing functions
+
+You can (and should) type both the parameters and the return value of a function:
+
+```ts
+function addNumbers(a: number, b: number): number {
+  return a + b;
+}
+
+const greet = (name: string): string => {
+  return `Hello, ${name}!`;
+};
+```
+
+If a function doesn't return anything, its return type is `void`:
+
+```ts
+function logMessage(message: string): void {
+  console.log(message);
+}
+```
+
+### Typing objects: `interface` and `type`
+
+For objects — like the `person` or `task` objects from the JS recap — we describe their shape using an `interface` (or, equivalently, a `type` alias):
+
+```ts
+interface Person {
+  name: string;
+  age: number;
+}
+
+const alan: Person = {
+  name: "Alan",
+  age: 20,
+};
+```
+
+```ts
+type Task = {
+  id: number;
+  title: string;
+  completed: boolean;
+};
+
+const task: Task = {
+  id: 1,
+  title: "Learn TypeScript",
+  completed: false,
+};
+```
+
+`interface` and `type` do very similar jobs. For typing objects (like React component props, which you'll see very soon) `interface` is the more common convention, so that's what we'll mostly use going forward.
+
+### Optional properties and union types
+
+Sometimes a property might not always be present — mark it with a `?`:
+
+```ts
+interface Task {
+  id: number;
+  title: string;
+  completed: boolean;
+  dueDate?: string; // optional
+}
+```
+
+Sometimes a value could be one of a few specific types — this is a **union type**, written with `|`:
+
+```ts
+function printId(id: number | string) {
+  console.log(`ID: ${id}`);
+}
+
+let status: "pending" | "completed" = "pending"; // only these two values are allowed
+```
+
+### Typing arrays of objects
+
+Combining what we've seen so far, this is what typing a list of tasks looks like — very close to the `tasks` array from the JS recap:
+
+```ts
+interface Task {
+  id: number;
+  title: string;
+  completed: boolean;
+}
+
+const tasks: Task[] = [
+  { id: 1, title: "Learn TypeScript", completed: false },
+  { id: 2, title: "Build Project", completed: true },
+];
+
+const incompleteTasks: Task[] = tasks.filter((task) => !task.completed);
+```
+
+Notice that `filter`, `map`, `find` and the other array methods from the JS recap work exactly the same way — TypeScript just makes sure `task` inside the callback is always treated as a `Task`, so your editor will warn you if you try to access a property that doesn't exist.
+
+### A quick word on `any`
+
+TypeScript has an escape hatch called `any`, which turns off type checking for that value entirely:
+
+```ts
+let data: any = "hello";
+data = 5; // no error, but you've lost all the safety TypeScript gives you
+```
+
+It can be tempting to reach for `any` when you're not sure what type something is — try to avoid it where possible. It's fine to use occasionally while learning, but relying on it defeats the purpose of using TypeScript in the first place.
+
+### Preview: TypeScript in React
+
+You won't write React components until the next milestone, but this is the shape of what's coming, so the pattern isn't a surprise later — a component's props are typically typed with an `interface`:
+
+```tsx
+interface ButtonProps {
+  label: string;
+  onClick: () => void;
+}
+
+function Button({ label, onClick }: ButtonProps) {
+  return <button onClick={onClick}>{label}</button>;
+}
+```
+
+This is really just the same `interface` + function-typing pattern from above, applied to a component's props instead of a plain object.
+
+### Exercise
+
+Take the `Task` interface above, and:
+
+- Write a typed function `addTask(tasks: Task[], newTask: Task): Task[]` that returns a new array with the task added
+- Write a typed function `toggleTask(tasks: Task[], id: number): Task[]` that returns a new array where the task matching `id` has its `completed` value flipped
+
+<details>
+<summary>Solution</summary>
+
+```ts
+interface Task {
+  id: number;
+  title: string;
+  completed: boolean;
+}
+
+function addTask(tasks: Task[], newTask: Task): Task[] {
+  return [...tasks, newTask];
+}
+
+function toggleTask(tasks: Task[], id: number): Task[] {
+  return tasks.map((task) =>
+    task.id === id ? { ...task, completed: !task.completed } : task
+  );
+}
+```
+
+</details>
+
+### Exercise
+
+Go back to the `getPeopleWhoCanDrive` function from the JS recap and rewrite it in TypeScript: define a `Person` interface (`name: string`, `age: number`) and add types to the function's parameter and return value.
+
+<details>
+<summary>Solution</summary>
+
+```ts
+interface Person {
+  name: string;
+  age: number;
+}
+
+function getPeopleWhoCanDrive(people: Person[]): Person[] {
+  return people.filter((person) => person.age >= 18);
+}
+```
+
+</details>
 
 ---
 
