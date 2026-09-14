@@ -1,6 +1,6 @@
-# Git Workflow — Session Prep Cheat Sheet
+# Git Workflow — Cheat Sheet
 
-A generic step-by-step routine for preparing and committing changes before a teaching session.
+A generic step-by-step routine for preparing and committing changes to GitHub.
 
 ## 1. Navigate to your project folder
 ```
