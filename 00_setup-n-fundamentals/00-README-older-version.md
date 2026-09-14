@@ -1,51 +1,27 @@
-# Welcome to the Fullstack Bootcamp - Milestone 0
-
-As a **project** we will be creating a task management application, where you will build features like adding tasks, marking them complete, and storing them locally.
+# Welcome to the Fullstack bootcamp - Milestone 0
 
 ### Learning Objectives
 
-1. Setup & Development Environment
-   - Installing and configuring VS Code, Node.js, and Git
-   - Setting up essential VS Code extensions
-2. JavaScript Core Concepts
+1. Development Environment Setup:
+   - Setting up VS Code with essential extensions
+   - Configuring Git and GitHub
+2. Version Control:
+   - Basic Git commands and workflow
+   - GitHub repository management
+   - Creating and managing branches
+3. JavaScript Core Concepts:
    - Working with arrays and objects
    - DOM manipulation and event handling
    - Using localStorage for data persistence
    - Understanding modern JavaScript features
-3. TypeScript Basics
-   - Introduction to TypeScript syntax and types
-   - Why TypeScript matters for React and Next.js
-4. Version Control & Workflow
-   - Basic Git commands and branching
-   - Commits, merging, and remote repositories
-   - GitHub repository management
 
-### How this milestone is structured
-
-This milestone is spread across two weeks. Each week follows the same rhythm: a first theory session, a second theory/consolidation session, and a practical coaching session in breakout rooms.
-
-| Week | Session | Focus |
-|---|---|---|
-| 1 | Session 1 (Thu) | Development Environment Setup |
-| 1 | Session 2 (Mon) | JavaScript Recap |
-| 1 | Session 3 (Wed) | Coaching: Setup & JavaScript Practice |
-| 2 | Session 1 (Thu) | TypeScript Basics |
-| 2 | Session 2 (Mon) | Git & GitHub Workflow |
-| 2 | Session 3 (Wed) | Coaching: Git & GitHub Practice |
+As a **project** we will be creating a task management application, where you will build features like adding tasks, marking them complete, and storing them locally.
 
 ---
 
-# Week 1 · Session 1 — Development Environment Setup
+# Development Environment
 
-A development environment is a workspace where you write and manage your code. For our course, we will focus on the following.
-
-### Setup checklist
-
-Before moving on, make sure you have the following installed:
-
-- **Node.js** (needed to run JavaScript outside the browser, and for tooling later on)
-- **VS Code** (our code editor)
-- **Git** (we'll start using it in Week 2, but it's good to have it installed early)
+A development environment is a workspace where you write and manage your code. For our course, we will focus on the following:
 
 ### Code Editor
 
@@ -55,7 +31,7 @@ For our courses, we use [Visual Studio Code](https://code.visualstudio.com/)
 
 - It supports multiple programming languages
 - Has a lot of great and useful plugins
-- Integrates well with Git for version control (more about this in Week 2)
+- Integrates well with Git for version control (more about this later)
 
 Do you have VS Code installed? if not, install it!
 
@@ -68,7 +44,87 @@ More in the future!
 
 ---
 
-# Week 1 · Session 2 — JavaScript Recap
+# Version Control
+
+When building projects, especially bigger ones, there are two essential pieces we need to keep in mind:
+
+- Track the changes in our project over time: This allows us to easily understand all the changes being made to the code base, as well as going back to previous versions in case something goes wrong
+- Collaborate with other developers: Everyone is working on their own machine with their own code, version control allows us to _merge_ these changes together!
+
+The most popular version control tool is [Git](https://git-scm.com/downloads). Make sure it is installed because we are going to need it. It is possible to use git from inside of VS code.
+
+(live example)
+
+```sh
+# initialize a folder to become a git repository
+git init .
+
+```
+
+### Branches
+
+Git branches allow you to create separate paths for your code changes, by default a git repository has a "main" or "master" branch. This is where the main code lives.
+
+Then you can create branches where you can do your own changes, when you are finished with your changes, you can merge your changes back to main.
+
+Useful commands:
+
+```sh
+# create a branch
+git branch <branch-name>
+
+# switch to your new branch
+git checkout <branch-name>
+
+
+# you can also go back to the main branch at any time
+git checkout main
+```
+
+### Commits
+
+Commits are a way to save snapshots of changes made in your code at different points during its development history.
+
+After doing some changes to some files, you can "stage" them using `git add`
+
+```sh
+git add index.html
+```
+
+And then we can create a commit that describes the changes
+
+```sh
+git commit -m "Added the main entry html file"
+```
+
+And now we have our change saved in our new branch.
+
+You can always go back and forth between branches, each branch has their commits, but we can merge branches so that the changes are adopted.
+
+```sh
+# go back to main
+git checkout main
+# merge my new branch into main
+git merge <branch-name>
+# now the commit is on the main branch!
+```
+
+You can achieve all of this from the VS code UI.
+
+
+How can I push a branch to a remote repository?
+
+```sh
+# push your branch
+git push origin <branch-name>
+# after it is merged, you need to
+git pull origin <branch-name>
+```
+
+
+---
+
+# Javascript Recap
 
 Ok now create the skeleton of a project. What do we need?
 
@@ -381,113 +437,6 @@ This helps us make the code more isolated, coherent, and easy to change.
 
 ---
 
-# Week 1 · Session 3 — Coaching: Setup & JavaScript Practice
-
-This session is for breakout rooms. Use the time to:
-
-- Finish or revisit the counter exercise (with increment, decrement, reset)
-- Make sure counter persistence with `localStorage` works correctly
-- Work through the array methods exercise (`filter`, `map`, `find`, `some`) with your own data
-- Ask questions about anything from the first two sessions before moving into TypeScript and Git next week
-
----
-
-# Week 2 · Session 1 — TypeScript Basics
-
-> **Note:** This section is a placeholder. Content for this session — covering TypeScript fundamentals (basic types, interfaces, and typing functions) as a foundation for using TypeScript with React and Next.js — still needs to be added here.
-
----
-
-# Week 2 · Session 2 — Git & GitHub Workflow
-
-When building projects, especially bigger ones, there are two essential pieces we need to keep in mind:
-
-- Track the changes in our project over time: This allows us to easily understand all the changes being made to the code base, as well as going back to previous versions in case something goes wrong
-- Collaborate with other developers: Everyone is working on their own machine with their own code, version control allows us to _merge_ these changes together!
-
-The most popular version control tool is [Git](https://git-scm.com/downloads). Make sure it is installed because we are going to need it. It is possible to use git from inside of VS code.
-
-(live example)
-
-```sh
-# initialize a folder to become a git repository
-git init .
-
-```
-
-### Branches
-
-Git branches allow you to create separate paths for your code changes, by default a git repository has a "main" or "master" branch. This is where the main code lives.
-
-Then you can create branches where you can do your own changes, when you are finished with your changes, you can merge your changes back to main.
-
-Useful commands:
-
-```sh
-# create a branch
-git branch <branch-name>
-
-# switch to your new branch
-git checkout <branch-name>
-
-
-# you can also go back to the main branch at any time
-git checkout main
-```
-
-### Commits
-
-Commits are a way to save snapshots of changes made in your code at different points during its development history.
-
-After doing some changes to some files, you can "stage" them using `git add`
-
-```sh
-git add index.html
-```
-
-And then we can create a commit that describes the changes
-
-```sh
-git commit -m "Added the main entry html file"
-```
-
-And now we have our change saved in our new branch.
-
-You can always go back and forth between branches, each branch has their commits, but we can merge branches so that the changes are adopted.
-
-```sh
-# go back to main
-git checkout main
-# merge my new branch into main
-git merge <branch-name>
-# now the commit is on the main branch!
-```
-
-You can achieve all of this from the VS code UI.
-
-
-How can I push a branch to a remote repository?
-
-```sh
-# push your branch
-git push origin <branch-name>
-# after it is merged, you need to
-git pull origin <branch-name>
-```
-
----
-
-# Week 2 · Session 3 — Coaching: Git & GitHub Practice
-
-This session is for breakout rooms. Use the time to:
-
-- Practice creating a branch, committing changes, and merging back to `main`
-- Push a branch to a remote repository and open a pull request on GitHub
-- Pair up and practice pulling a partner's changes
-- Ask any remaining questions before moving on to React in the next milestone
-
----
-
 # Project
 
 As a project we will be creating a task management application, with the features:
@@ -515,4 +464,4 @@ As a project we will be creating a task management application, with the feature
 
 # What's Next?
 
-In the next milestone, we'll dive into React and start building more complex applications. The JavaScript and TypeScript fundamentals you've learned here will be essential as we move forward.
+In the next milestone, we'll dive into React and start building more complex applications. The JavaScript fundamentals you've learned here will be essential as we move forward.
