@@ -1,4 +1,4 @@
-# Welcome to the Fullstack bootcamp - JS Recap Week
+# Welcome to the Fullstack bootcamp - JS Recap 
 
 ## Learning Goals
 
