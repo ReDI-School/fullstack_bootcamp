@@ -26,7 +26,7 @@ This milestone is spread across two weeks. Each week follows the same rhythm: a 
 
 | Week | Session | Focus |
 |---|---|---|
-| 1 | Session 1 (Thu) | Development Environment Setup |
+| 1 | Session 1 (Thu) | Development Environment Setup + JS recap|
 | 1 | Session 2 (Mon) | JavaScript Recap |
 | 1 | Session 3 (Wed) | Coaching: Setup & JavaScript Practice |
 | 2 | Session 1 (Thu) | TypeScript Basics |
