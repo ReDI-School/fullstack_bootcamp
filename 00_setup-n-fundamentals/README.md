@@ -1,6 +1,6 @@
 # Welcome to the Fullstack Bootcamp - Milestone 0
 
-As a **project** we will be creating a task management application, where you will build features like adding tasks, marking them complete, and storing them locally.
+> you can also find supporting information, links, practical tools and JavaScript Foundations in the [gitbook](https://redi-school-1.gitbook.io/full-stack-bootcamp/) 
 
 ### Learning Objectives
 
