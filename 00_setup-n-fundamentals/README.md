@@ -1,6 +1,6 @@
 # Welcome to the Fullstack Bootcamp - Milestone 0
 
-> you can also find supporting information, links, practical tools and JavaScript Foundations in the [gitbook](https://redi-school-1.gitbook.io/full-stack-bootcamp/) 
+> you can also find supporting information, links, practical tools and JavaScript Foundations in the [***gitbook***](https://redi-school-1.gitbook.io/full-stack-bootcamp/).
 
 ### Learning Objectives
 
