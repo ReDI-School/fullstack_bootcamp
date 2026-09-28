@@ -8,6 +8,13 @@ export async function GET(request) {
   // we can safely access user data here
   const session = await getServerSession();
 
+  if (!session?.user) {
+    return NextResponse.json(
+      { error: "Unauthorized - Please login to access this resource" },
+      { status: 401 }
+    );
+  }
+
   // Return user's favorite tweets from localStorage
   // In a real app, this would fetch from a database
   return NextResponse.json({
@@ -19,6 +26,13 @@ export async function GET(request) {
 
 export async function POST(request) {
   const session = await getServerSession();
+
+  if (!session?.user) {
+    return NextResponse.json(
+      { error: "Unauthorized - Please login to access this resource" },
+      { status: 401 }
+    );
+  }
 
   try {
     const body = await request.json();
@@ -40,6 +54,13 @@ export async function POST(request) {
 
 export async function DELETE(request) {
   const session = await getServerSession();
+
+  if (!session?.user) {
+    return NextResponse.json(
+      { error: "Unauthorized - Please login to access this resource" },
+      { status: 401 }
+    );
+  }
 
   try {
     const { searchParams } = new URL(request.url);
