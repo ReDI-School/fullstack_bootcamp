@@ -1,8 +1,16 @@
 /**
  * Main.jsx
  * This component renders the main content area of the website.
- * It includes a welcome message and a placeholder for product listings.
- * Tailwind CSS classes are used for styling.
+ *
+ * EXERCISE 2: Replace the hardcoded product divs below with a reusable
+ * ProductCard component. Steps:
+ *   1. Create src/components/ProductCard.jsx with props: name, price, description
+ *   2. Define a products array above this function
+ *   3. Use .map() to render a <ProductCard /> for each product
+ *   4. Remember to add a key prop to each card
+ *
+ * EXERCISE 4: Update this component to receive products as a prop from App.jsx
+ *   instead of defining the array here.
  */
 
 function Main() {
@@ -14,7 +22,8 @@ function Main() {
         <p className="mt-4 text-gray-600">Discover our amazing products and enjoy exclusive deals.</p>
       </section>
 
-      {/* Product Listings Placeholder */}
+      {/* TODO (Exercise 2): Replace the hardcoded divs below with a .map() over
+          a products array, rendering a <ProductCard /> for each item */}
       <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         <div className="p-4 bg-white shadow-md rounded-lg">
           <h3 className="text-lg font-bold text-gray-800">Product 1</h3>
