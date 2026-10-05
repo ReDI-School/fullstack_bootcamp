@@ -20,15 +20,23 @@ export async function GET(request) {
 export async function POST(request) {
   const session = await getServerSession();
 
+  if (!session?.user) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
   try {
     const body = await request.json();
+
+    // Ignore any client-supplied author/user identity to prevent
+    // impersonation; always trust the server-verified session instead.
+    const { author, user, ...safeBody } = body ?? {};
 
     // In a real app, save to database here
     // For now, just acknowledge the request
     return NextResponse.json({
       message: "Favorite added successfully",
-      user: session?.user,
-      data: body,
+      user: session.user,
+      data: { ...safeBody, author: session.user },
     });
   } catch (error) {
     return NextResponse.json(
@@ -40,6 +48,10 @@ export async function POST(request) {
 
 export async function DELETE(request) {
   const session = await getServerSession();
+
+  if (!session?.user) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
 
   try {
     const { searchParams } = new URL(request.url);
