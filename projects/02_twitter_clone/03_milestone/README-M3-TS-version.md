@@ -266,6 +266,8 @@ export async function makeSureDbIsReady() {
 Anytime you want to talk to the database, make sure to `await makeSureDbIsReady()` first!
 
 > If the connection does not work on the first try, double-check the IP access list (Network Access in Atlas), the database user credentials, and the connection string. These are the most common Atlas setup issues.
+>
+> If you see `querySrv ENOTFOUND`, your computer cannot find the cluster's address: check that the cluster exists in Atlas (and is not paused), copy a fresh connection string into `.env.local`, and try another network if it still fails.
 
 ## Defining Schemas
 
