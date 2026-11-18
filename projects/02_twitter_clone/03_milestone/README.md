@@ -156,6 +156,8 @@ Using a cloud service has many advantages:
 
 If you are shipping an application to production, you should use a *managed* database, since it makes your life easier.
 
+> 🎥 **Extra help:** Prefer watching to reading? This [video walkthrough](https://www.youtube.com/watch?v=pILdgCr4w3s) shows how to create a MongoDB Atlas database. It covers the same steps as Step 2 of the Milestone 3 Practical Guide.
+
 ### Local Database
 
 For local development, the simplest setup is MongoDB + MongoDB Compass.
@@ -190,6 +192,38 @@ Then to start the database, you run `docker compose up`.
 There is [an official example](https://github.com/vercel/next.js/tree/canary/examples/with-mongodb-mongoose) from the Next.js team on how to use Mongoose.
 
 Go through the code in the example and try to understand what is happening, and how we can apply this to our use case. Also, read the documentation of [Mongoose](https://mongoosejs.com/docs/).
+
+### Managing your database with MongoDB Compass
+
+MongoDB Compass is a desktop app that lets you see and manage your data without the terminal. Use it to check that your app really saves tweets, or to fix a document by hand.
+
+**1. Install Compass**
+
+Download [MongoDB Compass](https://www.mongodb.com/products/tools/compass) and open it.
+
+**2. Connect to your Atlas database**
+
+1. Click **Add new connection**.
+2. Paste your connection string, the same one as in your `.env.local` (with your real password, without quotes). You can also copy it in Atlas via **Connect → Drivers**.
+3. Click **Connect**.
+
+⚠️ The connection string contains your password. Never share it or post it in screenshots.
+
+**3. Find your data**
+
+In the left sidebar open your database (e.g. `twitter-clone`) and then the `tweets` collection. Every document is one tweet.
+
+**4. Manage your data**
+
+- **Read / filter:** type a query in the filter bar, for example `{ "upvotes": { "$gt": 2 } }` shows tweets with more than 2 upvotes.
+- **Edit:** hover over a document, click the pencil icon, change a value, click **Update**.
+- **Insert:** click **Add Data → Insert Document**.
+- **Delete:** hover over a document and click the trash icon, then confirm.
+- **Refresh:** click the refresh button to see changes made by your app.
+
+💡 Documents you add by hand in Compass skip Mongoose, so they get no defaults (like `upvotes: 0`) and no validation. Include all fields yourself.
+
+> 🎥 **More info:** This [video walkthrough](https://youtu.be/EpheHn2EK0o) shows how to connect MongoDB Compass to your Atlas database and manage your data. It matches Section 11.1 of the Practical Guide. If anything in the video differs from this README, follow the README.
 
 
 ## Connecting to the DB
