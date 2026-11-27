@@ -636,3 +636,7 @@ Take the time, go through the examples from Next.js; this is a good example on h
 - [ORMs, ODMs, and Libraries](https://www.mongodb.com/docs/drivers/odm/)
 - [Quizlet - 54 Qs on Milestone 3](https://quizlet.com/de/1180898068/mongodb-flash-cards/?funnelUUID=ed8eba12-6b0f-466d-80c4-a11c63ab5350)
 - [Next.js documentation](https://nextjs.org/docs)
+- [MongoDB Atlas](https://www.mongodb.com/products/platform/atlas-database)
+- [How to create a MongoDB Atlas database (free cloud DB)](https://www.youtube.com/watch?v=pILdgCr4w3s)
+- [MongoDB Compass](https://www.mongodb.com/products/tools/compass)
+- [How to connect MongoDB Atlas using MongoDB Compass](https://www.youtube.com/watch?v=EpheHn2EK0o)
